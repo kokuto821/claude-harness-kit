@@ -15,7 +15,7 @@ description: コーディングルールに従ってコードを実装・レビ�
 | コンポーネントファイル | PascalCase | `NeiButton.tsx`, `DrawerHeader.tsx` |
 | hooks / utils ファイル | camelCase | `useInitializeMap.ts`, `swipeUtils.ts` |
 | 型定義ファイル | camelCase + `Types.ts` サフィックス | `geoparkTypes.ts` |
-| boolean 変数 | `is` / `has` プリフィックス | `isExpanded`, `hasError` |
+| boolean 変数・型プロパティ | `is` / `has` プリフィックス | `isExpanded`, `hasError`, `isVisible?: boolean` |
 | state 更新関数 | `set` プリフィックス | `setSelectedFeature` |
 | コールバック関数（Props） | `on` プリフィックス | `onClickLoading` |
 | コールバック関数（実装） | `handle` プリフィックス | `handleMapClick` |
