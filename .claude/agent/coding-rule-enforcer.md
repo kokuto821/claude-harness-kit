@@ -27,12 +27,23 @@ description: コーディングルールに従ってコードを実装・レビ�
 ### TypeScript
 
 - `interface` は使わず `export type` を使用する
-- `any` 型は使用しない。不明な型は `unknown` + 型ガードで対応する
+- `any` / `undefined` / `unknown` 型は絶対に使用しない。不明な型は具体的な型定義 + 型ガードで対応する
 - コンポーネントは `FC<Props>` パターンで統一する
 - `type` のプロパティには必ずJSDocコメントを付与する
 - 型ガード関数（`is〇〇`）を活用する
 - `strict: true` を維持する
 - Union 型で複数のデータ型を表現する
+- 型は最小限の単位で定義する。プロパティが重複する大きい型を作る際はインターセクション型（`&`）で小さい型を結合して構成する
+
+```typescript
+// ✅ 良い例
+export type UserId = { id: string };
+export type UserName = { name: string };
+export type User = UserId & UserName;
+
+// ❌ 悪い例
+export type User = { id: string; name: string };
+```
 
 ```typescript
 // ✅ 良い例
