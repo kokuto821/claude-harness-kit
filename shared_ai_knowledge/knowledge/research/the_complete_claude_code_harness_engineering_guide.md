@@ -6,7 +6,7 @@
 
 ## 概要
 
-前記事（[harness_engineering.md](./harness_engineering.md)）で紹介したハーネスエンジニアリングの概念を、Anthropic社のAI開発ツール「Claude Code」に具体的にどう適用するかを解説した実践ガイド。
+前記事（[what_is_harness_engineering_complete_guide_2026.md](./what_is_harness_engineering_complete_guide_2026.md)）で紹介したハーネスエンジニアリングの概念を、Anthropic社のAI開発ツール「Claude Code」に具体的にどう適用するかを解説した実践ガイド。
 
 参考記事: [The Complete Claude Code Harness Engineering Guide (5 Layers, 8 Deep-Dives)](https://dev.to/shipwithaiio/the-complete-claude-code-harness-engineering-guide-5-layers-8-deep-dives-3d4j)
 
