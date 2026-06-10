@@ -1,0 +1,11 @@
+{
+  "name": "shared-ai-skills",
+  "owner": { "name": "kokuto821" },
+  "plugins": [
+    {
+      "name": "shared-ai-skills",
+      "source": "./plugins/shared-ai-skills",
+      "description": "個人用Claude Codeスキル集（コミット・セッション管理・知識管理・TDDなど）"
+    }
+  ]
+}

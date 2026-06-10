@@ -3,3 +3,4 @@
 .env.development.local
 settings.local.json
 settings.development.local.json
+.claude/skills/

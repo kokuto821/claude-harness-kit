@@ -1,18 +1,16 @@
 ---
 name: sync-skills
-description: shared_ai_skills の全スキルを WSL ~/.claude/skills/ にシンボリックリンク、プロジェクト .claude/skills/ に Windows ジャンクションで同期する。新規スキル追加・削除後に実行する。
+description: plugins/shared-ai-skills/skills/ の全スキルを WSL ~/.claude/skills/ にシンボリックリンク、プロジェクト .claude/skills/ に Windows ジャンクションで同期する。新規スキル追加・削除後に実行する。
 ---
 
 # sync-skills
 
-`shared_ai_skills` の全スキルを以下の2箇所に同期するスキル。
+`plugins/shared-ai-skills/skills/` の全スキルを以下の2箇所に同期するスキル。
 
 | 対象 | 方式 | 備考 |
 |------|------|------|
 | WSL `~/.claude/skills/` | `ln -s`（WSL シンボリックリンク） | WSL 環境で Claude Code を使う場合 |
 | プロジェクト `.claude/skills/` | Windows ジャンクション | Windows 環境で Claude Code を使う場合 |
-
-> **注意:** `C:\Users\ihcia\.claude\skills` は Windows ジャンクションが `shared_ai_skills` を直接指しているため操作不要。
 
 以下を **必ず Bash ツールで実行** する。説明だけして終わらないこと。
 
@@ -21,7 +19,7 @@ description: shared_ai_skills の全スキルを WSL ~/.claude/skills/ にシン
 ## Step 1: WSL シンボリックリンクの同期
 
 ```bash
-SKILLS_SRC="/mnt/c/Users/ihcia/Desktop/creative/dev_workspace/shared_ai_docs/shared_ai_skills"
+SKILLS_SRC="/mnt/c/Users/ihcia/Desktop/creative/dev_workspace/shared_ai_docs/plugins/shared-ai-skills/skills"
 SKILLS_DST="$HOME/.claude/skills"
 
 # 新規リンク作成
@@ -53,9 +51,9 @@ done
 ## Step 2: Windows ジャンクションの同期
 
 ```bash
-SKILLS_SRC_WIN="C:\\Users\\ihcia\\Desktop\\creative\\dev_workspace\\shared_ai_docs\\shared_ai_skills"
+SKILLS_SRC_WIN="C:\\Users\\ihcia\\Desktop\\creative\\dev_workspace\\shared_ai_docs\\plugins\\shared-ai-skills\\skills"
 SKILLS_DST_WIN="C:\\Users\\ihcia\\Desktop\\creative\\dev_workspace\\shared_ai_docs\\.claude\\skills"
-SKILLS_SRC="/mnt/c/Users/ihcia/Desktop/creative/dev_workspace/shared_ai_docs/shared_ai_skills"
+SKILLS_SRC="/mnt/c/Users/ihcia/Desktop/creative/dev_workspace/shared_ai_docs/plugins/shared-ai-skills/skills"
 SKILLS_DST_POSIX="/mnt/c/Users/ihcia/Desktop/creative/dev_workspace/shared_ai_docs/.claude/skills"
 
 # 新規ジャンクション作成
@@ -70,7 +68,7 @@ for dir in "$SKILLS_SRC"/*/; do
   fi
 done
 
-# 不要ジャンクション削除（shared_ai_skills に存在しないもの）
+# 不要ジャンクション削除（plugins/shared-ai-skills/skills に存在しないもの）
 for entry in "$SKILLS_DST_POSIX"/*/; do
   name=$(basename "${entry%/}")
   if [ ! -d "$SKILLS_SRC/$name" ]; then
