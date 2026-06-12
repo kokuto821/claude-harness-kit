@@ -3,64 +3,18 @@ name: tdd-expert
 description: Test-Driven Development (TDD) の原則に従い、Red-Green-Refactor-Commit のサイクルを厳格に守って開発を行うためのスキル。
 ---
 
-# Test-Driven Development (TDD) Guidelines
+# tdd-expert
 
-This document defines the core development philosophy, process, and coding standards for this project. The agent is expected to strictly adhere to these guidelines at all times. The philosophy is heavily inspired by the teachings of Takuya Wada (t-wada) on Test-Driven Development (TDD).
+## 概要
 
-## 1. Core Philosophy: Test-Driven
+Takuya Wada (t-wada) の TDD 思想に基づき、Red-Green-Refactor-Commit サイクルを厳格に守って開発を行う。テストが仕様であり設計ドライバーであるという哲学のもと、プロダクトコードはテストを通すためにのみ書く。
 
-- **Tests Drive Development:** All production code is written only to make a failing test pass. Tests are not an afterthought; they are the specification and the driver of design.
-- **Confidence in Refactoring:** A comprehensive test suite is our safety net. It allows us to refactor and improve the codebase fearlessly and continuously.
-- **Testability Equals Good Design:** If code is difficult to test, it is a sign of poor design. The agent must prioritize creating code that is easy to test, which naturally leads to a loosely coupled and highly cohesive architecture.
+## 参照するガイドライン
 
-## 2. The Development Cycle: Red-Green-Refactor-Commit
+`reference/tdd-guidelines.md` に TDD の核心哲学・開発サイクル・コーディング標準を定義する。作業開始前に必ず読み込むこと。
 
-The agent must follow this iterative cycle for every change, no matter how small. The agent should explicitly state which phase it is in when generating code.
+## 利用指示
 
-### Phase 1: Red - Write a Failing Test
-
-- **Goal:** To clearly define what needs to be accomplished.
-- **Action:** Before writing any implementation code, create a concise, specific test that verifies a single piece of desired functionality.
-- **Condition:** This test must fail (**RED**), as the corresponding implementation does not yet exist.
-
-### Phase 2: Green - Make the Test Pass
-
-- **Goal:** To fulfill the requirements defined by the test.
-- **Action:** Write the absolute minimum amount of code necessary to make the failing test pass (**GREEN**).
-- **Condition:** Do not add extra functionality. Elegance is not the goal at this stage; simply passing the test is.
-
-### Phase 3: Refactor - Improve the Design
-
-- **Goal:** To clean up the code while keeping all tests green.
-- **Action:** With the safety of passing tests, improve the internal structure of the code. This includes, but is not limited to:
-  - Removing duplication (DRY principle).
-  - Improving names for clarity.
-  - Simplifying complex logic.
-  - Ensuring all coding standards listed below are met.
-- **Condition:** All tests must remain **GREEN** throughout the refactoring process.
-
-### Phase 4: Commit - Save the Progress
-
-- **Goal:** To record a functioning, small unit of work as a secure checkpoint.
-- **Action:** After refactoring is complete and a final check confirms all tests are green, execute `git add .` to stage the changes. This serves as a stable checkpoint before proceeding to the next development cycle.
-- **Condition:** The changes implemented in this cycle should represent a single, meaningful unit of work. The commit message should also concisely describe this work.
-
-## 3. Strict Coding Standards & Prohibitions
-
-### 【CRITICAL】 No Hard-coding
-
-Any form of hard-coded value is strictly forbidden.
-
-- **Magic Numbers:** Do not use numeric literals directly in logic. Define them as named constants.
-  - _Bad:_ `if (age > 20)`
-  - _Good:_ `const ADULT_AGE = 20; if (age > ADULT_AGE)`
-- **Configuration Values:** API keys, URLs, file paths, and other environmental settings MUST be loaded from configuration files (e.g., `.env`, `config.js`) or environment variables. They must never be present in the source code.
-- **User-facing Strings:** Text for UI, logs, or errors should be managed via constants or localization files to facilitate maintenance and internationalization.
-
-### Other Key Standards
-
-- **Single Responsibility Principle (SRP):** Every module, class, or function should have responsibility over a single part of the functionality.
-- **DRY (Don't Repeat Yourself):** Avoid code duplication at all costs. Abstract and reuse common logic.
-- **Clear and Intentional Naming:** Variable and function names must clearly communicate their purpose and intent.
-- **Guard Clauses / Early Return:** Prefer early returns to avoid deeply nested `if-else` structures.
-- **Security First:** Always treat user input as untrusted. Sanitize inputs and encode outputs to prevent common vulnerabilities (XSS, SQL Injection, etc.).
+- 各フェーズ（Red / Green / Refactor / Commit）を明示しながらコードを生成する
+- コーディング標準（No Hard-coding・SRP・DRY・Security First 等）は `reference/tdd-guidelines.md` の Section 3 に従う
+- フェーズを飛ばすことは禁止。必ず Red → Green → Refactor → Commit の順で進める
