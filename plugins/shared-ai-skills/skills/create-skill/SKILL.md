@@ -21,6 +21,7 @@ description: >
 | 命名規則 | `rules/naming-conventions/naming-rule.md` |
 | 配置ルール | `rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `rules/template/template-rule.md` |
+| ルール外部化原則 | `rules/rule-externalization/externalization-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
 | エージェントテンプレート | `template/agent/AGENT.md` |
 
@@ -57,7 +58,16 @@ description: >
 | スキル | `plugins/shared-ai-skills/skills/<name>/SKILL.md` |
 | サブエージェント | `plugins/shared-ai-skills/agent/<name>.md` |
 
-### 4. テンプレートを読み込んでドラフトを作成する
+### 4. 内包するルールを外部化できるか確認する
+
+`rules/rule-externalization/externalization-rule.md` に従い、スキル・エージェントに書こうとしているルール・制約・判断基準が `rules/` に切り出せるものかを判断する。
+
+- **切り出す**: 他のスキル・エージェントにも適用できる、または「常に従うべき不変のガイドライン」の性質を持つもの
+- **インラインのまま**: そのスキル固有の手順・実行ロジック
+
+切り出す場合は先に `rules/<topic>/` にルールファイルを作成し、スキル・エージェントからはパスで参照する。
+
+### 5. テンプレートを読み込んでドラフトを作成する
 
 #### スキルの場合
 
@@ -91,7 +101,7 @@ description: <委譲条件を具体的に。いつ・何を・どう返すかを
 
 本文は「役割宣言 → 手順 → チェックリスト/観点 → 出力フォーマット」の職務記述書スタイル。
 
-### 5. ドラフトをユーザーに提示して確認を取る
+### 6. ドラフトをユーザーに提示して確認を取る
 
 作成予定のファイル内容を全文提示し、以下を確認する。
 
@@ -101,11 +111,11 @@ description: <委譲条件を具体的に。いつ・何を・どう返すかを
 
 修正があれば反映してから再提示する。
 
-### 6. ファイルを書き込む
+### 7. ファイルを書き込む
 
 承認を得たら Write ツールでファイルを作成する。
 
-### 7. 後続作業を案内する
+### 8. 後続作業を案内する
 
 **スキルを作成した場合:**
 

@@ -37,3 +37,4 @@ shared_ai_docs/
 | 命名規則（スキル・エージェント） | `rules/naming-conventions/naming-rule.md` |
 | スキル同期 | `rules/skill-sync/sync-rule.md` |
 | ユーザーフィードバックのルール化 | `rules/user-feedback/feedback-rule.md` |
+| スキル・エージェント内のルール外部化 | `rules/rule-externalization/externalization-rule.md` |
