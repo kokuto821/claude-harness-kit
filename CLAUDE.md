@@ -10,7 +10,7 @@ shared_ai_docs/
 │   ├── skills/                 ← Claude Code スキル（SKILL.md）
 │   ├── rules/                  ← Claude が参照するルール
 │   ├── documents/              ← 調査・参考ドキュメント
-│   ├── experiences/            ← 経験・知見メモ
+│   ├── knowledge/              ← 経験・知見メモ
 │   ├── agent/                  ← サブエージェント定義
 │   ├── template/               ← テンプレート
 │   └── .claude-plugin/         ← プラグインマニフェスト
@@ -20,13 +20,12 @@ shared_ai_docs/
 └── .claude/                    ← Claude Code 設定（シンボリックリンク群）
     ├── agent   → ../plugins/shared-ai-skills/agent
     ├── documents → ../plugins/shared-ai-skills/documents
-    ├── experiences → ../plugins/shared-ai-skills/experiences  ※未作成
     ├── rules   → ../plugins/shared-ai-skills/rules
     ├── skills/ → gitignored（junction/symlink の置き場）
     └── template → ../plugins/shared-ai-skills/template
 ```
 
-ルート直下の `rules/`, `documents/`, `experiences/`, `agent/`, `template/` はシンボリックリンク。
+ルート直下の `rules/`, `documents/`, `agent/`, `template/` はシンボリックリンク。
 
 ## ルール
 
