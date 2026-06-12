@@ -8,16 +8,18 @@
 
 ## ファイルの配置先
 
+**新しいファイルは必ず `plugins/shared-ai-skills/<カテゴリ>/` 配下に置く。**
+
 | 種類 | 正しい配置先 |
 |------|------------|
 | スキル | `plugins/shared-ai-skills/skills/<skill-name>/SKILL.md` |
-| ルール | `plugins/shared-ai-skills/rules/<rule-name>.md` |
+| ルール | `plugins/shared-ai-skills/rules/<rule-name>/<category-rule>.md` |
 | 調査・参考ドキュメント | `plugins/shared-ai-skills/documents/research/<file>.md` |
 | 経験・知見メモ | `plugins/shared-ai-skills/experiences/<category>/<file>.md` |
 | サブエージェント | `plugins/shared-ai-skills/agent/<name>.md` |
 | テンプレート | `plugins/shared-ai-skills/template/<category>/` |
 
-プロジェクトルート直下へのファイル直置きも不可。ルート直下はシンボリックリンクのみ。
+`.claude/` 配下やプロジェクトルート直下にファイルを直接作成しない。`.claude/` 内はシンボリックリンクのみ。
 
 ## .claude/ のシンボリックリンク構成
 
