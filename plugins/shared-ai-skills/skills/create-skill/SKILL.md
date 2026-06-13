@@ -22,6 +22,7 @@ description: >
 | 配置ルール | `rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `rules/template/template-rule.md` |
 | ルール外部化原則 | `rules/rule-externalization/externalization-rule.md` |
+| ハーネス制御の媒体選択 | `rules/harness-control/harness-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
 | エージェントテンプレート | `template/agent/AGENT.md` |
 
@@ -66,6 +67,11 @@ description: >
 - **インラインのまま**: そのスキル固有の手順・実行ロジック
 
 切り出す場合は先に `rules/<topic>/` にルールファイルを作成し、スキル・エージェントからはパスで参照する。
+
+また、`rules/harness-control/harness-rule.md` に従い、スキルに付随する自動化・制御処理の媒体を判断する。
+
+- **コード（`.sh` / `.ts` / `.js`）**: 「破られたら困る」制御（パーミッション、フック実行ロジック、リトライ）
+- **Markdown（`.md`）**: モデルへのソフトな指針（方針、規約、トーン）
 
 ### 5. テンプレートを読み込んでドラフトを作成する
 
