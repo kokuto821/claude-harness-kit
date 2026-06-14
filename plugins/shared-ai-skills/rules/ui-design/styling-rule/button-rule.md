@@ -37,3 +37,4 @@ const buttonStyle = {
 - hover・disabled・activeの状態はTailwindの修飾子で表現し、
   インラインstyleは使わない
 - disabled時は必ず `opacity-50 cursor-not-allowed` を付与する
+- モバイルでは44px*44px以上確保する
