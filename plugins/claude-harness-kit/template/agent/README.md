@@ -13,7 +13,7 @@
 
 ## 使い方
 
-`AGENT.md` をコピーして `plugins/shared-ai-skills/agent/<name>.md` に配置する。
+`AGENT.md` をコピーして `plugins/claude-harness-kit/agent/<name>.md` に配置する。
 
 > 命名規則・フロントマターの詳細は `rules/naming-conventions/naming-rule.md` と
 > `rules/template/template-rule.md` を参照。

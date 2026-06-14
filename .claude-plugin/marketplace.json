@@ -1,10 +1,10 @@
 {
-  "name": "shared-ai-skills",
+  "name": "claude-harness-kit",
   "owner": { "name": "kokuto821" },
   "plugins": [
     {
-      "name": "shared-ai-skills",
-      "source": "./plugins/shared-ai-skills",
+      "name": "claude-harness-kit",
+      "source": "./plugins/claude-harness-kit",
       "description": "個人用Claude Codeスキル集（コミット・セッション管理・知識管理・TDDなど）"
     }
   ]

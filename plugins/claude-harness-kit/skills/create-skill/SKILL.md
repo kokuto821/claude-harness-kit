@@ -56,8 +56,8 @@ description: >
 
 | 種別 | 配置先 |
 |------|--------|
-| スキル | `plugins/shared-ai-skills/skills/<name>/SKILL.md` |
-| サブエージェント | `plugins/shared-ai-skills/agent/<name>.md` |
+| スキル | `plugins/claude-harness-kit/skills/<name>/SKILL.md` |
+| サブエージェント | `plugins/claude-harness-kit/agent/<name>.md` |
 
 ### 4. 内包するルールを外部化できるか確認する
 

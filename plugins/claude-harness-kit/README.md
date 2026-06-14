@@ -1,4 +1,4 @@
-# shared-ai-skills
+# claude-harness-kit
 
 すべてのコンテンツの source of truth となるプラグイン本体です。
 

@@ -13,7 +13,7 @@
 
 ## 使い方
 
-1. `SKILL.md` をコピーして `plugins/shared-ai-skills/skills/<skill-name>/SKILL.md` に配置する
+1. `SKILL.md` をコピーして `plugins/claude-harness-kit/skills/<skill-name>/SKILL.md` に配置する
 2. 必要なサブディレクトリ（`agent/`, `reference/`, `script/`）だけ持ち込む
 3. 不要なサブディレクトリは作成しない
 

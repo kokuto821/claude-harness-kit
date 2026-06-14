@@ -2,7 +2,7 @@
 
 ## 概要
 
-`plugins/shared-ai-skills/skills/` を単一の source of truth として、
+`plugins/claude-harness-kit/skills/` を単一の source of truth として、
 Antigravity・Codex CLI・GitHub Copilot の3ツールで同じスキルを使える構成の設計メモ。
 
 ---
@@ -37,16 +37,16 @@ Claude Code 固有フィールド（`context: fork` 等）は他ツールで無�
 ## 推奨ディレクトリ構成（設計案）
 
 ```
-shared_ai_docs/
-├── plugins/shared-ai-skills/
+claude-harness-kit/
+├── plugins/claude-harness-kit/
 │   └── skills/                        ← source of truth（変更なし）
 │
 ├── .agents/
-│   └── skills -> ../plugins/shared-ai-skills/skills  ← Antigravity 用 symlink
+│   └── skills -> ../plugins/claude-harness-kit/skills  ← Antigravity 用 symlink
 ├── .codex/
-│   └── skills -> ../plugins/shared-ai-skills/skills  ← Codex 用 symlink
+│   └── skills -> ../plugins/claude-harness-kit/skills  ← Codex 用 symlink
 ├── .github/
-│   └── skills -> ../plugins/shared-ai-skills/skills  ← Copilot 用 symlink
+│   └── skills -> ../plugins/claude-harness-kit/skills  ← Copilot 用 symlink
 │
 ├── .claude/
 │   └── skills/                        ← 既存（per-skill symlink/junction、gitignore）
@@ -69,9 +69,9 @@ shared_ai_docs/
 ```bash
 # 作成コマンド（WSL、リポジトリルートで実行）
 mkdir -p .agents .codex .github
-ln -s ../plugins/shared-ai-skills/skills .agents/skills
-ln -s ../plugins/shared-ai-skills/skills .codex/skills
-ln -s ../plugins/shared-ai-skills/skills .github/skills
+ln -s ../plugins/claude-harness-kit/skills .agents/skills
+ln -s ../plugins/claude-harness-kit/skills .codex/skills
+ln -s ../plugins/claude-harness-kit/skills .github/skills
 ```
 
 ---
@@ -80,8 +80,8 @@ ln -s ../plugins/shared-ai-skills/skills .github/skills
 
 | ファイル | 変更内容 |
 |---------|---------|
-| `plugins/shared-ai-skills/skills/sync-skills/SKILL.md` | Step 3 を追加: 3ターゲットの symlink 再作成（誤削除時のリカバリ） |
-| `plugins/shared-ai-skills/rules/skill-sync/sync-rule.md` | 新同期先3ターゲットを追記 |
+| `plugins/claude-harness-kit/skills/sync-skills/SKILL.md` | Step 3 を追加: 3ターゲットの symlink 再作成（誤削除時のリカバリ） |
+| `plugins/claude-harness-kit/rules/skill-sync/sync-rule.md` | 新同期先3ターゲットを追記 |
 | `CLAUDE.md` | ディレクトリ構造に `.agents/`・`.codex/`・`.github/` を追記 |
 | `.gitattributes`（新規） | `* text=auto eol=lf` で symlink の改行変換を防ぐ |
 | `AGENTS.md`（新規） | Codex / Antigravity 向けリポジトリ説明（CLAUDE.md のツール中立版） |

@@ -1,12 +1,12 @@
-# shared-ai-docs
+# claude-harness-kit
 
 Claude Code のスキル・ルール・ナレッジを共有するリポジトリです。
 
-すべてのコンテンツは `plugins/shared-ai-skills/` 配下にまとまっており、`.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグインとして読み込まれます。
+すべてのコンテンツは `plugins/claude-harness-kit/` 配下にまとまっており、`.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグインとして読み込まれます。
 
 ## 主なディレクトリ
 
-- `plugins/shared-ai-skills/` … スキル・ルール・ドキュメント・ナレッジ・エージェント・テンプレートの本体（source of truth）
+- `plugins/claude-harness-kit/` … スキル・ルール・ドキュメント・ナレッジ・エージェント・テンプレートの本体（source of truth）
 - `.claude-plugin/` … マーケットプレイスカタログ
 - `.claude/` … このリポジトリ用の Claude Code ローカル設定
 

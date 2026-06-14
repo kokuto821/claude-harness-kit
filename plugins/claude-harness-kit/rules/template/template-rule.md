@@ -4,8 +4,8 @@
 
 | 種類 | テンプレートパス |
 |------|----------------|
-| スキル | `plugins/shared-ai-skills/template/skills/SKILL.md` |
-| サブエージェント | `plugins/shared-ai-skills/template/agent/AGENT.md` |
+| スキル | `plugins/claude-harness-kit/template/skills/SKILL.md` |
+| サブエージェント | `plugins/claude-harness-kit/template/agent/AGENT.md` |
 
 ## スキルテンプレート
 
