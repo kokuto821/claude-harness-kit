@@ -15,17 +15,12 @@ shared_ai_docs/
 │   ├── template/               ← テンプレート
 │   └── .claude-plugin/         ← プラグインマニフェスト
 │
-├── .claude-plugin/             ← マーケットプレイスカタログ
+├── .claude-plugin/             ← マーケットプレイスカタログ（marketplace.json）
 │
-└── .claude/                    ← Claude Code 設定（シンボリックリンク群）
-    ├── agent   → ../plugins/shared-ai-skills/agent
-    ├── documents → ../plugins/shared-ai-skills/documents
-    ├── rules   → ../plugins/shared-ai-skills/rules
-    ├── skills/ → gitignored（junction/symlink の置き場）
-    └── template → ../plugins/shared-ai-skills/template
+└── .claude/                    ← Claude Code 設定（settings.local.json）
 ```
 
-ルート直下の `rules/`, `documents/`, `agent/`, `template/` はシンボリックリンク。
+スキル・ルール・エージェント等は `.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグイン（`plugins/shared-ai-skills`）として読み込む。手動の symlink 同期は不要。
 
 ## ルール
 
@@ -35,6 +30,6 @@ shared_ai_docs/
 |----------|--------------|
 | ファイル配置・リポジトリ構造 | `rules/repository-structure/structure-rule.md` |
 | 命名規則（スキル・エージェント） | `rules/naming-conventions/naming-rule.md` |
-| スキル同期 | `rules/skill-sync/sync-rule.md` |
 | ユーザーフィードバックのルール化 | `rules/user-feedback/feedback-rule.md` |
 | スキル・エージェント内のルール外部化 | `rules/rule-externalization/externalization-rule.md` |
+| UIデザイン（索引から各ルールへ） | `rules/ui-design/README.md` |

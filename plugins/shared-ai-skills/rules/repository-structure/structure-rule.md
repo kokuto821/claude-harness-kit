@@ -4,7 +4,7 @@
 
 すべてのコンテンツは `plugins/shared-ai-skills/` 配下が唯一の source of truth。
 
-`.claude/` 配下はシンボリックリンクのみ置く。**実ファイル・実ディレクトリを `.claude/` 直下に作成しない。**
+このディレクトリは `.claude-plugin/marketplace.json` を通じてマーケットプレイスプラグイン（`plugins/shared-ai-skills`）として読み込まれる。手動の symlink / junction 同期は行わない。
 
 ## ファイルの配置先
 
@@ -19,23 +19,16 @@
 | サブエージェント | `plugins/shared-ai-skills/agent/<name>.md` |
 | テンプレート | `plugins/shared-ai-skills/template/<category>/` |
 
-`.claude/` 配下やプロジェクトルート直下にファイルを直接作成しない。`.claude/` 内はシンボリックリンクのみ。
+プロジェクトルート直下や `.claude/` 配下にコンテンツの実ファイルを直接作成しない。`.claude/` は `settings.local.json` 等のローカル設定のみを置く。
 
-## .claude/ のシンボリックリンク構成
+## マーケットプレイス読み込み
 
-```
-.claude/
-├── agent     → ../plugins/shared-ai-skills/agent
-├── documents → ../plugins/shared-ai-skills/documents
-├── rules     → ../plugins/shared-ai-skills/rules
-├── skills/   → gitignored（junction/symlink 置き場）
-└── template  → ../plugins/shared-ai-skills/template
-```
-
-`knowledge/` は `.claude/` 経由で参照する必要がある場合のみシンボリックリンクを追加する。
+- スキル・ルール・エージェント・ドキュメント等は `plugins/shared-ai-skills/` 配下に置けば、マーケットプレイスプラグイン経由で読み込まれる。
+- 新規追加・削除後の手動同期は不要。反映には Claude Code の再起動（プラグイン再読込）で足りる。
+- カタログ: `.claude-plugin/marketplace.json` ／ プラグインマニフェスト: `plugins/shared-ai-skills/.claude-plugin/plugin.json`
 
 ## よくある誤り
 
-- ❌ `.claude/documents/research/` に直接ファイルを作成する
 - ❌ プロジェクトルートに `.md` ファイルを直置きする（CLAUDE.md を除く）
-- ✅ `documents/research/` または `plugins/shared-ai-skills/documents/research/` に置く（同じ場所）
+- ❌ `.claude/` 配下にコンテンツの実ファイルを作成する
+- ✅ `plugins/shared-ai-skills/<カテゴリ>/` 配下に置く
