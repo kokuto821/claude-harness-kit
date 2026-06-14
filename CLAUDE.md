@@ -32,4 +32,5 @@ shared_ai_docs/
 | 命名規則（スキル・エージェント） | `rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `rules/user-feedback/feedback-rule.md` |
 | スキル・エージェント内のルール外部化 | `rules/rule-externalization/externalization-rule.md` |
+| README の配置（全ディレクトリに必須） | `rules/readme-convention/readme-rule.md` |
 | UIデザイン（索引から各ルールへ） | `rules/ui-design/README.md` |
