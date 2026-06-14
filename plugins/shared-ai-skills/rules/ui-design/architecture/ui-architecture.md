@@ -74,3 +74,23 @@ utils/
 Yes → components/
 No（React Router使用時） → pages/
 No（React Router非使用時） → features/
+
+## components の独立性と features への切り出し
+
+`components/` は「独立した汎用部品」に保つ。判断軸:
+
+- 他の自作コンポーネントに依存しない、または汎用基礎部品（Text / Icon など）のみに
+  依存する汎用UI → `components/<button|edit|view>/`
+- 特定ドメインの概念・データに依存する、または複数のコンポーネントを組み合わせた
+  合成コンポーネント → `features/<domain>/`
+
+「他のページでも使うか」に加え「他の自作コンポーネントを組み合わせているか
+（独立しているか）」も切り出しの判断材料とする。
+
+## 合成の方針: children化 vs データ駆動
+
+- 子を固定的に並べる**レイアウトの箱**は、子を直接ハードコードせず `children` / slot で
+  受け取り、具体的な中身は利用側（features）で組み立てる。箱自体は汎用部品として
+  `components/` に保てる。
+- **List / Lane 系**（data 配列を受けて `map` で項目を生成するもの）は children 化せず、
+  データ駆動のまま維持する（ソート・フィルタ等の利点を保つため）。
