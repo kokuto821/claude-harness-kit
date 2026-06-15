@@ -1,4 +1,4 @@
-# write-conventional-code
+# frontend-coding
 
 coding-conventions ルールに沿って TypeScript / React のコードを新規実装するスキルです。
 

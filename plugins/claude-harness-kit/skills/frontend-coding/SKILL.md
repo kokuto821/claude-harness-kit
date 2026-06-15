@@ -1,5 +1,5 @@
 ---
-name: write-conventional-code
+name: frontend-coding
 description: >
   「実装して」「関数を書いて」「hooks を作って」「型を定義して」「この処理を書いて」
   と言われたとき、coding-conventions ルールに沿って TypeScript / React のコードを
@@ -8,7 +8,7 @@ description: >
 # when_to_use: 関数・カスタムhooks・型定義・ユーティリティ・テストなどコードを新規に書くとき
 ---
 
-# write-conventional-code
+# frontend-coding
 
 ## 概要
 
