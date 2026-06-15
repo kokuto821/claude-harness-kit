@@ -37,7 +37,7 @@
 
 - `tdd-expert`: TDDガイドライン全文 → `reference/tdd-guidelines.md`
 - `record-knowledge`: マークダウンテンプレート → `reference/template.md`
-- `coding-rule-enforcer`: コーディングルール（重複）→ `rules/coding-conventions/coding-rule.md` 参照のみに削減
+- `frontend-coder`: コーディングルール（重複）→ `rules/coding-conventions/coding-rule.md` 参照のみに削減
 
 ### プラグイン直参照環境での注意
 
