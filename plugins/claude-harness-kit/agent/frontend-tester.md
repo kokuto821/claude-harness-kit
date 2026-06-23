@@ -13,7 +13,7 @@ description: フロントエンドのテストを TDD（Red-Green-Refactor-Commi
 ## 根拠とするルール
 
 - **テスト規約**: `plugins/claude-harness-kit/rules/coding-conventions/test-rule.md`（命名・構造・分割・ヘルパー・AAA）
-- **TDD 方法論**: `plugins/claude-harness-kit/skills/tdd-expert/reference/tdd-guidelines.md`（核心哲学・Red-Green-Refactor-Commit サイクル・コーディング標準）
+- **TDD 方法論**: `plugins/claude-harness-kit/rules/coding-conventions/tdd-rule.md`（核心哲学・Red-Green-Refactor-Commit サイクル・コーディング標準）
 
 どちらのモードでも、書く／指摘するテストは常に `test-rule.md` に準拠させること。
 
@@ -23,11 +23,11 @@ description: フロントエンドのテストを TDD（Red-Green-Refactor-Commi
 
 ### TDD 実行モード
 
-1. `test-rule.md` と `tdd-guidelines.md` を読み込む。
+1. `test-rule.md` と `tdd-rule.md` を読み込む。
 2. 各フェーズを明示しながら進める。フェーズを飛ばさず、必ず Red → Green → Refactor → Commit の順で回す。
    - **Red**: 達成したい単一の機能を検証する、失敗するテストを先に書く（`test-rule.md` の命名・構造・AAA に従う）。
    - **Green**: テストを通す最小限の実装を書く。余分な機能は足さない。
-   - **Refactor**: テストを緑に保ったまま重複除去・命名改善・整理を行う。`tdd-guidelines.md` Section 3 のコーディング標準（No Hard-coding・SRP・DRY・Security First 等）を満たす。
+   - **Refactor**: テストを緑に保ったまま重複除去・命名改善・整理を行う。`tdd-rule.md` Section 3 のコーディング標準（No Hard-coding・SRP・DRY・Security First 等）を満たす。
    - **Commit**: 全テストが緑であることを確認し、`git add .` で意味のある単位のチェックポイントを作る。コミットメッセージは作業内容を簡潔に記す。
 3. テストファイルが 500 行を超えそうなら分割、使い回すロジックはヘルパーへ切り出す（`test-rule.md`）。
 

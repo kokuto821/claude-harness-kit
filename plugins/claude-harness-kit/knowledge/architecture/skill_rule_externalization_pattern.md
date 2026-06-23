@@ -30,13 +30,13 @@
 | 場所 | 対象 | 例 |
 |------|------|----|
 | `rules/<topic>/` | 複数スキルで共有できる普遍的ガイドライン | 命名規則、配置ルール、外部化原則 |
-| `skills/<name>/reference/` | そのスキル専用の長大な参照素材 | TDDガイドライン、ナレッジテンプレート |
+| `skills/<name>/reference/` | そのスキル専用の長大な参照素材 | ナレッジテンプレート |
 | SKILL.md インライン | 手順・実行ロジック | Step 1: ○○する |
 
 ### 実際に適用したケース
 
-- `tdd-expert`: TDDガイドライン全文 → `reference/tdd-guidelines.md`
 - `record-knowledge`: マークダウンテンプレート → `reference/template.md`
+- TDDガイドライン: 当初 `tdd-expert` スキルの `reference/` に置いたが、`frontend-tester` エージェントと共有する普遍的ガイドラインだったため `rules/coding-conventions/tdd-rule.md` へ移動し、スキル自体を廃止（複数で共有するものは `rules/` という判断の実例）
 - `frontend-coder`: コーディングルール（重複）→ `rules/coding-conventions/coding-rule.md` 参照のみに削減
 
 ### プラグイン直参照環境での注意
