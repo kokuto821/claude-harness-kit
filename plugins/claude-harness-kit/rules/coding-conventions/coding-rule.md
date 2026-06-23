@@ -4,14 +4,14 @@
 
 | 対象 | 規則 | 例 |
 |---|---|---|
-| コンポーネントファイル | PascalCase | `NeiButton.tsx`, `DrawerHeader.tsx` |
-| hooks / utils ファイル | camelCase | `useInitializeMap.ts`, `swipeUtils.ts` |
-| 型定義ファイル | camelCase + `Types.ts` サフィックス | `geoparkTypes.ts`, `hyakumeizanTypes.ts` |
-| boolean 変数 | `is` / `has` プリフィックス | `isExpanded`, `isVectorVisible` |
-| state 更新関数 | `set` プリフィックス | `setSelectedFeature`, `setLoading` |
-| コールバック関数 | `on` / `handle` プリフィックス | `onClickLoading`, `handleMapClick` |
-| プロジェクト固有コンポーネント | `Nei` プリフィックス | `NeiCard`, `NeiButton`, `NeiCloseButton` |
-| 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `LAYOUT_HORIZONTAL_PADDING`, `MAX_ZOOM_LEVEL` |
+| コンポーネントファイル | PascalCase | `AppButton.tsx`, `DrawerHeader.tsx` |
+| hooks / utils ファイル | camelCase | `useDisclosure.ts`, `swipeUtils.ts` |
+| 型定義ファイル | camelCase + `Types.ts` サフィックス | `userTypes.ts`, `productTypes.ts` |
+| boolean 変数 | `is` / `has` プリフィックス | `isExpanded`, `isVisible` |
+| state 更新関数 | `set` プリフィックス | `setSelectedItem`, `setLoading` |
+| コールバック関数 | `on` / `handle` プリフィックス | `onClickLoading`, `handleClick` |
+| プロジェクト固有コンポーネント | プロジェクト固有プレフィックス（プロジェクトごとに定める） | `Nei` を採用する場合: `NeiCard`, `NeiButton` |
+| 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `LAYOUT_HORIZONTAL_PADDING`, `MAX_RETRY_COUNT` |
 
 - 省略しない完全な名前を使用する
 - テスト関連（テストファイル・ヘルパーファイル・ヘルパー関数）の命名は `test-rule.md` を参照する
@@ -26,7 +26,7 @@ app/
 │   ├── atoms/           # 最小単位のUI要素
 │   └── molecules/       # atomsを組み合わせた要素
 ├── feature/
-│   └── map/             # 機能単位のディレクトリ
+│   └── <機能名>/         # 機能単位のディレクトリ
 │       ├── components/  # 機能特有のコンポーネント
 │       ├── hooks/       # 機能特有のカスタムhooks
 │       ├── types/       # 機能特有の型定義
@@ -63,7 +63,7 @@ const parseResponse = (data: any) => { ... };
 - `type` のプロパティには**必ずコメントで説明を付与する**
 
 ```typescript
-export type NeiButtonProps = {
+export type AppButtonProps = {
   /** ボタンクリック時のコールバック */
   onClick?: () => void;
   /** アクティブ状態のフラグ */
@@ -72,14 +72,14 @@ export type NeiButtonProps = {
   label?: string;
 };
 
-export const NeiButton: FC<NeiButtonProps> = ({ onClick, isActive, label }) => {...};
+export const AppButton: FC<AppButtonProps> = ({ onClick, isActive, label }) => {...};
 ```
 
 - 型ガード関数（`is〇〇`）を活用する
 
 ```typescript
-export const isWGeopark = (f: FeatureType): f is WGeoparkFromSelected => {
-  return (f as WGeoparkFromSelected).comment !== undefined;
+export const isUser = (value: Person): value is User => {
+  return (value as User).email !== undefined;
 };
 ```
 
@@ -97,13 +97,13 @@ export const isWGeopark = (f: FeatureType): f is WGeoparkFromSelected => {
 
 ```typescript
 // ✅ 良い例
-const MAX_ZOOM_LEVEL = 18;
-const DEFAULT_TILE_SIZE = 256;
+const MAX_RETRY_COUNT = 3;
+const DEFAULT_PAGE_SIZE = 20;
 
-map.setMaxZoom(MAX_ZOOM_LEVEL);
+fetchItems(DEFAULT_PAGE_SIZE);
 
 // ❌ 悪い例
-map.setMaxZoom(18);
+fetchItems(20);
 ```
 
 ---
@@ -111,13 +111,13 @@ map.setMaxZoom(18);
 ## スタイリング
 
 - **Tailwind CSS を主流**として使用する
-- CSS変数（`--darkGreen` 等）を `globals.css` に定義し、`tailwind.config.ts` で橋渡しする
+- CSS変数（`--primary` 等）を `globals.css` に定義し、`tailwind.config.ts` で橋渡しする
 
 ```typescript
 // tailwind.config.ts
 colors: {
-  ecruWhite: 'var(--ecruWhite)',
-  darkGreen: 'var(--darkGreen)',
+  baseWhite: 'var(--baseWhite)',
+  primary: 'var(--primary)',
 }
 ```
 
@@ -125,8 +125,8 @@ colors: {
 
 ```typescript
 const style = {
-  button: 'bg-ecruWhite rounded-lg cursor-pointer border-4 px-2',
-  activeButton: 'border-accentOrange',
+  button: 'bg-baseWhite rounded-lg cursor-pointer border-4 px-2',
+  activeButton: 'border-primary',
 };
 ```
 
@@ -161,7 +161,7 @@ const variants = {
 - Path alias `@/` を使用する
 
 ```typescript
-import { NeiButton } from '@/app/components/molecules/NeiButton';
+import { AppButton } from '@/app/components/molecules/AppButton';
 ```
 
 ---
@@ -172,8 +172,8 @@ import { NeiButton } from '@/app/components/molecules/NeiButton';
 - 戻り値は**オブジェクト**で返す
 
 ```typescript
-export const useInitializeMap = (): MapHookReturn => {
-  return { map, mapRef, setMap, activeLayer, switchBaseLayer, baseLayers };
+export const useDisclosure = (): DisclosureReturn => {
+  return { isOpen, open, close, toggle };
 };
 ```
 
@@ -182,11 +182,11 @@ export const useInitializeMap = (): MapHookReturn => {
 
 ```typescript
 useEffect(() => {
-  map.on('click', handleMapClick);
+  window.addEventListener('resize', handleResize);
   return () => {
-    map.un('click', handleMapClick);
+    window.removeEventListener('resize', handleResize);
   };
-}, [map, handleMapClick]);
+}, [handleResize]);
 ```
 
 ---
@@ -236,7 +236,7 @@ export const determineSwipeDirection = ({
 - `console.log` には絵文字で状態を示す
 
 ```typescript
-console.log('🔄 Supabaseからデータを取得中...');
+console.log('🔄 データを取得中...');
 console.log('✅ データを取得しました');
 ```
 

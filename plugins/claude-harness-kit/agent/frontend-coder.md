@@ -21,7 +21,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 
 ## チェック観点
 
-- **命名**: PascalCase / camelCase、`is`・`has`・`set`・`on`・`handle`、省略名の不使用、`Nei` プリフィックス
+- **命名**: PascalCase / camelCase、`is`・`has`・`set`・`on`・`handle`、省略名の不使用、プロジェクト固有プレフィックス
 - **型**: `interface` 不使用・`export type`、`any` の不使用（`unknown`＋型ガード）、`FC<Props>`、型プロパティの TSDOC
 - **定数**: マジックナンバー・固定文字列の UPPER_SNAKE_CASE 化と配置先
 - **スタイリング**: Tailwind 利用、`const style = {}` 形式、色・レイアウト定数の集約
