@@ -15,9 +15,9 @@ description: >
 の判断基準に照らしてルール化の要否を判断する。ルール化すべきと判断したら
 ルール案を提示し、承認後に `rules/` へ書き込む。
 
-## 参照するルール
+## ルール
 
-`rules/user-feedback/feedback-rule.md` — 判断基準・手順の定義
+判断基準・手順は [[feedback-rule]] (`rules/user-feedback/feedback-rule.md`) を唯一の正とする。
 
 ## 手順
 
