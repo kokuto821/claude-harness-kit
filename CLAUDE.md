@@ -13,6 +13,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | トピック | ルールファイル |
 |----------|--------------|
 | ファイル配置・リポジトリ構造 | `rules/repository-structure/structure-rule.md` |
+| 原典の忠実な取り扱い | `rules/content-fidelity/content-fidelity-rule.md` |
 | 命名規則（スキル・エージェント） | `rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `rules/user-feedback/feedback-rule.md` |
 | スキル・エージェント内のルール外部化 | `rules/rule-externalization/externalization-rule.md` |
