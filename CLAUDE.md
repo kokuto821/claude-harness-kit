@@ -18,4 +18,8 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | ユーザーフィードバックのルール化 | `rules/user-feedback/feedback-rule.md` |
 | スキル・エージェント内のルール外部化 | `rules/rule-externalization/externalization-rule.md` |
 | README の配置（全ディレクトリに必須） | `rules/readme-convention/readme-rule.md` |
+| プロンプト構成要素のチェックリスト | `rules/prompt-composition/composition-rule.md` |
+| 推論の足場（分解・自己検証）の要否 | `rules/reasoning-scaffolding/scaffolding-rule.md` |
+| プロンプト・スキル改善の原則 | `rules/prompt-improvement/improvement-rule.md` |
+| プロンプト頑健性・安全性 | `rules/prompt-robustness/robustness-rule.md` |
 | UIデザイン（索引から各ルールへ） | `rules/ui-design/README.md` |
