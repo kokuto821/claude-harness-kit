@@ -95,7 +95,7 @@ description: >
 
 本文構成（概要／ルール／手順／出力・500行未満）は [[template-rule]] (`rules/template/template-rule.md`) を唯一の出典とする。テンプレートの構成をそのまま埋め、構成を独自に定義し直さない。Step 4 で外部化したルールがあれば `## ルール` 節に参照を記載し、無ければ節ごと削除する。
 
-description・手順・出力など指示文を書くときは、[[composition-rule]] (`rules/prompt-composition/composition-rule.md`) の構成要素（指示・出力形式・例示・役割・文脈指定）が揃っているかを確認する。多段の判断を含むスキル・エージェントには [[scaffolding-rule]] (`rules/reasoning-scaffolding/scaffolding-rule.md`) に従って推論の足場を組み込む（単純タスクには足さない）。
+description・手順・出力など指示文を書くときは、[[composition-rule]] (`rules/prompt-composition/composition-rule.md`) の構成要素が揃っているかを確認する。多段の判断を含むスキル・エージェントには [[scaffolding-rule]] (`rules/reasoning-scaffolding/scaffolding-rule.md`) に従って推論の足場を組み込む（単純タスクには足さない）。
 
 #### サブエージェントの場合
 
