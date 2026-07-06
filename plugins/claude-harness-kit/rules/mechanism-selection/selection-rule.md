@@ -40,8 +40,11 @@ Claude Code の各手法は「読み込みタイミング・compaction をまた
 
 `documents/reference/steering-claude-code.md`（Anthropic 公式ブログ「Steering Claude Code」の日本語まとめ）で整理した 7 手法の意図を、このリポジトリでスキル・ルール・CLAUDE.md を作る際の判断基準に落とし込んだもの。各手法の *挙動そのもの*（compaction 再注入・ネスト階層など）はリファレンス側に置き、本ルールは *選び方* だけを持つ。
 
+上表の rule／`paths:` は Claude Code の一般挙動を述べたもの。本 kit 自身の `rules/` は `.claude/rules/` 自動ロードではなく `[[link]]` 参照の md として運用する点は [[directory-rule]]（「本 kit での運用」）を参照。
+
 ## 関連ルール
 
 - [[harness-rule]] — コード vs Markdown の一次判定（破られたら困るか）
 - [[externalization-rule]] — スキル・エージェント内のルール外部化
 - [[structure-rule]] — ファイル配置・リポジトリ構造
+- [[directory-rule]] — `rules/` の配置・命名・スコープ（本 kit での運用の注記あり）
