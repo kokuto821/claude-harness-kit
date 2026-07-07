@@ -41,7 +41,7 @@ Claude Code のステアリング資産を **プロンプト品質 / ステア�
 | 観点 | 委譲先 | 根拠ルール |
 |------|--------|-----------|
 | プロンプト品質 | `prompt-engineer` エージェント（レビューモード） | `rules/prompt-engineering/`（composition / scaffolding / robustness / improvement） |
-| ステアリング手法 | `steering-reviewer` エージェント | `rules/harness-control/selection-rule.md` / `rules/harness-control/harness-rule.md` |
+| ステアリング手法 | `steering-reviewer` エージェント | `rules/harness-engineering/selection-rule.md` / `rules/harness-engineering/harness-rule.md` |
 
 各エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 

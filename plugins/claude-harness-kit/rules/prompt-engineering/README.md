@@ -17,7 +17,7 @@ prompt-engineering/
 ```
 
 対象は**プロンプト本文の品質**（構成・足場・頑健性・改善）に限る。どの手法で表現するか
-（CLAUDE.md/rules/skills/subagents 等の選択）は `rules/harness-control/selection-rule.md` を参照する。
+（CLAUDE.md/rules/skills/subagents 等の選択）は `rules/harness-engineering/selection-rule.md` を参照する。
 
 ## 利用ガイド（いつどれを読むか）
 

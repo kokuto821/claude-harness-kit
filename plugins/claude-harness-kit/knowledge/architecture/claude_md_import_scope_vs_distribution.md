@@ -33,4 +33,4 @@
 
 - 関連スキル: `strict-mode`
 - ルール外部化の判断: [[skill_rule_externalization_pattern]]
-- ハーネス制御の媒体選択: `rules/harness-control/harness-rule.md`
+- ハーネス制御の媒体選択: `rules/harness-engineering/harness-rule.md`
