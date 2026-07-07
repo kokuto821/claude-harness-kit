@@ -22,7 +22,10 @@ description: >
 | 配置ルール | `rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `rules/template/template-rule.md` |
 | ルール外部化原則 | `rules/rule-externalization/externalization-rule.md` |
-| ハーネス制御の媒体選択 | `rules/harness-control/harness-rule.md` |
+| ハーネス制御の媒体選択 | `rules/harness-engineering/harness-rule.md` |
+| プロンプト構成要素 | `rules/prompt-engineering/composition-rule.md` |
+| 推論の足場の要否 | `rules/prompt-engineering/scaffolding-rule.md` |
+| プロンプト頑健性・安全性 | `rules/prompt-engineering/robustness-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
 | エージェントテンプレート | `template/agent/AGENT.md` |
 
@@ -68,7 +71,7 @@ description: >
 
 切り出す場合は先に `rules/<topic>/` にルールファイルを作成し、スキル・エージェントからはパスで参照する。
 
-また、`rules/harness-control/harness-rule.md` に従い、スキルに付随する自動化・制御処理の媒体を判断する。
+また、`rules/harness-engineering/harness-rule.md` に従い、スキルに付随する自動化・制御処理の媒体を判断する。
 
 - **コード（`.sh` / `.ts` / `.js`）**: 「破られたら困る」制御（パーミッション、フック実行ロジック、リトライ）
 - **Markdown（`.md`）**: モデルへのソフトな指針（方針、規約、トーン）
@@ -91,6 +94,8 @@ description: >
 ```
 
 本文構成（概要／ルール／手順／出力・500行未満）は [[template-rule]] (`rules/template/template-rule.md`) を唯一の出典とする。テンプレートの構成をそのまま埋め、構成を独自に定義し直さない。Step 4 で外部化したルールがあれば `## ルール` 節に参照を記載し、無ければ節ごと削除する。
+
+description・手順・出力など指示文を書くときは、[[composition-rule]] (`rules/prompt-engineering/composition-rule.md`) の構成要素が揃っているかを確認する。多段の判断を含むスキル・エージェントには [[scaffolding-rule]] (`rules/prompt-engineering/scaffolding-rule.md`) に従って推論の足場を組み込む（単純タスクには足さない）。
 
 #### サブエージェントの場合
 
