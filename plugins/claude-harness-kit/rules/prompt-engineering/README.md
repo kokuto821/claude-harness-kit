@@ -13,9 +13,11 @@ prompt-engineering/
 ├── composition-rule.md    ← プロンプトの構成要素が揃っているか
 ├── scaffolding-rule.md    ← 推論の足場（分解・自己検証）の要否
 ├── robustness-rule.md     ← 頑健性・安全性（敏感さ・過信・値の再掲・外部入力）
-├── improvement-rule.md    ← 既存プロンプトの改善の進め方
-└── selection-rule.md      ← ステアリング手法（CLAUDE.md/rules/skills/subagents 等）の選択
+└── improvement-rule.md    ← 既存プロンプトの改善の進め方
 ```
+
+対象は**プロンプト本文の品質**（構成・足場・頑健性・改善）に限る。どの手法で表現するか
+（CLAUDE.md/rules/skills/subagents 等の選択）は `rules/harness-control/selection-rule.md` を参照する。
 
 ## 利用ガイド（いつどれを読むか）
 
@@ -25,7 +27,6 @@ prompt-engineering/
 | 難タスクに推論の足場を組むか／単純タスクにCoTを足していないか判断したい | `scaffolding-rule.md` |
 | フォーマットの一貫性・値の再掲によるドリフト・追従/過信・外部入力の扱いを点検したい | `robustness-rule.md` |
 | 既存プロンプトを診断ベースで的を絞って改善したい | `improvement-rule.md` |
-| CLAUDE.md / rules / skills / subagents / hooks 等どの手法で表現すべきか選びたい | `selection-rule.md` |
 
 各ルールは `[[composition-rule]]` のように `[[wikilink]]`（ルールファイル名のスラッグ）で参照される。
 リンクはファイル名基準のため不変。
