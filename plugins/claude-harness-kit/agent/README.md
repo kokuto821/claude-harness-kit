@@ -8,6 +8,6 @@
 |------------|------|
 | `frontend-coder` | コーディング規約に照らしたコードのレビュー・監査（テストは除く） |
 | `frontend-tester` | テストの TDD 実装、および既存テストの規約レビュー |
-| `ui-designer` | UI デザインルールに照らしたフロントエンド実装のレビュー |
+| `ui-designer` | ui-design ルールに照らした UI 実装のレビュー、および承認後の改善適用（2モード） |
 | `prompt-engineer` | prompt-* ルールに照らしたプロンプトのレビュー、および承認後の修正適用（2モード） |
 | `steering-reviewer` | selection-rule/harness-rule に照らしたステアリング構成（CLAUDE.md/rules/skills/subagents/hooks）のレビュー |

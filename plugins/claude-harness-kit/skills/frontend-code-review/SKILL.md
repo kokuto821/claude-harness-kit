@@ -52,11 +52,9 @@ description: >
 
 観点（コーディング規約 / テスト / UIデザイン）ごとにセクション分けし、各セクション内を
 優先度順で示す。**修正の適用は行わない**（適用は `frontend-coding` / `frontend-tester` の
-TDD実行 / `improve-ui-design` に委ねる旨を添える）。
+TDD実行 / `ui-review`（承認後 `ui-designer` 修正モード）に委ねる旨を添える）。
 
-- **Critical**: 動作・規約・UXを大きく損なう重大な問題
-- **Warning**: 規約逸脱だが局所的なもの
-- **Suggestion**: より規約に沿うための改善提案
+3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 動作・規約・UXを大きく損なう重大な問題。
 
 各項目は `file:line` ／ 違反した規約（根拠ルールのパス）／ 問題点 ／ 修正の方向性 の形で示す。
 全観点で違反がなければ「フロントエンド規約・UIデザイン準拠で問題なし」と明記する。
