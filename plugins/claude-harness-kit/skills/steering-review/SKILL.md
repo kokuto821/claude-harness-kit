@@ -13,16 +13,18 @@ description: >
 
 ## 概要
 
-ステアリング構成レビュアーとして、プロジェクトの Claude Code カスタマイズ資産
-（CLAUDE.md・`rules/`・`skills/`・`agent/`・hooks・output styles）を、各手法の
-公式の意図に照らしてレビューし、手法の誤用・逸脱を Critical / Warning / Suggestion
-で指摘するタスクスキル。**指摘までが責務**で、改善の適用は行わない。
+ステアリング構成レビューの**入口**タスクスキル。監査は `steering-reviewer` エージェントに
+委譲し、プロジェクトの Claude Code カスタマイズ資産（CLAUDE.md・`rules/`・`skills/`・`agent/`・
+hooks・output styles）を各手法の公式の意図に照らして、手法の誤用・逸脱を
+Critical / Warning / Suggestion で指摘する。**指摘までが責務**で、改善の適用は行わない。
 
 判断の土台は `documents/reference/steering-claude-code.md`（7手法の意図）。
 
+> プロンプト品質とステアリング手法を横断でまとめてレビューしたい場合は `harness-review`。
+
 ## ルール
 
-- どの手法を使うべきかは [[selection-rule]] (`rules/prompt-engineering/selection-rule.md`) に照らす。
+- どの手法を使うべきかは [[selection-rule]] (`rules/harness-control/selection-rule.md`) に照らす。
 - コードで強制すべきか md でよいかは [[harness-rule]] (`rules/harness-control/harness-rule.md`) に照らす。
 - 手法ごとの挙動・事実は [[steering-claude-code]] (`documents/reference/steering-claude-code.md`) を参照する。
 
@@ -34,23 +36,14 @@ description: >
 `.claude/rules/`（`rules/`）、`.claude/skills/`、`.claude/agents/`（`agent/`）、
 `settings.json` の hooks、`.claude/output-styles/`。差分が分かる場合は変更箇所を優先する。
 
-### 2. 手法の使い分けを照合する
+### 2. 規模に応じて委譲を判断する
 
-各資産を [[selection-rule]] のアンチパターンと [[harness-rule]] の判定に照らす。観点：
+- **多数の資産を横断する／本格的な監査**: `steering-reviewer` エージェントに委譲する
+  （多資産を読み込み所見を構造化して返す役割）。
+- **単一ファイル・少量の差分**: このスキル内で直接レビューする。その場合も基準は
+  [[selection-rule]] / [[harness-rule]]、事実は [[steering-claude-code]] に置く。
 
-- **CLAUDE.md**: 200行超で肥大化していないか／30行超の手順を抱えていないか
-  （→ skill）／「毎回Xしたら必ずY」「絶対〜するな」を散文で書いていないか
-  （→ hooks・[[harness-rule]]）／個人の好みを混ぜていないか（→ ユーザーファイル）。
-- **rules**: 一部の層・拡張子にしか効かない規約を未スコープにしていないか
-  （→ `paths:`）／事実・挙動の説明で膨らんでいないか（→ reference）。
-- **skills / subagents**: 手順が CLAUDE.md でなく skill に置かれているか／隔離すべき
-  副次タスクが subagent 化されているか。
-- **hooks**: 破られたら困る制御が散文でなく hooks/settings.json で強制されているか。
-- **output styles**: 組み込みで足りるものをカスタム化していないか。
-
-### 3. 指摘を抽出する
-
-各観点の誤用・逸脱を洗い出し、優先度を付ける。
+エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
 ## 出力
 

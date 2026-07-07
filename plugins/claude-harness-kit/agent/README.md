@@ -10,3 +10,4 @@
 | `frontend-tester` | テストの TDD 実装、および既存テストの規約レビュー |
 | `ui-designer` | UI デザインルールに照らしたフロントエンド実装のレビュー |
 | `prompt-engineer` | prompt-* ルールに照らしたプロンプトのレビュー、および承認後の修正適用（2モード） |
+| `steering-reviewer` | selection-rule/harness-rule に照らしたステアリング構成（CLAUDE.md/rules/skills/subagents/hooks）のレビュー |
