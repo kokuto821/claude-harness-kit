@@ -49,9 +49,7 @@ Critical / Warning / Suggestion で指摘する。**指摘までが責務**で�
 
 優先度ごとに整理して指摘を返す。**修正の適用は行わない**。
 
-- **Critical**: 保証されるべき制御が散文頼みなど、破られると困る誤配置。
-- **Warning**: 手法の誤用だが局所的なもの（手順が CLAUDE.md に直書き、未スコープ rule など）。
-- **Suggestion**: より意図に沿わせる改善提案（output styles の見直しなど）。
+3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 保証されるべき制御が散文頼みなど、破られると困る誤配置。
 
 各項目は 箇所 ／ 逸脱した手法選択（根拠ルールのパス）／ 問題点 ／ あるべき置き場所 の形で示す。
 逸脱がなければ「各手法の意図に準拠、問題なし」と明記する。

@@ -20,6 +20,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | 原典の忠実な取り扱い | `plugins/claude-harness-kit/rules/content-fidelity/content-fidelity-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/claude-harness-kit/rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/claude-harness-kit/rules/user-feedback/feedback-rule.md` |
+| レビュー重大度（Critical/Warning/Suggestion）の共通定義 | `plugins/claude-harness-kit/rules/review-severity/severity-rule.md` |
 | スキル・エージェント内のルール外部化 | `plugins/claude-harness-kit/rules/rule-externalization/externalization-rule.md` |
 | README の配置（全ディレクトリに必須） | `plugins/claude-harness-kit/rules/readme-convention/readme-rule.md` |
 | プロンプト構成要素のチェックリスト | `plugins/claude-harness-kit/rules/prompt-engineering/composition-rule.md` |

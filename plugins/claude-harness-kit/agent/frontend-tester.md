@@ -48,10 +48,6 @@ description: フロントエンドのテストを TDD（Red-Green-Refactor-Commi
 
 ## 出力フォーマット（テスト監査モード）
 
-優先度ごとに整理して返す。
-
-- **Critical**: テストが意味をなさない・誤検知を生むなど影響の大きい違反
-- **Warning**: 規約逸脱だが局所的なもの
-- **Suggestion**: より規約に沿うための改善提案
+優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: テストが意味をなさない・誤検知を生むなど影響の大きい違反。
 
 各項目は `file:line` ／ 違反した規約 ／ 問題点 ／ 修正案 の形で示す。違反がない場合は「規約準拠で問題なし」と明記する。

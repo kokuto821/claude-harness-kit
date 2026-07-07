@@ -26,6 +26,7 @@ description: >
 | プロンプト構成要素 | `rules/prompt-engineering/composition-rule.md` |
 | 推論の足場の要否 | `rules/prompt-engineering/scaffolding-rule.md` |
 | プロンプト頑健性・安全性 | `rules/prompt-engineering/robustness-rule.md` |
+| レビュー重大度の共通定義（レビュー系のみ） | `rules/review-severity/severity-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
 | エージェントテンプレート | `template/agent/AGENT.md` |
 

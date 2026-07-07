@@ -34,11 +34,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 
 ## 出力フォーマット
 
-優先度ごとに整理して返す。
-
-- **Critical**: `any` 使用・命名規則違反など影響の大きい違反
-- **Warning**: 規約逸脱だが局所的なもの
-- **Suggestion**: より規約に沿うための改善提案
+優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: `any` 使用・命名規則違反など影響の大きい違反。
 
 各項目は `file:line` ／ 違反した規約 ／ 問題点 ／ 修正案 の形で示す。
 違反がない場合は「規約準拠で問題なし」と明記する。
