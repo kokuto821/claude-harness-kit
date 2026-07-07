@@ -22,7 +22,7 @@ description: >
 
 ## ルール
 
-- どの手法を使うべきかは [[selection-rule]] (`rules/mechanism-selection/selection-rule.md`) に照らす。
+- どの手法を使うべきかは [[selection-rule]] (`rules/prompt-engineering/selection-rule.md`) に照らす。
 - コードで強制すべきか md でよいかは [[harness-rule]] (`rules/harness-control/harness-rule.md`) に照らす。
 - 手法ごとの挙動・事実は [[steering-claude-code]] (`documents/reference/steering-claude-code.md`) を参照する。
 

@@ -13,7 +13,7 @@
 - プロンプトパターンカタログ（16パターン）: `documents/reference/prompt-engineering/prompt-pattern-catalog.md`
 - PE2（自動プロンプト改善）: `documents/reference/prompt-engineering/prompt-engineering-a-prompt-engineer.md`
 
-「常に効く原則」に昇華したものは `rules/prompt-composition` `rules/reasoning-scaffolding` `rules/prompt-improvement` `rules/prompt-robustness` にある。まずルールを見て、足りなければこのカタログで手法を探す。
+「常に効く原則」に昇華したものは `rules/prompt-engineering/`（`composition-rule.md` / `scaffolding-rule.md` / `improvement-rule.md` / `robustness-rule.md`）にある。まずルールを見て、足りなければこのカタログで手法を探す。
 
 ## タスク型 → 手法
 
@@ -44,5 +44,5 @@
 
 ## 参考・関連情報
 
-- ルール: `rules/reasoning-scaffolding/scaffolding-rule.md`, `rules/prompt-composition/composition-rule.md`, `rules/prompt-improvement/improvement-rule.md`
+- ルール: `rules/prompt-engineering/scaffolding-rule.md`, `rules/prompt-engineering/composition-rule.md`, `rules/prompt-engineering/improvement-rule.md`
 - 原典要約: `documents/reference/prompt-engineering/`
