@@ -7,5 +7,5 @@
 ## 索引
 
 - `evals.md` — 評価（eval）に関するメモ
-- `steering-claude-code.md` — Claude Code のステアリング手法 7 種（CLAUDE.md / rules / skills / subagents / hooks / output styles / append）を整理した Anthropic 公式ブログの日本語まとめ
+- `harness-engineering/` — ハーネスエンジニアリングの概念・実践・ステアリング手法に関する資料集
 - `prompt-engineering/` — プロンプトエンジニアリング論文の要約集

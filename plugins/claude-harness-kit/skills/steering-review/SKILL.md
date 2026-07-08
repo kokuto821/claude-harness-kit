@@ -18,7 +18,7 @@ description: >
 hooks・output styles）を各手法の公式の意図に照らして、手法の誤用・逸脱を
 Critical / Warning / Suggestion で指摘する。**指摘までが責務**で、改善の適用は行わない。
 
-判断の土台は `documents/reference/steering-claude-code.md`（7手法の意図）。
+判断の土台は `documents/reference/harness-engineering/steering-claude-code.md`（7手法の意図）。
 
 > プロンプト品質とステアリング手法を横断でまとめてレビューしたい場合は `harness-review`。
 
@@ -26,7 +26,7 @@ Critical / Warning / Suggestion で指摘する。**指摘までが責務**で�
 
 - どの手法を使うべきかは [[selection-rule]] (`rules/harness-engineering/selection-rule.md`) に照らす。
 - コードで強制すべきか md でよいかは [[harness-rule]] (`rules/harness-engineering/harness-rule.md`) に照らす。
-- 手法ごとの挙動・事実は [[steering-claude-code]] (`documents/reference/steering-claude-code.md`) を参照する。
+- 手法ごとの挙動・事実は [[steering-claude-code]] (`documents/reference/harness-engineering/steering-claude-code.md`) を参照する。
 
 ## 手順
 
