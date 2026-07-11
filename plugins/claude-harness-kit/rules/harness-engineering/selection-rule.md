@@ -48,3 +48,5 @@ Claude Code の各手法は「読み込みタイミング・compaction をまた
 - [[externalization-rule]] — スキル・エージェント内のルール外部化
 - [[structure-rule]] — ファイル配置・リポジトリ構造
 - [[directory-rule]] — `rules/` の配置・命名・スコープ（本 kit での運用の注記あり）
+- [[retrieval-rule]] — CLAUDE.md への事前投入 vs 実行時取得（JIT）の使い分け
+- [[long-horizon-rule]] — subagent をクリーン文脈での並列探索＋蒸留要約として使う長時間軸戦略

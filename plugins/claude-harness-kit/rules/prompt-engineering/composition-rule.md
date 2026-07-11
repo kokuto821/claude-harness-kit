@@ -42,3 +42,5 @@
 - [[scaffolding-rule]] — 推論の足場をどう組み込むか
 - [[robustness-rule]] — 区切り・フォーマットへの敏感さと頑健性
 - [[externalization-rule]] — スキル/エージェントに書くルールは `rules/` へ外部化する
+- [[assembly-rule]] — 構成要素を「高度・区切り・部品の並べ方」として文脈に組み立てる観点
+- [[budget-rule]] — 「要素は多いほど良くない」の根拠（有限な注意予算）
