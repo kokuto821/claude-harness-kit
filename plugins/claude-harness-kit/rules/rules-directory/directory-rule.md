@@ -50,6 +50,15 @@ rules/
 
 > **本 kit での運用**: この `rules/` は CLAUDE.md・skills から `[[link]]` で参照される md であり、`.claude/rules/` の自動ロード対象ではない。frontmatter の `paths:` は上記の一般挙動の説明であり、導入先で native rule 化した際に効く。本 kit 内のルールは実際には frontmatter を持たず、必要時に参照で引かれる。
 
+## 相互リンク記法（`[[slug]]`）
+
+rules・skills・agents・CLAUDE.md など本 kit の md 資産どうしの相互参照は `[[slug]]` で書く。**この記法の定義はここを唯一の正とし、各 README・テンプレート側で再定義しない。**
+
+- **slug は参照先ファイル名から拡張子を除いた基本名**（見出しやタイトルではない）。例: `[[naming-rule]]` → `naming-conventions/naming-rule.md`。ファイル名基準なので表記が不変。
+- これは Obsidian 由来の記法で、**Claude Code / ハーネスのネイティブ機能ではない**。自動解決・自動ロード・クリック遷移はされない。Claude が意味として辿り、必要に応じて実ファイルを検索して開く**慣習的な参照**にすぎない。
+- 別ディレクトリのファイルや、確実に辿らせたい参照は `[[severity-rule]]（rules/review-severity/severity-rule.md）` のように**実パスを併記**する。機械的に解決可能なのは併記した実パスの方で、`[[slug]]` は人間・モデル向けの意味ラベル。
+- `rules/` が `.claude/rules/` 自動ロードではなく `[[link]]` 参照で運用される背景は、上記「本 kit での運用」を参照。
+
 ## 新規作成 vs 既存更新
 
 - **既存ルールと同じトピック** → 既存ファイルに追記する

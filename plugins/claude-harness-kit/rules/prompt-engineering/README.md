@@ -28,5 +28,4 @@ prompt-engineering/
 | フォーマットの一貫性・値の再掲によるドリフト・追従/過信・外部入力の扱いを点検したい | `robustness-rule.md` |
 | 既存プロンプトを診断ベースで的を絞って改善したい | `improvement-rule.md` |
 
-各ルールは `[[composition-rule]]` のように `[[wikilink]]`（ルールファイル名のスラッグ）で参照される。
-リンクはファイル名基準のため不変。
+各ルールは `[[composition-rule]]` のように `[[wikilink]]` で相互参照される（記法の定義は [[directory-rule]]（`rules/rules-directory/directory-rule.md`）「相互リンク記法」）。

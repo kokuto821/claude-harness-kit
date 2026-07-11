@@ -35,4 +35,5 @@
 - [[assembly-rule]] — 有限予算の中で何をどう組み立てるか
 - [[retrieval-rule]] — 予算を守るためのランタイム取得（必要分だけ載せる）
 - [[long-horizon-rule]] — 予算を超える長時間軸タスクの管理
+- [[tool-design-rule]] — ツールの返り値・ツールセットのトークン効率
 - [[selection-rule]] — 常時ロードを避ける置き場所の選択

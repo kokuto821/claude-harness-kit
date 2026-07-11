@@ -25,4 +25,4 @@ context-engineering/
 | ウィンドウを超える長時間タスクで一貫性を保ちたい（compact/ノート/サブエージェント） | `long-horizon-rule.md` |
 | ツールセットの肥大化を避け、トークン効率のよいツールを設計したい | `tool-design-rule.md` |
 
-各ルールは `[[budget-rule]]` のように `[[wikilink]]`（ルールファイル名のスラッグ）で参照される。リンクはファイル名基準のため不変。
+各ルールは `[[budget-rule]]` のように `[[wikilink]]` で相互参照される（記法の定義は [[directory-rule]]（`rules/rules-directory/directory-rule.md`）「相互リンク記法」）。
