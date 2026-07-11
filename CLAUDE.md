@@ -18,6 +18,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | rules/ ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/claude-harness-kit/rules/rules-directory/directory-rule.md` |
 | ハーネス制御（コード vs Markdown の一次判定） | `plugins/claude-harness-kit/rules/harness-engineering/harness-rule.md` |
 | ステアリング手法の選択（CLAUDE.md/rules/skills/subagents等） | `plugins/claude-harness-kit/rules/harness-engineering/selection-rule.md` |
+| レビュー独立性（レビュワーと産出者は常に別エージェント） | `plugins/claude-harness-kit/rules/harness-engineering/review-independence-rule.md` |
 | 原典の忠実な取り扱い | `plugins/claude-harness-kit/rules/content-fidelity/content-fidelity-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/claude-harness-kit/rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/claude-harness-kit/rules/user-feedback/feedback-rule.md` |
