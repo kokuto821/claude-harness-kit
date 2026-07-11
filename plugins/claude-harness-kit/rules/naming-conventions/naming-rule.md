@@ -23,7 +23,7 @@
 
 このリポジトリでは、上記の汎用「動詞・命令形」原則よりも、**対象ドメインを先頭に置いた名詞句**を優先する。
 
-- `frontend-coding` / `frontend-code-review` / `ui-review` のように、ドメイン接頭辞（`frontend-` / `ui-` 等）を先頭に置く
+- `frontend-code-review` / `ui-review` のように、ドメイン接頭辞（`frontend-` / `ui-` 等）を先頭に置く
 - ドメインで関連スキルが辞書順に並び、責務のまとまりが一覧で見えることを重視する
 - そのため `review-ui-design`・`code-review-frontend` のような動詞先頭／接頭辞が後ろの形は採らない
 

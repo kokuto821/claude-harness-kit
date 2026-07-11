@@ -40,7 +40,7 @@ Claude Code のステアリング資産を **プロンプト品質 / ステア�
 
 | 観点 | 委譲先 | 根拠ルール |
 |------|--------|-----------|
-| プロンプト品質 | `prompt-engineer` エージェント（レビューモード） | `rules/prompt-engineering/`（composition / scaffolding / robustness / improvement） |
+| プロンプト品質 | `prompt-reviewer` エージェント | `rules/prompt-engineering/`（composition / scaffolding / robustness / improvement） |
 | ステアリング手法 | `steering-reviewer` エージェント | `rules/harness-engineering/selection-rule.md` / `rules/harness-engineering/harness-rule.md` |
 
 各エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
@@ -52,7 +52,7 @@ Claude Code のステアリング資産を **プロンプト品質 / ステア�
 ## 出力
 
 観点（プロンプト品質 / ステアリング手法）ごとにセクション分けし、各セクション内を優先度順で示す。
-**修正の適用は行わない**（適用は `prompt-review` 経由の `prompt-engineer` 修正モードに委ねる旨を添える）。
+**修正の適用は行わない**（適用は `prompt-review` 経由の `prompt-engineer`（修正適用専用）に委ねる旨を添える）。
 
 3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 破られると困る誤配置・タスクが壊れる重大な欠落。
 

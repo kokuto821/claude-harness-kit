@@ -13,9 +13,9 @@ description: >
 ## 概要
 
 プロンプト・スキル（SKILL.md）・サブエージェント定義のレビューの**入口・承認ゲート**となる
-タスクスキル。`rules/prompt-*` に照らした監査は `prompt-engineer` エージェントに委譲し、指摘を
+タスクスキル。`rules/prompt-*` に照らした監査は `prompt-reviewer` エージェントに委譲し、指摘を
 Critical / Warning / Suggestion で提示する。修正は勝手に適用せず、**人の承認を得てから**
-`prompt-engineer`（修正モード）に適用を委譲する。指摘だけで終える依頼にも対応する。
+`prompt-engineer`（修正適用専用）に適用を委譲する。レビュワーと産出者は別エージェントに分ける（[[review-independence-rule]]）。指摘だけで終える依頼にも対応する。
 
 作者への忖度を排し、逸脱は率直に指摘する（強い指摘が要る場合は `strict-mode` に寄せる）。
 
@@ -28,7 +28,7 @@ Critical / Warning / Suggestion で提示する。修正は勝手に適用せず
 
 ### 2. レビューを委譲する
 
-- **多数のファイルを横断する／本格的な監査**: `prompt-engineer` エージェント（レビューモード）に
+- **多数のファイルを横断する／本格的な監査**: `prompt-reviewer` エージェントに
   委譲する。重い prompt-* ルールを隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一プロンプト・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
   `rules/prompt-*`（[[composition-rule]] / [[scaffolding-rule]] / [[robustness-rule]] /
@@ -43,7 +43,7 @@ Critical / Warning / Suggestion で提示する。修正は勝手に適用せず
 
 ### 4. 承認された修正を委譲する
 
-承認された指摘だけを `prompt-engineer` エージェント（修正モード）に渡して適用させる。
+承認された指摘だけを `prompt-engineer` エージェント（修正適用専用）に渡して適用させる。
 破壊的変更や意図不明箇所は、エージェント側で再度確認させる。適用後は変更前後を提示する。
 
 ## 出力

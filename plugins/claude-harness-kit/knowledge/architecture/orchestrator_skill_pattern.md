@@ -12,13 +12,13 @@
 
 ### パターンの構造
 
-- **専門ユニット**: 単一責務のスキル・エージェント（例: `record-knowledge`, `record-feedback` / `frontend-coder`, `frontend-tester`, `ui-designer`）。
+- **専門ユニット**: 単一責務のスキル・エージェント（例: `record-knowledge`, `record-feedback` / `frontend-code-reviewer`, `frontend-test-reviewer`, `ui-reviewer`）。
 - **オーケストレーター**: 上位のスキル。入力を観点ごとに振り分け、各ユニットの手順・判断基準を踏襲して委譲し、結果を統合する。
 
 ### 本リポジトリでの実例
 
 - `record-all`: 会話内容を `record-knowledge`（→ `knowledge/`）と `record-feedback`（→ `rules/`）の両方でまとめて記録する。
-- `frontend-code-review`: フロントの変更を `frontend-coder`（規約）/ `frontend-tester`（テスト）/ `ui-designer`（UIデザイン）の3観点で並行レビューし、所見を統合する。
+- `frontend-code-review`: フロントの変更を `frontend-code-reviewer`（規約）/ `frontend-test-reviewer`（テスト）/ `ui-reviewer`（UIデザイン）の3観点で並行レビューし、所見を統合する。
 
 ### 設計上のポイント
 

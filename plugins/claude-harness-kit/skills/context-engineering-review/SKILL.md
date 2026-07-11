@@ -15,9 +15,9 @@ description: >
 
 スキル（SKILL.md）・サブエージェント定義・CLAUDE.md・プロンプトを、コンテキスト管理の観点で
 レビューする**入口・承認ゲート**となるタスクスキル。`rules/context-engineering/*` に照らした監査は
-`context-engineer` エージェントに委譲し、指摘を Critical / Warning / Suggestion で提示する。
-修正は勝手に適用せず、**人の承認を得てから** `context-engineer`（修正モード）に適用を委譲する。
-指摘だけで終える依頼にも対応する。
+`context-reviewer` エージェントに委譲し、指摘を Critical / Warning / Suggestion で提示する。
+修正は勝手に適用せず、**人の承認を得てから** `context-engineer`（修正適用専用）に適用を委譲する。
+レビュワーと産出者は別エージェントに分ける（[[review-independence-rule]]）。指摘だけで終える依頼にも対応する。
 
 作者への忖度を排し、注意予算を浪費している点は率直に指摘する（強い指摘が要る場合は `strict-mode` に寄せる）。
 
@@ -40,7 +40,7 @@ description: >
 
 ### 2. レビューを委譲する
 
-- **多数のファイルを横断する／本格的な監査**: `context-engineer` エージェント（レビューモード）に
+- **多数のファイルを横断する／本格的な監査**: `context-reviewer` エージェントに
   委譲する。`rules/context-engineering/*` を隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一資産・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
   `rules/context-engineering/*`（[[budget-rule]] / [[assembly-rule]] / [[retrieval-rule]] /
@@ -55,7 +55,7 @@ description: >
 
 ### 4. 承認された修正を委譲する
 
-承認された指摘だけを `context-engineer` エージェント（修正モード）に渡して適用させる。
+承認された指摘だけを `context-engineer` エージェント（修正適用専用）に渡して適用させる。
 破壊的変更や意図不明箇所は、エージェント側で再度確認させる。適用後は変更前後を提示する。
 
 ## 出力
