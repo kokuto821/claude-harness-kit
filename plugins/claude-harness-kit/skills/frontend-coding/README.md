@@ -1,4 +1,4 @@
-# frontend-coder
+# frontend-coding
 
 coding-conventions ルールに沿って TypeScript / React のコードを新規実装する産出スキルです。
 

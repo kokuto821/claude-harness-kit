@@ -8,7 +8,7 @@
 
 | エージェント | 役割 | 対の産出者 |
 |------------|------|-----------|
-| `frontend-code-reviewer` | コーディング規約に照らしたコードのレビュー・監査（テストは除く） | `frontend-coder` スキル |
+| `frontend-code-reviewer` | コーディング規約に照らしたコードのレビュー・監査（テストは除く） | `frontend-coding` スキル |
 | `frontend-test-reviewer` | テスト規約に照らした既存テストのレビュー・監査 | `frontend-tester` |
 | `ui-reviewer` | ui-design ルールに照らした UI 実装のレビュー | `ui-designer` |
 | `prompt-reviewer` | prompt-* ルールに照らしたプロンプトのレビュー | `prompt-engineer` |
@@ -24,4 +24,4 @@
 | `prompt-engineer` | prompt-* ルールに照らしたプロンプトの修正適用 |
 | `context-engineer` | context-engineering ルールに照らしたコンテキスト管理の修正適用 |
 
-> コードの新規実装（産出）はエージェントではなく `frontend-coder` スキルが担う。
+> コードの新規実装（産出）はエージェントではなく `frontend-coding` スキルが担う。
