@@ -44,8 +44,7 @@ description: >
 - **多数のファイルを横断する／本格的な監査**: `context-reviewer` エージェントに
   委譲する。`rules/context-engineering/*` を隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一資産・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
-  `rules/context-engineering/*`（[[budget-rule]] / [[assembly-rule]] / [[retrieval-rule]] /
-  [[long-horizon-rule]] / [[tool-design-rule]]）に置く。
+  上記「## ルール」の5ルール（`rules/context-engineering/*`）に置く。
 
 エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
