@@ -7,6 +7,7 @@
 ## 索引
 
 - `evals.md` — 評価（eval）に関するメモ
+- `code-review/` — コードレビューの基準・観点・進め方に関する資料集
 - `context-engineering/` — コンテキストエンジニアリング（有限な注意予算の設計・管理）に関する資料集
 - `harness-engineering/` — ハーネスエンジニアリングの概念・実践・ステアリング手法に関する資料集
 - `prompt-engineering/` — プロンプトエンジニアリング論文の要約集
