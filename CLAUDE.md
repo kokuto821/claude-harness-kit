@@ -20,6 +20,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | ステアリング手法の選択（CLAUDE.md/rules/skills/subagents等） | `plugins/claude-harness-kit/rules/harness-engineering/selection-rule.md` |
 | レビュー独立性（レビュワーと産出者は常に別エージェント） | `plugins/claude-harness-kit/rules/harness-engineering/review-independence-rule.md` |
 | 原典の忠実な取り扱い | `plugins/claude-harness-kit/rules/content-fidelity/content-fidelity-rule.md` |
+| コード設計の普遍原則（DRY 等） | `plugins/claude-harness-kit/rules/design-principles/design-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/claude-harness-kit/rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/claude-harness-kit/rules/user-feedback/feedback-rule.md` |
 | レビュー重大度（Critical/Warning/Suggestion）の共通定義 | `plugins/claude-harness-kit/rules/review-severity/severity-rule.md` |

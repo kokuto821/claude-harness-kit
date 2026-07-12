@@ -193,7 +193,7 @@ useEffect(() => {
 
 ## 関数設計
 
-- 単一責任の原則に従う
+- 設計原則は [[design-rule]]（`rules/design-principles/design-rule.md`）に従う
 - 副作用のない純粋関数を推奨する
 - 引数が多い場合はオブジェクト形式にする
 - 関数は**アロー関数**で定義する
