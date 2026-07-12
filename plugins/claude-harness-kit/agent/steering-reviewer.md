@@ -33,7 +33,7 @@ description: プロジェクトの Claude Code ステアリング構成（CLAUDE
 
 ## 出力フォーマット
 
-優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 保証されるべき制御が散文頼みなど、破られると困る誤配置。
+レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 保証されるべき制御が散文頼みなど、破られると困る誤配置。
 
 各項目は 箇所 ／ 逸脱した手法選択（根拠パス）／ 問題点 ／ あるべき置き場所 の形で示す。
 逸脱がなければ「各手法の意図に準拠、問題なし」と明記する。

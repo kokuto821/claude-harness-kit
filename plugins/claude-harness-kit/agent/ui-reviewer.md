@@ -37,6 +37,6 @@ description: UI・フロントエンド実装を ui-design ルールに照らし
 
 ## 出力フォーマット
 
-優先度は Critical / Warning / Suggestion の3段階で整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 機能性・アクセシビリティを損なう、または明確なルール違反。
+レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度は Critical / Warning / Suggestion の3段階で整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 機能性・アクセシビリティを損なう、または明確なルール違反。
 
 各指摘のフィールドは [[severity-rule]] の適用手順に従う（該当箇所（`file:line`）／ 根拠ルールのパス ／ 問題点 ／ 修正の方向性）。指摘が無い観点は簡潔に「準拠」と示す。違反がなければ「ui-design ルール準拠で問題なし」と明記する。

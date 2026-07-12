@@ -35,7 +35,7 @@ description: スキル・サブエージェント定義・CLAUDE.md・プロン�
 
 ## 出力フォーマット
 
-優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 注意予算を致命的に浪費して挙動が壊れる設計（重要指示を長文中盤に埋没・lost-in-the-middle、無制限なツール出力の垂れ流し、ウィンドウを超えるのにコンパクション/ノート戦略が無い等）。
+レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 注意予算を致命的に浪費して挙動が壊れる設計（重要指示を長文中盤に埋没・lost-in-the-middle、無制限なツール出力の垂れ流し、ウィンドウを超えるのにコンパクション/ノート戦略が無い等）。
 
 各項目は 箇所（`file:line`）／ 違反したルール（根拠パス）／ 問題点 ／ 修正の方向性 の形で示す。
 違反がなければ「context-engineering ルール準拠で問題なし」と明記する。

@@ -33,7 +33,7 @@ description: プロンプト・スキル（SKILL.md）・サブエージェン�
 
 ## 出力フォーマット
 
-優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
+レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
 
 各項目は 箇所 ／ 違反したルール（根拠パス）／ 問題点 ／ 修正の方向性 の形で示す。
 違反がなければ「prompt-* ルール準拠で問題なし」と明記する。
