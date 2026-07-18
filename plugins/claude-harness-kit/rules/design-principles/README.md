@@ -6,4 +6,6 @@
 
 | ファイル | 内容 |
 |---------|------|
-| `design-rule.md` | DRY・SRP・関心の分離・疎結合/高凝集 の定義と判断基準 |
+| `design-rule.md` | DRY・SRP・関心の分離・疎結合/高凝集 の定義と判断基準（唯一の正） |
+
+周辺の設計法則・原則・比喩の用語集は判断基準ではないため、`documents/reference/design/design-principles-glossary.md` に置く。
