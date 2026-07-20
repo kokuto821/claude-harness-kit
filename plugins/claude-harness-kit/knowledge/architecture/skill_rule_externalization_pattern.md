@@ -1,7 +1,7 @@
 # スキル・エージェントにおけるルール外部化パターン
 
 **作成日**: 2026-06-13
-**更新日**: 2026-06-24
+**更新日**: 2026-07-20
 **カテゴリ**: architecture
 **タグ**: [#claude-code, #skills, #rules, #design-pattern, #single-source-of-truth]
 
@@ -42,6 +42,7 @@
 - `frontend-coding`(2026-06-24): 「規約本文を再掲せず」と宣言しつつ要点テーブル・手順で coding-rule の値を再掲していた → 観点名のみの索引に圧縮（commit `0159d66`）
 - UI 3スキル(2026-06-24): create-ui-component / improve-ui-design / ui-review が配色・角丸・レイアウト値を個別に再掲しドリフト → `styling-rule/` を唯一の正にして観点名索引へ統一（commit `c456e2d`）
 - テンプレ構成(2026-06-24): 本文構成の定義を `template-rule.md` に集約し、雛形 `SKILL.md` に `## ルール` 節を追加（commit `4b1496d`）
+- `tdd` スキル新設 / `frontend-tester` 責務限定(2026-07-20): TDD サイクル(Red-Green-Refactor-Commit)を統括する `tdd` スキルを新設。従来フルサイクルを自己完結していた `frontend-tester` は純粋なテスト実装者に限定し、サイクル統括を `tdd` スキルへ移管（オーケストレーター=スキル、産出者は単一役割の徹底。Refactor の自己完結によるレビュー独立性違反を排除）
 
 ### 値の再掲アンチパターン（参照していても腐る）
 

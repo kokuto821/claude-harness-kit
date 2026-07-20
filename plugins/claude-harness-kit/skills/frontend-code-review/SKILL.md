@@ -52,7 +52,7 @@ description: >
 
 観点（コーディング規約 / テスト / UIデザイン）ごとにセクション分けし、各セクション内を
 優先度順で示す。**修正の適用は行わない**（適用は産出者に委ねる旨を添える: コードは `frontend-coding` スキル、
-テストは `frontend-tester` エージェントの TDD実行、UI は `ui-review` 経由の `ui-designer`（修正適用専用））。
+テストは `frontend-tester` エージェント（テスト実装）、UI は `ui-review` 経由の `ui-designer`（修正適用専用））。
 
 3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 動作・規約・UXを大きく損なう重大な問題。
 

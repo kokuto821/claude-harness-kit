@@ -19,7 +19,7 @@
 
 | エージェント | 役割 |
 |------------|------|
-| `frontend-tester` | テストの TDD 実装（Red-Green-Refactor-Commit） |
+| `frontend-tester` | テストの実装（`test-rule` 準拠。TDD サイクルの統括は `tdd` スキル） |
 | `ui-designer` | ui-design ルールに照らした UI 実装の修正適用 |
 | `prompt-engineer` | prompt-* ルールに照らしたプロンプトの修正適用 |
 | `context-engineer` | context-engineering ルールに照らしたコンテキスト管理の修正適用 |
