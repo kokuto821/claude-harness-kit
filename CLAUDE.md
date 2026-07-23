@@ -12,15 +12,24 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 
 パスは `plugins/claude-harness-kit/` を起点とする。
 
+### コアルール（必読・`.claude/rules` で自動ロード）
+
+タスク領域を問わず毎セッション効く。開発時は symlink 経由で自動ロードされる（下表は一覧、内容は自動注入）。
+
 | トピック | ルールファイル |
 |----------|--------------|
 | ファイル配置・リポジトリ構造 | `plugins/claude-harness-kit/rules/repository-structure/structure-rule.md` |
-| rules/ ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/claude-harness-kit/shared-rules/rules-directory/directory-rule.md` |
 | ハーネス制御（コード vs Markdown の一次判定） | `plugins/claude-harness-kit/rules/harness-engineering/harness-rule.md` |
 | ステアリング手法の選択（CLAUDE.md/rules/skills/subagents等） | `plugins/claude-harness-kit/rules/harness-engineering/selection-rule.md` |
 | レビュー独立性（レビュワーと産出者は常に別エージェント） | `plugins/claude-harness-kit/rules/harness-engineering/review-independence-rule.md` |
 | 原典の忠実な取り扱い | `plugins/claude-harness-kit/rules/content-fidelity/content-fidelity-rule.md` |
 | コード設計の普遍原則（DRY 等） | `plugins/claude-harness-kit/rules/design-principles/design-rule.md` |
+
+### 参照ルール索引（必要時に参照）
+
+| トピック | ルールファイル |
+|----------|--------------|
+| rules/ ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/claude-harness-kit/shared-rules/rules-directory/directory-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/claude-harness-kit/shared-rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/claude-harness-kit/shared-rules/user-feedback/feedback-rule.md` |
 | コードレビュー共通ルール（目的＝コードの健康状態の改善・承認の閾値・観点） | `plugins/claude-harness-kit/shared-rules/code-review/review-rule.md` |
