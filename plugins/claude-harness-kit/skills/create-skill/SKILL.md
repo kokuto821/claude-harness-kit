@@ -18,15 +18,15 @@ description: >
 
 | 用途 | パス |
 |------|------|
-| 命名規則 | `rules/naming-conventions/naming-rule.md` |
+| 命名規則 | `shared-rules/naming-conventions/naming-rule.md` |
 | 配置ルール | `rules/repository-structure/structure-rule.md` |
-| テンプレートルール | `rules/template/template-rule.md` |
-| ルール外部化原則 | `rules/rule-externalization/externalization-rule.md` |
+| テンプレートルール | `shared-rules/template/template-rule.md` |
+| ルール外部化原則 | `shared-rules/rule-externalization/externalization-rule.md` |
 | ハーネス制御の媒体選択 | `rules/harness-engineering/harness-rule.md` |
-| プロンプト構成要素 | `rules/prompt-engineering/composition-rule.md` |
-| 推論の足場の要否 | `rules/prompt-engineering/scaffolding-rule.md` |
-| プロンプト頑健性・安全性 | `rules/prompt-engineering/robustness-rule.md` |
-| レビュー重大度の共通定義（レビュー系のみ） | `rules/review-severity/severity-rule.md` |
+| プロンプト構成要素 | `shared-rules/prompt-engineering/composition-rule.md` |
+| 推論の足場の要否 | `shared-rules/prompt-engineering/scaffolding-rule.md` |
+| プロンプト頑健性・安全性 | `shared-rules/prompt-engineering/robustness-rule.md` |
+| レビュー重大度の共通定義（レビュー系のみ） | `shared-rules/review-severity/severity-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
 | エージェントテンプレート | `template/agent/AGENT.md` |
 
@@ -42,7 +42,7 @@ description: >
 
 ### 2. 名前を命名規則に照らして確定する
 
-`rules/naming-conventions/naming-rule.md` のルールに従う。
+`shared-rules/naming-conventions/naming-rule.md` のルールに従う。
 
 | 種別 | 形 | 例 |
 |------|----|----|
@@ -65,7 +65,7 @@ description: >
 
 ### 4. 内包するルールを外部化できるか確認する
 
-`rules/rule-externalization/externalization-rule.md` に従い、スキル・エージェントに書こうとしているルール・制約・判断基準が `rules/` に切り出せるものかを判断する。
+`shared-rules/rule-externalization/externalization-rule.md` に従い、スキル・エージェントに書こうとしているルール・制約・判断基準が `rules/` に切り出せるものかを判断する。
 
 - **切り出す**: 他のスキル・エージェントにも適用できる、または「常に従うべき不変のガイドライン」の性質を持つもの
 - **インラインのまま**: そのスキル固有の手順・実行ロジック
@@ -94,9 +94,9 @@ description: >
 ---
 ```
 
-本文構成（概要／ルール／手順／出力・500行未満）は [[template-rule]] (`rules/template/template-rule.md`) を唯一の出典とする。テンプレートの構成をそのまま埋め、構成を独自に定義し直さない。Step 4 で外部化したルールがあれば `## ルール` 節に参照を記載し、無ければ節ごと削除する。
+本文構成（概要／ルール／手順／出力・500行未満）は [[template-rule]] (`shared-rules/template/template-rule.md`) を唯一の出典とする。テンプレートの構成をそのまま埋め、構成を独自に定義し直さない。Step 4 で外部化したルールがあれば `## ルール` 節に参照を記載し、無ければ節ごと削除する。
 
-description・手順・出力など指示文を書くときは、[[composition-rule]] (`rules/prompt-engineering/composition-rule.md`) の構成要素が揃っているかを確認する。多段の判断を含むスキル・エージェントには [[scaffolding-rule]] (`rules/prompt-engineering/scaffolding-rule.md`) に従って推論の足場を組み込む（単純タスクには足さない）。
+description・手順・出力など指示文を書くときは、[[composition-rule]] (`shared-rules/prompt-engineering/composition-rule.md`) の構成要素が揃っているかを確認する。多段の判断を含むスキル・エージェントには [[scaffolding-rule]] (`shared-rules/prompt-engineering/scaffolding-rule.md`) に従って推論の足場を組み込む（単純タスクには足さない）。
 
 #### サブエージェントの場合
 

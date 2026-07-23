@@ -11,17 +11,17 @@ description: >
 
 ## 概要
 
-`rules/ui-design/` のルールに沿って、新規 UI コンポーネントを生成するタスクスキル。アーキテクチャ分類（button / edit / view）を決め、該当コンポーネントルールと共通スタイリングルールを適用する。
+`shared-rules/ui-design/` のルールに沿って、新規 UI コンポーネントを生成するタスクスキル。アーキテクチャ分類（button / edit / view）を決め、該当コンポーネントルールと共通スタイリングルールを適用する。
 
 ## 手順
 
 ### 1. 索引を読み、扱うコンポーネントを特定する
 
-`rules/ui-design/README.md`（索引）を読み、作るものに該当する `component/` ルールのパスを特定する。全ファイルは読み込まない。
+`shared-rules/ui-design/README.md`（索引）を読み、作るものに該当する `component/` ルールのパスを特定する。全ファイルは読み込まない。
 
 ### 2. 分類と配置先を決める
 
-`rules/ui-design/architecture/ui-architecture.md` に従い button / edit / view を決定する。配置先は次のとおり。
+`shared-rules/ui-design/architecture/ui-architecture.md` に従い button / edit / view を決定する。配置先は次のとおり。
 
 | 種別 | 配置先 |
 |------|--------|
@@ -36,7 +36,7 @@ description: >
 
 ### 4. 雛形をもとに生成する
 
-`rules/ui-design/component/template-ui.md` を雛形として、tsx / css / stories / test をコロケーション（同一フォルダ）で生成する。既存プロジェクトの構成・命名を読んで合わせる。
+`shared-rules/ui-design/component/template-ui.md` を雛形として、tsx / css / stories / test をコロケーション（同一フォルダ）で生成する。既存プロジェクトの構成・命名を読んで合わせる。
 
 ### 5. スタイリングを適用する
 

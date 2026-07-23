@@ -12,7 +12,7 @@ description: >
 
 ## 概要
 
-UI 実装レビューの**入口・承認ゲート**となるタスクスキル。`rules/ui-design/` に照らした監査は
+UI 実装レビューの**入口・承認ゲート**となるタスクスキル。`shared-rules/ui-design/` に照らした監査は
 `ui-reviewer` エージェントに委譲し、違反・逸脱を Critical / Warning / Suggestion で提示する。
 修正は勝手に適用せず、**人の承認を得てから** `ui-designer`（修正適用専用）に適用を委譲する。
 レビュワーと産出者は別エージェントに分ける（[[review-independence-rule]]）。指摘だけで終える依頼にも対応する。
@@ -30,7 +30,7 @@ UI 実装レビューの**入口・承認ゲート**となるタスクスキル�
 - **多数のファイルを横断する／本格的な監査**: `ui-reviewer` エージェントに
   委譲する。重い ui-design ルールを隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一コンポーネント・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
-  `rules/ui-design/README.md`（索引）に置き、必要なルールだけを読む（全ファイルは読まない）。
+  `shared-rules/ui-design/README.md`（索引）に置き、必要なルールだけを読む（全ファイルは読まない）。
 
 エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
@@ -47,7 +47,7 @@ UI 実装レビューの**入口・承認ゲート**となるタスクスキル�
 ## 出力
 
 - **指摘**: 優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は
-  [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical
+  [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical
   該当例: ユーザー体験・アクセシビリティを損なう重大な逸脱、または明確なルール違反。
 
   各項目は `file:line` ／ 違反した規約（根拠ルールのパス）／ 問題点 ／ 修正の方向性 の形で示す。

@@ -25,5 +25,5 @@ Claude Code のプラグインスキルは、各スキルディレクトリ内�
 
 ## 参考・関連情報
 
-- 命名規則ルール: `rules/naming-conventions/naming-rule.md`
+- 命名規則ルール: `shared-rules/naming-conventions/naming-rule.md`
 - 補足: 上記の例として挙げた `git-submodule-operations` / `git-submodule-troubleshooting` スキルは後に削除済み（この知見自体は固定名 `SKILL.md` の原則として有効）

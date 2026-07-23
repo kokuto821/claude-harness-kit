@@ -10,7 +10,7 @@ description: 既存のフロントエンドテストをテスト規約に照ら�
 
 ## 根拠とするルール
 
-- **テスト規約**: `plugins/claude-harness-kit/rules/coding-conventions/test-rule.md`（命名・構造・分割・ヘルパー・AAA）
+- **テスト規約**: `plugins/claude-harness-kit/shared-rules/coding-conventions/test-rule.md`（命名・構造・分割・ヘルパー・AAA）
 
 ## 呼ばれたときの手順
 
@@ -29,6 +29,6 @@ description: 既存のフロントエンドテストをテスト規約に照ら�
 
 ## 出力フォーマット
 
-レビューの共通基準（目的＝コードの健康状態の改善・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: テストが意味をなさない・誤検知を生むなど影響の大きい違反。
+レビューの共通基準（目的＝コードの健康状態の改善・承認の閾値・指摘の出し方）は [[review-rule]]（`shared-rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: テストが意味をなさない・誤検知を生むなど影響の大きい違反。
 
 各項目は `file:line` ／ 違反した規約 ／ 問題点 ／ 修正の方向性 の形で示す。違反がない場合は「規約準拠で問題なし」と明記する。

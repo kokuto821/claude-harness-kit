@@ -11,10 +11,10 @@ description: プロンプト・スキル（SKILL.md）・サブエージェン�
 
 ## 根拠とするルール
 
-- **構成要素**: `plugins/claude-harness-kit/rules/prompt-engineering/composition-rule.md`（指示・出力形式・例示・役割・文脈の過不足）
-- **推論の足場**: `plugins/claude-harness-kit/rules/prompt-engineering/scaffolding-rule.md`（足場の要否・過剰）
-- **頑健性**: `plugins/claude-harness-kit/rules/prompt-engineering/robustness-rule.md`（敏感さ・過信・値の再掲・外部入力）
-- **改善の進め方**: `plugins/claude-harness-kit/rules/prompt-engineering/improvement-rule.md`（診断ベースのピンポイント改善）
+- **構成要素**: `plugins/claude-harness-kit/shared-rules/prompt-engineering/composition-rule.md`（指示・出力形式・例示・役割・文脈の過不足）
+- **推論の足場**: `plugins/claude-harness-kit/shared-rules/prompt-engineering/scaffolding-rule.md`（足場の要否・過剰）
+- **頑健性**: `plugins/claude-harness-kit/shared-rules/prompt-engineering/robustness-rule.md`（敏感さ・過信・値の再掲・外部入力）
+- **改善の進め方**: `plugins/claude-harness-kit/shared-rules/prompt-engineering/improvement-rule.md`（診断ベースのピンポイント改善）
 
 ## 呼ばれたときの手順
 
@@ -33,7 +33,7 @@ description: プロンプト・スキル（SKILL.md）・サブエージェン�
 
 ## 出力フォーマット
 
-レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
+レビューの共通基準（目的・承認の閾値・指摘の出し方）は [[review-rule]]（`shared-rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
 
 各項目は 箇所 ／ 違反したルール（根拠パス）／ 問題点 ／ 修正の方向性 の形で示す。
 違反がなければ「prompt-* ルール準拠で問題なし」と明記する。

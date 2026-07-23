@@ -20,7 +20,7 @@ description: >
 - 他スキルにも効く / 不変のガイドライン → rules/<topic>/ に切り出して [[name]] で参照
 - このスキル固有だが長い → skills/<name>/reference/ に切り出して参照
 - 短いスキル固有の判断 → 手順内にインライン可
-判断基準は rules/rule-externalization/externalization-rule.md に従う。
+判断基準は shared-rules/rule-externalization/externalization-rule.md に従う。
 ルールが無いスキルなら、この節ごと削除してよい。
 -->
 

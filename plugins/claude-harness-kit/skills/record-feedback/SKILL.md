@@ -11,13 +11,13 @@ description: >
 
 ## 概要
 
-ユーザーからのフィードバックを受け取り、`rules/user-feedback/feedback-rule.md`
+ユーザーからのフィードバックを受け取り、`shared-rules/user-feedback/feedback-rule.md`
 の判断基準に照らしてルール化の要否を判断する。ルール化すべきと判断したら
 ルール案を提示し、承認後に `rules/` へ書き込む。
 
 ## ルール
 
-判断基準・手順は [[feedback-rule]] (`rules/user-feedback/feedback-rule.md`) を唯一の正とする。
+判断基準・手順は [[feedback-rule]] (`shared-rules/user-feedback/feedback-rule.md`) を唯一の正とする。
 
 ## 手順
 
@@ -28,7 +28,7 @@ description: >
 
 ### 2. ルール化すべきか判断する
 
-`rules/user-feedback/feedback-rule.md` の判断基準に照らす。
+`shared-rules/user-feedback/feedback-rule.md` の判断基準に照らす。
 
 - 一度限りのコンテキスト固有の指摘 → ルール化しない旨を伝えて終了
 - 繰り返し発生しうるパターン → 次のステップへ

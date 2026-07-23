@@ -49,7 +49,7 @@ Critical / Warning / Suggestion で提示する。修正は勝手に適用せず
 ## 出力
 
 - **指摘**: 優先度ごとに整理して返す。
-  3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
+  3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: タスクが伝わらない・壊れる重大な欠落（指示不在、指示とデータの混線など）。
 
   各項目は 箇所 ／ 違反したルール（根拠パス）／ 問題点 ／ 修正の方向性 の形で示す。
   違反がなければ「prompt-* ルール準拠で問題なし」と明記する。
