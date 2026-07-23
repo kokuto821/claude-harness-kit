@@ -2,7 +2,7 @@
 
 ## 目的
 
-`rules/` には Claude が作業中に常に従うべき不変のガイドラインを置く。
+ルールは2ディレクトリで扱う。**`rules/`（コア）** はタスク領域を問わず毎セッション効く不変のガイドライン。**`shared-rules/`（参照層）** は任意タイミングで参照する共通ルール。コアは `.claude/rules` へのディレクトリ symlink で毎セッション自動ロードされ、参照層は `[[link]]`・索引で必要時に参照される（コンテキスト圧迫を避ける）。どちらもサブディレクトリ＋`<短縮トピック>-rule.md` の構造は共通。
 
 | ここに置くもの | ここに置かないもの |
 |---------------|-----------------|
@@ -48,7 +48,7 @@ rules/
 
 普遍的な制約は未スコープでよい。一部の対象にしか効かない規約は `paths:` でスコープし、無関係なセッションでのトークン消費を避ける。判断は [[selection-rule]] に従う。
 
-> **本 kit での運用**: この `rules/` は CLAUDE.md・skills から `[[link]]` で参照される md であり、`.claude/rules/` の自動ロード対象ではない。frontmatter の `paths:` は上記の一般挙動の説明であり、導入先で native rule 化した際に効く。本 kit 内のルールは実際には frontmatter を持たず、必要時に参照で引かれる。
+> **本 kit での運用（2層）**: **コア**（`rules/`）は、この kit をカレントディレクトリで開発する際に `.claude/rules` → `plugins/.../rules` のディレクトリ symlink で native 自動ロードされる（毎セッション必読）。**参照層**（`shared-rules/`）は自動ロードせず、CLAUDE.md 索引・skills から `[[link]]` で必要時に参照する。frontmatter の `paths:` は一般挙動の説明で、導入先で native rule 化した際に効く。symlink 運用の詳細は [[structure-rule]]（rules/repository-structure/structure-rule.md）の「コアルールの symlink 例外」節を参照。
 
 ## 相互リンク記法（`[[slug]]`）
 
@@ -57,7 +57,7 @@ rules・skills・agents・CLAUDE.md など本 kit の md 資産どうしの相�
 - **slug は参照先ファイル名から拡張子を除いた基本名**（見出しやタイトルではない）。例: `[[naming-rule]]` → `naming-conventions/naming-rule.md`。ファイル名基準なので表記が不変。
 - これは Obsidian 由来の記法で、**Claude Code / ハーネスのネイティブ機能ではない**。自動解決・自動ロード・クリック遷移はされない。Claude が意味として辿り、必要に応じて実ファイルを検索して開く**慣習的な参照**にすぎない。
 - 別ディレクトリのファイルや、確実に辿らせたい参照は `[[severity-rule]]（shared-rules/review-severity/severity-rule.md）` のように**実パスを併記**する。機械的に解決可能なのは併記した実パスの方で、`[[slug]]` は人間・モデル向けの意味ラベル。
-- `rules/` が `.claude/rules/` 自動ロードではなく `[[link]]` 参照で運用される背景は、上記「本 kit での運用」を参照。
+- 参照層（`shared-rules/`）が `[[link]]` 参照で運用される背景、およびコア（`rules/`）が symlink で自動ロードされる例外は、上記「本 kit での運用（2層）」を参照。
 
 ## 新規作成 vs 既存更新
 
