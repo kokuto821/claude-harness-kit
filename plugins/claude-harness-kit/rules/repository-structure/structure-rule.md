@@ -18,6 +18,7 @@
 | 調査・参考ドキュメント | `plugins/claude-harness-kit/documents/research/<file>.md` |
 | 経験・知見メモ | `plugins/claude-harness-kit/knowledge/<category>/<file>.md` |
 | サブエージェント | `plugins/claude-harness-kit/agent/<name>.md` |
+| フックスクリプト | `plugins/claude-harness-kit/hooks/<name>.<ext>`（配線は `.claude-plugin/plugin.json` の `hooks`） |
 | テンプレート | `plugins/claude-harness-kit/template/<category>/` |
 
 プロジェクトルート直下や `.claude/` 配下にコンテンツの実ファイルを直接作成しない。`.claude/` は `settings.local.json` 等のローカル設定と、コアルールの symlink（`.claude/rules` → `plugins/.../rules`、実体は plugins 側）のみを置く。

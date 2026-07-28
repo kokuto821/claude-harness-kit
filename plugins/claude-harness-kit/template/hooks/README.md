@@ -23,4 +23,9 @@ Claude の判断に頼らず、**強制的な制約**を設けたいときに使
 
 ## 参考
 
-設定は `.claude/settings.json` の `hooks` セクションに記述する。
+設定（配線）の書き場所は 2 つ。
+
+- プラグインとして配布するフック: `plugins/claude-harness-kit/.claude-plugin/plugin.json` の `hooks` セクション。スクリプト本体は `plugins/claude-harness-kit/hooks/` に置き、パスは `${CLAUDE_PLUGIN_ROOT}` 起点で書く。
+- そのプロジェクト限定のフック: `.claude/settings.json` の `hooks` セクション。
+
+実装例: `../../hooks/protected-branch-guard.py`（保護ブランチ上の `git commit` / `git push` を `PreToolUse` でブロックする）。
