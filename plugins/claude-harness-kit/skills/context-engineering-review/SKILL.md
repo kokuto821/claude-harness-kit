@@ -4,7 +4,7 @@ description: >
   「コンテキスト設計をレビューして」「文脈管理をチェックして」
   「このスキル/エージェントのコンテキスト効率を見て」「注意予算/トークンの無駄を点検して」
   と言われたとき、スキル・サブエージェント定義・CLAUDE.md・プロンプトを
-  rules/context-engineering/* に照らしてコンテキスト管理の観点でレビューし、違反・逸脱を指摘する。
+  shared-rules/context-engineering/* に照らしてコンテキスト管理の観点でレビューし、違反・逸脱を指摘する。
   修正が必要なら人の承認を得たうえで context-engineer エージェントに適用を委譲する。
 # when_to_use: コンテキスト管理（有限な注意予算のキュレーション・長時間軸戦略・ツール効率）の準拠チェックと、承認を経た改善適用を依頼されたとき
 ---
@@ -14,7 +14,7 @@ description: >
 ## 概要
 
 スキル（SKILL.md）・サブエージェント定義・CLAUDE.md・プロンプトを、コンテキスト管理の観点で
-レビューする**入口・承認ゲート**となるタスクスキル。`rules/context-engineering/*` に照らした監査は
+レビューする**入口・承認ゲート**となるタスクスキル。`shared-rules/context-engineering/*` に照らした監査は
 `context-reviewer` エージェントに委譲し、指摘を Critical / Warning / Suggestion で提示する。
 修正は勝手に適用せず、**人の承認を得てから** `context-engineer`（修正適用専用）に適用を委譲する。
 レビュワーと産出者は別エージェントに分ける（[[review-independence-rule]]）。指摘だけで終える依頼にも対応する。
@@ -27,7 +27,7 @@ description: >
 
 ## ルール
 
-- 監査基準は `rules/context-engineering/` の5ルールに従う。
+- 監査基準は `shared-rules/context-engineering/` の5ルールに従う。
   [[budget-rule]]（最小集合・注意予算）／ [[assembly-rule]]（altitude・構成）／
   [[retrieval-rule]]（実行時取得）／ [[long-horizon-rule]]（長時間軸戦略）／
   [[tool-design-rule]]（ツール効率）。
@@ -42,9 +42,9 @@ description: >
 ### 2. レビューを委譲する
 
 - **多数のファイルを横断する／本格的な監査**: `context-reviewer` エージェントに
-  委譲する。`rules/context-engineering/*` を隔離コンテキストで読み、所見を構造化して返す役割。
+  委譲する。`shared-rules/context-engineering/*` を隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一資産・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
-  上記「## ルール」の5ルール（`rules/context-engineering/*`）に置く。
+  上記「## ルール」の5ルール（`shared-rules/context-engineering/*`）に置く。
 
 エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
@@ -61,7 +61,7 @@ description: >
 ## 出力
 
 - **指摘**: 優先度ごとに整理して返す。
-  3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 注意予算を致命的に浪費して挙動が壊れる設計（重要指示の中盤埋没、無制限なツール出力、ウィンドウ超過なのに圧縮/ノート戦略が無い等）。
+  3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 注意予算を致命的に浪費して挙動が壊れる設計（重要指示の中盤埋没、無制限なツール出力、ウィンドウ超過なのに圧縮/ノート戦略が無い等）。
 
   各項目は 箇所（`file:line`）／ 違反したルール（根拠パス）／ 問題点 ／ 修正の方向性 の形で示す。
   違反がなければ「context-engineering ルール準拠で問題なし」と明記する。

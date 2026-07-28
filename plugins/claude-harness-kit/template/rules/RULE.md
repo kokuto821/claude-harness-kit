@@ -13,7 +13,7 @@ frontmatter 自体が不要（常時ロードでよい）なら、この ---〜-
 # <トピック>ルール
 
 <!--
-配置・命名は rules/rules-directory/directory-rule.md に従う：
+配置・命名は shared-rules/rules-directory/directory-rule.md に従う：
 - rules/<topic>/<短縮トピック>-rule.md（例 naming-conventions/ → naming-rule.md）
 - 1ディレクトリ1ルール。同トピックは既存ファイルに追記し、新トピックのみ新ディレクトリ
 - 同ディレクトリに README.md（説明のみ）を必ず置く（readme-convention）

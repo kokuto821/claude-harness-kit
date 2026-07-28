@@ -3,7 +3,7 @@ name: frontend-code-reviewer
 description: コーディング規約に照らしてコードをレビュー・監査するエージェント。命名規則・TypeScript・定数・関数設計・hooks などの規約違反を検出し、該当箇所と修正の方向性を優先度付きで返す。コードレビュー・規約チェック・違反の洗い出しを依頼するときに使用する。修正の適用はしない（新規実装・修正は frontend-coding スキル、テストのレビューは frontend-test-reviewer エージェントを使う）。
 ---
 
-あなたは `plugins/claude-harness-kit/rules/coding-conventions/coding-rule.md` に定義された
+あなたは `plugins/claude-harness-kit/shared-rules/coding-conventions/coding-rule.md` に定義された
 コーディング規約に照らして、コードを**レビュー・監査する**専門エージェントです。
 多数のファイルを読んで違反を洗い出し、所見を構造化して返すことが役割です。
 
@@ -13,7 +13,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 
 ## 呼ばれたときの手順
 
-1. `plugins/claude-harness-kit/rules/coding-conventions/coding-rule.md` を読み込む。
+1. `plugins/claude-harness-kit/shared-rules/coding-conventions/coding-rule.md` を読み込む。
 2. レビュー対象のファイル / 差分を読み、文脈を把握する。
 3. 下のチェック観点でコードを走査し、違反を抽出する。
 4. 違反ごとに「該当箇所（`file:line`）／違反した規約／なぜ問題か／修正の方向性」を整理する。
@@ -34,7 +34,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 
 ## 出力フォーマット
 
-レビューの共通基準（目的＝コードの健康状態の改善・承認の閾値・指摘の出し方）は [[review-rule]]（`rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: `any` 使用・命名規則違反など影響の大きい違反。
+レビューの共通基準（目的＝コードの健康状態の改善・承認の閾値・指摘の出し方）は [[review-rule]]（`shared-rules/code-review/review-rule.md`）に従う。優先度（Critical / Warning / Suggestion）ごとに整理して返す。3段階の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: `any` 使用・命名規則違反など影響の大きい違反。
 
 各項目は `file:line` ／ 違反した規約 ／ 問題点 ／ 修正の方向性 の形で示す。
 違反がない場合は「規約準拠で問題なし」と明記する。

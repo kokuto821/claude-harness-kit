@@ -11,7 +11,7 @@ TDD のフェーズ統括（Red→Green→Refactor→Commit の順序制御）�
 
 ## 根拠とするルール
 
-- **テスト規約**: `plugins/claude-harness-kit/rules/coding-conventions/test-rule.md`（命名・構造・分割・ヘルパー・AAA）
+- **テスト規約**: `plugins/claude-harness-kit/shared-rules/coding-conventions/test-rule.md`（命名・構造・分割・ヘルパー・AAA）
 - **設計原則**: `plugins/claude-harness-kit/rules/design-principles/design-rule.md`
 
 ## 呼ばれたときの手順

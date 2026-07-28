@@ -69,7 +69,7 @@ SKILL.md には「`reference/<content>.md` を参照すること」の1行を残
 ```markdown
 ## ルール
 
-命名規則は [[naming-rule]] (`rules/naming-conventions/naming-rule.md`) に従う。
+命名規則は [[naming-rule]] (`shared-rules/naming-conventions/naming-rule.md`) に従う。
 ファイル配置は [[structure-rule]] (`rules/repository-structure/structure-rule.md`) に従う。
 ```
 

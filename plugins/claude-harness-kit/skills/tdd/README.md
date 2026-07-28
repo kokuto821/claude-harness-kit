@@ -7,4 +7,4 @@ TDD（テスト駆動開発）の Red→Green→Refactor→Commit サイクル�
 フローの統括のみを行いコードの詳細には関与しません。
 
 フェーズごとの委譲先・反復上限などの詳細は `SKILL.md`、TDD 方法論の定義は
-`rules/coding-conventions/tdd-rule.md` を参照してください。
+`shared-rules/coding-conventions/tdd-rule.md` を参照してください。

@@ -39,7 +39,7 @@ description: >
 
 `skills/record-feedback/SKILL.md` の手順に従う。
 
-- `rules/user-feedback/feedback-rule.md` の判断基準でルール化の要否を判断
+- `shared-rules/user-feedback/feedback-rule.md` の判断基準でルール化の要否を判断
 - ルール化すべき場合は追記先／新規ファイルのパスとルール案を提示
 - **承認を得てから** `rules/<topic>/` に書き込む（一度限りの指摘なら記録しない）
 

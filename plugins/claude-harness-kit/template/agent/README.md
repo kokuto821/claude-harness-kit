@@ -15,5 +15,5 @@
 
 `AGENT.md` をコピーして `plugins/claude-harness-kit/agent/<name>.md` に配置する。
 
-> 命名規則・フロントマターの詳細は `rules/naming-conventions/naming-rule.md` と
-> `rules/template/template-rule.md` を参照。
+> 命名規則・フロントマターの詳細は `shared-rules/naming-conventions/naming-rule.md` と
+> `shared-rules/template/template-rule.md` を参照。

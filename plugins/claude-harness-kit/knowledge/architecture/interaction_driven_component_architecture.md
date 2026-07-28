@@ -70,5 +70,5 @@ Router 使用時は `pages/` を使う。
 
 ## 参考・関連情報
 
-- ルール: `rules/ui-design/architecture/ui-architecture.md`（本知見を判断基準として明文化済み）
+- ルール: `shared-rules/ui-design/architecture/ui-architecture.md`（本知見を判断基準として明文化済み）
 - 適用事例: 回転寿司トークテーマアプリ（wadai-sushi）で Atomic Design から本構成へ移行

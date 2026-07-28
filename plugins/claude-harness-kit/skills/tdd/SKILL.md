@@ -16,7 +16,7 @@ description: >
 
 ## ルール
 
-- サイクル（Red-Green-Refactor-Commit）とコーディング標準は [[tdd-rule]]（`rules/coding-conventions/tdd-rule.md`）に従う。フェーズを飛ばさず、現フェーズ（RED/GREEN/REFACTOR/COMMIT）を常に明示する。
+- サイクル（Red-Green-Refactor-Commit）とコーディング標準は [[tdd-rule]]（`shared-rules/coding-conventions/tdd-rule.md`）に従う。フェーズを飛ばさず、現フェーズ（RED/GREEN/REFACTOR/COMMIT）を常に明示する。
 - レビューと修正適用の分離は [[review-independence-rule]] に従う。Refactor のレビューも産出者と別エージェントが行い、適用は産出者に戻す。
 - **産出者の単一責任**: Green（最小実装）は `frontend-coding` の責任。`frontend-tester` は Red のテスト実装のみを担い、実装コードの産出や Refactor の自己完結はさせない。
 - **委譲の種別を区別する**: 「エージェント委譲」＝別コンテキストで隔離起動（中間結果でメインを汚さない）、「スキル起動」＝現行コンテキストで in-context 実行。両者を同じ語で括らない。Red のテスト産出は試行が多くメインを汚しやすいのでエージェントで隔離、Green の実装はステアリング可視性を優先して in-context とする。

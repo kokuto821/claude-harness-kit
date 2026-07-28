@@ -39,7 +39,7 @@
 
 ## 参考・関連情報
 
-- `plugins/claude-harness-kit/rules/coding-conventions/coding-rule.md`（適用対象）
+- `plugins/claude-harness-kit/shared-rules/coding-conventions/coding-rule.md`（適用対象）
 - `plugins/claude-harness-kit/rules/content-fidelity/content-fidelity-rule.md`
-- `plugins/claude-harness-kit/rules/rule-externalization/externalization-rule.md`
+- `plugins/claude-harness-kit/shared-rules/rule-externalization/externalization-rule.md`
 - コミット `84123ca`

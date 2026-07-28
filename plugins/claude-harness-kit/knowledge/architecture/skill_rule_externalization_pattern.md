@@ -37,8 +37,8 @@
 ### 実際に適用したケース
 
 - `record-knowledge`: マークダウンテンプレート → `reference/template.md`
-- TDDガイドライン: 当初 `tdd-expert` スキルの `reference/` に置いたが、`frontend-tester` エージェントと共有する普遍的ガイドラインだったため `rules/coding-conventions/tdd-rule.md` へ移動し、スキル自体を廃止（複数で共有するものは `rules/` という判断の実例）
-- `frontend-coder`: コーディングルール（重複）→ `rules/coding-conventions/coding-rule.md` 参照のみに削減
+- TDDガイドライン: 当初 `tdd-expert` スキルの `reference/` に置いたが、`frontend-tester` エージェントと共有する普遍的ガイドラインだったため `shared-rules/coding-conventions/tdd-rule.md` へ移動し、スキル自体を廃止（複数で共有するものは `rules/` という判断の実例）
+- `frontend-coder`: コーディングルール（重複）→ `shared-rules/coding-conventions/coding-rule.md` 参照のみに削減
 - `frontend-coding`(2026-06-24): 「規約本文を再掲せず」と宣言しつつ要点テーブル・手順で coding-rule の値を再掲していた → 観点名のみの索引に圧縮（commit `0159d66`）
 - UI 3スキル(2026-06-24): create-ui-component / improve-ui-design / ui-review が配色・角丸・レイアウト値を個別に再掲しドリフト → `styling-rule/` を唯一の正にして観点名索引へ統一（commit `c456e2d`）
 - テンプレ構成(2026-06-24): 本文構成の定義を `template-rule.md` に集約し、雛形 `SKILL.md` に `## ルール` 節を追加（commit `4b1496d`）
@@ -63,7 +63,7 @@
 
 ### 構成定義の単一情報源化
 
-本文構成（`概要→ルール→手順→出力`）の定義自体も三重化しやすい（`template-rule.md` / 雛形 `SKILL.md` / `create-skill` の3箇所）。**定義の出典は `rules/template/template-rule.md` の1箇所**とし、雛形は体現、`create-skill` は参照に留める。構成の説明文を各所で再記述しない。
+本文構成（`概要→ルール→手順→出力`）の定義自体も三重化しやすい（`template-rule.md` / 雛形 `SKILL.md` / `create-skill` の3箇所）。**定義の出典は `shared-rules/template/template-rule.md` の1箇所**とし、雛形は体現、`create-skill` は参照に留める。構成の説明文を各所で再記述しない。
 
 ### プラグイン直参照環境での注意
 
@@ -71,6 +71,6 @@
 
 ## 参考・関連情報
 
-- `rules/rule-externalization/externalization-rule.md` — 外部化原則の定義
-- `rules/rules-directory/directory-rule.md` — `rules/` の構造・命名規則
+- `shared-rules/rule-externalization/externalization-rule.md` — 外部化原則の定義
+- `shared-rules/rules-directory/directory-rule.md` — `rules/` の構造・命名規則
 - `skills/create-skill/SKILL.md` — スキル作成時にこのパターンを適用するStep 4

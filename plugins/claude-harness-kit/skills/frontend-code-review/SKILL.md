@@ -37,9 +37,9 @@ description: >
 
 | 観点 | 委譲先 | 根拠ルール |
 |------|--------|-----------|
-| コーディング規約 | `frontend-code-reviewer` エージェント | `rules/coding-conventions/coding-rule.md` |
-| テスト規約 | `frontend-test-reviewer` エージェント | `rules/coding-conventions/test-rule.md` |
-| UIデザイン | `ui-reviewer` エージェント | `rules/ui-design/`（索引経由） |
+| コーディング規約 | `frontend-code-reviewer` エージェント | `shared-rules/coding-conventions/coding-rule.md` |
+| テスト規約 | `frontend-test-reviewer` エージェント | `shared-rules/coding-conventions/test-rule.md` |
+| UIデザイン | `ui-reviewer` エージェント | `shared-rules/ui-design/`（索引経由） |
 
 各エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
@@ -54,7 +54,7 @@ description: >
 優先度順で示す。**修正の適用は行わない**（適用は産出者に委ねる旨を添える: コードは `frontend-coding` スキル、
 テストは `frontend-tester` エージェント（テスト実装）、UI は `ui-review` 経由の `ui-designer`（修正適用専用））。
 
-3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 動作・規約・UXを大きく損なう重大な問題。
+3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 動作・規約・UXを大きく損なう重大な問題。
 
 各項目は `file:line` ／ 違反した規約（根拠ルールのパス）／ 問題点 ／ 修正の方向性 の形で示す。
 全観点で違反がなければ「フロントエンド規約・UIデザイン準拠で問題なし」と明記する。

@@ -28,7 +28,7 @@
 - 1つの関数・モジュールに複数の責務・関心を詰め込む（SRP / SoC 違反）。
 - 実装詳細を公開インターフェースから漏らす／呼び出しが遠い相手の内部構造を辿る（情報隠蔽・デメテルの法則 違反）。
 - まだ必要でない機能・汎用化・拡張点を先回りで作る（YAGNI 違反）。単純な手段があるのに技巧で複雑化する（KISS 違反）。
-- 各原則の定義を本ルールや参照元（実装・テスト・レビューのルールやエージェント）に再掲する。定義は [[design-principles-glossary]] を唯一の正とし、本ルールは観点のみを持つ（値の二重管理を避ける。[[externalization-rule]]（`rules/rule-externalization/externalization-rule.md`）§単一情報源）。
+- 各原則の定義を本ルールや参照元（実装・テスト・レビューのルールやエージェント）に再掲する。定義は [[design-principles-glossary]] を唯一の正とし、本ルールは観点のみを持つ（値の二重管理を避ける。[[externalization-rule]]（`shared-rules/rule-externalization/externalization-rule.md`）§単一情報源）。
 
 ## 背景
 
@@ -39,7 +39,7 @@ DRY・SRP・疎結合/高凝集の定義が `coding-conventions/tdd-rule.md`・`
 ## 関連ルール・資料
 
 - [[design-principles-glossary]]（`documents/reference/design/design-principles-glossary.md`） — 各原則の定義の唯一の正／周辺の設計法則・比喩の用語集
-- [[externalization-rule]]（`rules/rule-externalization/externalization-rule.md`） — ドキュメント/資産の単一情報源（本ルールのドキュメント版に相当する DRY）
-- [[tdd-rule]]（`rules/coding-conventions/tdd-rule.md`） — Red-Green-Refactor サイクル（Refactor で本原則を適用）
-- [[coding-rule]]（`rules/coding-conventions/coding-rule.md`） — 実装全般の規約（関数設計で本原則を適用）
-- [[long-horizon-rule]]（`rules/context-engineering/long-horizon-rule.md`） — マルチエージェントにおける関心の分離の応用
+- [[externalization-rule]]（`shared-rules/rule-externalization/externalization-rule.md`） — ドキュメント/資産の単一情報源（本ルールのドキュメント版に相当する DRY）
+- [[tdd-rule]]（`shared-rules/coding-conventions/tdd-rule.md`） — Red-Green-Refactor サイクル（Refactor で本原則を適用）
+- [[coding-rule]]（`shared-rules/coding-conventions/coding-rule.md`） — 実装全般の規約（関数設計で本原則を適用）
+- [[long-horizon-rule]]（`shared-rules/context-engineering/long-horizon-rule.md`） — マルチエージェントにおける関心の分離の応用

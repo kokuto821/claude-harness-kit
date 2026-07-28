@@ -40,9 +40,9 @@ Claude Code のステアリング資産を **プロンプト品質 / ステア�
 
 | 観点 | 委譲先 | 根拠ルール |
 |------|--------|-----------|
-| プロンプト品質 | `prompt-reviewer` エージェント | `rules/prompt-engineering/`（composition / scaffolding / robustness / improvement） |
+| プロンプト品質 | `prompt-reviewer` エージェント | `shared-rules/prompt-engineering/`（composition / scaffolding / robustness / improvement） |
 | ステアリング手法 | `steering-reviewer` エージェント | `rules/harness-engineering/selection-rule.md` / `rules/harness-engineering/harness-rule.md` |
-| コンテキスト設計 | `context-reviewer` エージェント | `rules/context-engineering/`（budget / assembly / retrieval / long-horizon / tool-design） |
+| コンテキスト設計 | `context-reviewer` エージェント | `shared-rules/context-engineering/`（budget / assembly / retrieval / long-horizon / tool-design） |
 
 各エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。
 
@@ -57,7 +57,7 @@ Claude Code のステアリング資産を **プロンプト品質 / ステア�
 プロンプト品質は `prompt-review` 経由の `prompt-engineer`、コンテキスト設計は
 `context-engineering-review` 経由の `context-engineer`。ステアリング手法は産出者なし・指摘のみ）。
 
-3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 破られると困る誤配置・タスクが壊れる重大な欠落。
+3段階（Critical / Warning / Suggestion）の定義は [[severity-rule]]（`shared-rules/review-severity/severity-rule.md`）に従う。このドメインの Critical 該当例: 破られると困る誤配置・タスクが壊れる重大な欠落。
 
 各項目は `file:line` ／ 違反した観点（根拠ルールのパス）／ 問題点 ／ 修正の方向性 の形で示す。
 全観点で逸脱がなければ「プロンプト品質・ステアリング手法・コンテキスト設計ともに準拠、問題なし」と明記する。

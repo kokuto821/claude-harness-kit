@@ -12,20 +12,20 @@ description: >
 
 ## 概要
 
-`rules/coding-conventions/coding-rule.md` に沿って、TypeScript / React のコードを
+`shared-rules/coding-conventions/coding-rule.md` に沿って、TypeScript / React のコードを
 新規実装するスキル。命名規則・型・定数化・関数設計・スタイリング・テストの規約を
 満たしたコードを生成する。
 
 ## ルール
 
-実装を始める前に必ず [[coding-rule]] (`rules/coding-conventions/coding-rule.md`) を読み込み、規約に従う。
+実装を始める前に必ず [[coding-rule]] (`shared-rules/coding-conventions/coding-rule.md`) を読み込み、規約に従う。
 本スキルでは規約本文を再掲せず、ルールファイルを唯一の正とする。
 
 ルールが定める観点（中身は上記ルールファイルを参照）: 命名 / 型 / 定数 / 関数 / Export / hooks / コメント / テスト。
 
 ## 手順
 
-1. **規約を読み込む** — `rules/coding-conventions/coding-rule.md` を読む。
+1. **規約を読み込む** — `shared-rules/coding-conventions/coding-rule.md` を読む。
 2. **配置先を決める** — ディレクトリ構造の規約に従い、ファイルの置き場所と命名を確定する。
 3. **型から書く** — 入出力の型を先に定義する（型・型ガード・TSDOC の書き方は規約に従う）。
 4. **実装する** — 規約（命名・定数化・関数設計・Export・hooks）に沿って実装する。
