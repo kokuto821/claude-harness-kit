@@ -6,6 +6,11 @@
       "name": "claude-harness-kit",
       "source": "./plugins/claude-harness-kit",
       "description": "個人用Claude Codeスキル集（コミット・セッション管理・知識管理・TDDなど）"
+    },
+    {
+      "name": "stock-trading-kit",
+      "source": "./plugins/stock-trading-kit",
+      "description": "株取引の情報分析をサポートするエージェント・スキル集（銘柄分析・市場動向・ポートフォリオ管理など）"
     }
   ]
 }
