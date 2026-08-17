@@ -1,0 +1,36 @@
+---
+name: branch-and-push
+description: >
+  「新しい変更をした、ブランチを作ってpushして」「変更をコミットしてpushして」
+  「新しいブランチ切って」と言われたとき、現在の未コミット変更を確認し、
+  commit-message-simpleスキルでコミット単位・メッセージを提案したうえで、
+  承認を得てからブランチ作成・コミット・pushまでを一気通貫で行う。
+---
+
+# branch-and-push
+
+## 概要
+未コミットの変更を、ブランチ作成→コミット→pushまで一連で進める。コミットメッセージ・コミット分割は commit-message-simple スキルに委譲する。
+
+## ルール
+
+- コミット単位・コミットメッセージのフォーマットは [[commit-message-simple]] (`skills/commit-message-simple/SKILL.md`) の出力に従う。本スキルでは独自にメッセージを組み立てない。
+- push は [[harness-rule]] (`rules/harness-engineering/harness-rule.md`) でいう「共有システムに影響する操作」に該当するため、ブランチ作成・コミット・push いずれも実行前に必ずユーザーの承認を得る。ユーザーから「確認なしで進めて」等の明示指示がある場合を除き、無断で進めない。
+
+## 手順
+
+1. `git status` と `git diff`（未追跡ファイルは内容確認）で、現在の変更点をすべて把握する。
+2. 変更が無ければ、その旨をユーザーに伝えて終了する。
+3. 変更内容を commit-message-simple スキルに渡し、コミット単位（ファイル構成）とコミットメッセージ案を作成させる。ユーザーが「このコミットだけ」等で対象を絞った場合はその指示を反映する。
+4. commit-message-simple の手順に従い、コミット計画（ファイル構成・メッセージ）をユーザーに提示し承認を得る。
+5. ブランチ名を決める。ユーザーが指定していなければ、承認されたコミットの prefix と内容から kebab-case のブランチ名を1つ提案し（例: `docs/xxx-rule`, `fix/yyy-bug`）、確認を取る。
+6. 承認を得たら以下を順に実行する。
+   - `git checkout -b <branch>`
+   - 承認済みコミット単位ごとに `git add <files>` → `git commit -m "..."`
+   - `git push -u origin <branch>`
+7. push結果（リモートブランチ名、GitHubが返すPR作成URLがあればそれ）をユーザーに提示する。
+
+## 出力
+
+- 確認フェーズ: コミット計画（commit-message-simpleの提案）とブランチ名案
+- 完了フェーズ: 作成したブランチ名、実行したコミット一覧、push結果（PR作成URL等）
