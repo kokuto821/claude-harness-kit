@@ -12,7 +12,7 @@ claude-harness-kit/
 │   ├── shared-rules/           ← 参照層（任意タイミングで参照）
 │   ├── documents/              ← 調査・参考ドキュメント
 │   ├── knowledge/              ← 経験・知見メモ
-│   ├── agent/                  ← サブエージェント定義
+│   ├── agents/                 ← サブエージェント定義
 │   ├── hooks/                  ← フックスクリプト（plugin.json から配線）
 │   ├── template/               ← テンプレート
 │   └── .claude-plugin/         ← プラグインマニフェスト

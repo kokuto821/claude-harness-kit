@@ -14,7 +14,7 @@ description: >
 ## 概要
 
 ステアリング構成レビューの**入口**タスクスキル。監査は `steering-reviewer` エージェントに
-委譲し、プロジェクトの Claude Code カスタマイズ資産（CLAUDE.md・`rules/`・`skills/`・`agent/`・
+委譲し、プロジェクトの Claude Code カスタマイズ資産（CLAUDE.md・`rules/`・`skills/`・`agents/`・
 hooks・output styles）を各手法の公式の意図に照らして、手法の誤用・逸脱を
 Critical / Warning / Suggestion で指摘する。**指摘までが責務**で、改善の適用は行わない。
 
@@ -33,7 +33,7 @@ Critical / Warning / Suggestion で指摘する。**指摘までが責務**で�
 ### 1. レビュー範囲を特定する
 
 対象プロジェクトのステアリング資産を洗い出す：ルート/サブディレクトリの CLAUDE.md、
-`.claude/rules/`（`rules/`）、`.claude/skills/`、`.claude/agents/`（`agent/`）、
+`.claude/rules/`（`rules/`）、`.claude/skills/`、`.claude/agents/`、
 `settings.json` の hooks、`.claude/output-styles/`。差分が分かる場合は変更箇所を優先する。
 
 ### 2. 規模に応じて委譲を判断する

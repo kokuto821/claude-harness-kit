@@ -28,7 +28,7 @@ description: >
 | プロンプト頑健性・安全性 | `shared-rules/prompt-engineering/robustness-rule.md` |
 | レビュー重大度の共通定義（レビュー系のみ） | `shared-rules/review-severity/severity-rule.md` |
 | スキルテンプレート | `template/skills/SKILL.md` |
-| エージェントテンプレート | `template/agent/AGENT.md` |
+| エージェントテンプレート | `template/agents/AGENT.md` |
 
 ## 手順
 
@@ -61,7 +61,7 @@ description: >
 | 種別 | 配置先 |
 |------|--------|
 | スキル | `plugins/claude-harness-kit/skills/<name>/SKILL.md` |
-| サブエージェント | `plugins/claude-harness-kit/agent/<name>.md` |
+| サブエージェント | `plugins/claude-harness-kit/agents/<name>.md` |
 
 ### 4. 内包するルールを外部化できるか確認する
 
@@ -100,7 +100,7 @@ description・手順・出力など指示文を書くときは、[[composition-r
 
 #### サブエージェントの場合
 
-`template/agent/AGENT.md` を読み込み、以下を埋める。
+`template/agents/AGENT.md` を読み込み、以下を埋める。
 
 ```yaml
 ---
@@ -138,7 +138,7 @@ skills/ 配下に配置済みです。Claude Code を再起動すると反映さ
 **サブエージェントを作成した場合:**
 
 ```
-agent/ 配下に配置済みです。Claude Code を再起動すると反映されます。
+agents/ 配下に配置済みです。Claude Code を再起動すると反映されます。
 ```
 
 ## 出力

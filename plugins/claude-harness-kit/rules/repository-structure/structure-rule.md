@@ -17,7 +17,7 @@
 | 参照ルール（任意タイミングで参照） | `plugins/claude-harness-kit/shared-rules/<topic>/<category-rule>.md` |
 | 調査・参考ドキュメント | `plugins/claude-harness-kit/documents/research/<file>.md` |
 | 経験・知見メモ | `plugins/claude-harness-kit/knowledge/<category>/<file>.md` |
-| サブエージェント | `plugins/claude-harness-kit/agent/<name>.md` |
+| サブエージェント | `plugins/claude-harness-kit/agents/<name>.md` |
 | フックスクリプト | `plugins/claude-harness-kit/hooks/<name>.<ext>`（配線は `.claude-plugin/plugin.json` の `hooks`） |
 | テンプレート | `plugins/claude-harness-kit/template/<category>/` |
 

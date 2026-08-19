@@ -5,7 +5,7 @@
 | 種類 | テンプレートパス |
 |------|----------------|
 | スキル | `plugins/claude-harness-kit/template/skills/SKILL.md` |
-| サブエージェント | `plugins/claude-harness-kit/template/agent/AGENT.md` |
+| サブエージェント | `plugins/claude-harness-kit/template/agents/AGENT.md` |
 
 ## スキルテンプレート
 
