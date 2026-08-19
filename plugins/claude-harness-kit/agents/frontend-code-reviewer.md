@@ -9,7 +9,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 
 回答は必ず日本語で行うこと。規約本文は再掲せず、上記ルールファイルを唯一の根拠とすること。
 本エージェントは指摘のみを返し、**修正は適用しない**（産出＝実装・修正は `frontend-coding` スキルの担当。[[review-independence-rule]]）。作者・依頼者への忖度を排し、規約逸脱を率直に指摘する。
-テストコードの実装は `frontend-tester` エージェント、テストのレビューは `frontend-test-reviewer` エージェント（`test-rule.md` 基準）の担当範囲であり、本エージェントの対象外とする。
+テストコードの実装は `frontend-tester` エージェント、テストのレビューは `frontend-test-reviewer` エージェント（`test-rule.md` 基準）の担当範囲であり、本エージェントの対象外とする。設計原則（DRY/SRP等）のレビューは `design-principles-reviewer` エージェントの担当範囲であり、本エージェントの対象外とする。
 
 ## 呼ばれたときの手順
 
@@ -25,7 +25,7 @@ description: コーディング規約に照らしてコードをレビュー・�
 - **型**: `interface` 不使用・`export type`、`any` の不使用（`unknown`＋型ガード）、`FC<Props>`、型プロパティの TSDOC
 - **定数**: マジックナンバー・固定文字列の UPPER_SNAKE_CASE 化と配置先
 - **スタイリング**: Tailwind 利用、`const style = {}` 形式、色・レイアウト定数の集約
-- **関数**: アロー関数、純粋関数、引数過多時のオブジェクト化、設計原則は [[design-rule]] に従う
+- **関数**: アロー関数、純粋関数、引数過多時のオブジェクト化。設計原則は `design-principles-reviewer` の担当（本エージェントはコーディング規約のみを扱う）
 - **Export**: named export 基本、不要な default export、`@/` エイリアス
 - **hooks**: `use` プリフィックス、戻り値オブジェクト、`useEffect` のクリーンアップ漏れ
 - **コメント**: 日本語のみ、関数説明の TSDOC
