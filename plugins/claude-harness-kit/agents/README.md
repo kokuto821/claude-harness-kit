@@ -10,6 +10,8 @@
 |------------|------|-----------|
 | `frontend-code-reviewer` | コーディング規約に照らしたコードのレビュー・監査（テストは除く） | `frontend-coding` スキル |
 | `frontend-test-reviewer` | テスト規約に照らした既存テストのレビュー・監査 | `frontend-tester` |
+| `test-design-reviewer` | テスト技法に照らしたテスト観点・ケース設計の抜け漏れレビュー | `test-coding` スキル |
+| `design-principles-reviewer` | design-rule（DRY/SRP/SoC等）に照らした設計原則のレビュー（コード全般） | 複数（`test-coding` / `frontend-coding` 等、design-rule に従うスキル） |
 | `ui-reviewer` | ui-design ルールに照らした UI 実装のレビュー | `ui-designer` |
 | `prompt-reviewer` | prompt-* ルールに照らしたプロンプトのレビュー | `prompt-engineer` |
 | `context-reviewer` | context-engineering ルールに照らしたコンテキスト管理のレビュー | `context-engineer` |

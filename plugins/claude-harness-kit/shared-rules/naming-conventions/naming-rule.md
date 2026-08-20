@@ -67,7 +67,7 @@ description: >              # Claudeの自動起動トリガー。主要ユー�
 
 ---
 
-## エージェント（.claude/agent/*.md）
+## エージェント（.claude/agents/*.md）
 
 ### 名前の品詞・形（役割名詞）
 

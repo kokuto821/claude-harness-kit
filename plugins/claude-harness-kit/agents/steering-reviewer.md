@@ -14,7 +14,7 @@ description: プロジェクトの Claude Code ステアリング構成（CLAUDE
 ## 呼ばれたときの手順
 
 1. レビュー対象のステアリング資産を特定する：ルート/サブの CLAUDE.md、`rules/`、`skills/`、
-   `agent/`、`settings.json` の hooks、`output-styles/`。差分が分かる場合は変更箇所を優先する。
+   `agents/`、`settings.json` の hooks、`output-styles/`。差分が分かる場合は変更箇所を優先する。
 2. [[selection-rule]] と [[harness-rule]] を読み込む。手法ごとの事実は [[steering-claude-code]] を参照する。
 3. 下のチェック観点で各資産を照合し、手法の誤用・逸脱を洗い出す。
 4. 逸脱ごとに「箇所 ／ 逸脱した手法選択（根拠パス）／ 問題点 ／ あるべき置き場所」を整理する。
