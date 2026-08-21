@@ -12,13 +12,13 @@
 
 ### パターンの構造
 
-- **専門ユニット**: 単一責務のスキル・エージェント（例: `record-knowledge`, `record-feedback` / `frontend-code-reviewer`, `frontend-test-reviewer`, `ui-reviewer`）。
+- **専門ユニット**: 単一責務のスキル・エージェント（例: `record-knowledge`, `record-feedback` / `frontend-code-reviewer`, `frontend-test-reviewer`, `ui-reviewer`）。domain 判定に応じて委譲先を切り替える場合も、切り替え先自体は単一責務のユニットのまま保つ（例: `coding-review` が domain 判定で `frontend-code-reviewer`/`backend-code-reviewer` を切り替える）。
 - **オーケストレーター**: 上位のスキル。入力を観点ごとに振り分け、各ユニットの手順・判断基準を踏襲して委譲し、結果を統合する。
 
 ### 本リポジトリでの実例
 
 - `record-all`: 会話内容を `record-knowledge`（→ `knowledge/`）と `record-feedback`（→ `rules/`）の両方でまとめて記録する。
-- `frontend-code-review`: フロントの変更を `frontend-code-reviewer`（規約）/ `frontend-test-reviewer`（テスト）/ `ui-reviewer`（UIデザイン）の3観点で並行レビューし、所見を統合する。
+- `coding-review`（旧 `frontend-code-review`、2026-08-21に domain 非依存へ統合）: 変更を分析して frontend/backend を判定した上で、コーディング規約（`frontend-code-reviewer`/`backend-code-reviewer`）/ テスト規約（`frontend-test-reviewer`/`backend-test-reviewer`）/ UIデザイン（frontendのみ `ui-reviewer`）の観点で並行レビューし、所見を統合する。
 
 ### 設計上のポイント
 
@@ -35,5 +35,5 @@
 
 ## 参考・関連情報
 
-- `skills/record-all/SKILL.md`, `skills/frontend-code-review/SKILL.md`
+- `skills/record-all/SKILL.md`, `skills/coding-review/SKILL.md`
 - [[skill_rule_externalization_pattern]] — 参照のみに削減してロジック重複を避ける思想
