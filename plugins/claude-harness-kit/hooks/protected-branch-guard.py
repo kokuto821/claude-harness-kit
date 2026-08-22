@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""保護ブランチ上での git commit / push をブロックする PreToolUse フック。
+"""保護ブランチ上での git commit / push とファイル変更をブロックする PreToolUse フック。
 
-Claude Code から実行される Bash コマンドを解析し、現在のブランチが保護対象
-（既定: main / master / develop）である場合の commit / push を拒否する。
+現在のブランチが保護対象（既定: main / master / develop）である場合に、以下を拒否する。
+
+- Bash: `git commit` / `git push`（保護ブランチ宛ての push を含む）
+- Edit / Write / NotebookEdit: git 管理下のファイルへの変更
+
 判定できないケース（JSON 不正・git リポジトリ外・detached HEAD など）は許可する。
+git 管理外のパス（スクラッチパッド等）への書き込みは対象外。
 
 保護ブランチは環境変数 CLAUDE_PROTECTED_BRANCHES（スペース区切り）で上書きできる。
 """
@@ -16,6 +20,13 @@ import sys
 
 DEFAULT_PROTECTED_BRANCHES = ("main", "master", "develop")
 BLOCKED_SUBCOMMANDS = ("commit", "push")
+
+# ファイル変更系ツールと、変更先パスを保持する tool_input のキー
+EDIT_TOOLS = {
+    "Edit": "file_path",
+    "Write": "file_path",
+    "NotebookEdit": "notebook_path",
+}
 
 # 直後の引数を値として取るグローバルオプション
 GIT_GLOBAL_OPTIONS_WITH_VALUE = (
@@ -127,6 +138,33 @@ def current_branch(repo_dir):
     return branch if branch and branch != "HEAD" else None
 
 
+def repo_root(path):
+    """path が git ワークツリー内ならそのルートを返す。管理外・判定不能なら None。"""
+    try:
+        result = subprocess.run(
+            ["git", "-C", path, "rev-parse", "--show-toplevel"],
+            capture_output=True,
+            text=True,
+            timeout=3,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0:
+        return None
+    return result.stdout.strip() or None
+
+
+def existing_directory(path):
+    """path の親をたどり、実在する最初のディレクトリを返す（未作成の階層に対応）。"""
+    directory = os.path.dirname(path) or os.sep
+    while not os.path.isdir(directory):
+        parent = os.path.dirname(directory)
+        if parent == directory:
+            return None
+        directory = parent
+    return directory
+
+
 def pushed_protected_branch(args, protected):
     """push の引数に保護ブランチ宛ての refspec が含まれていればその名前を返す。"""
     for arg in args:
@@ -157,13 +195,46 @@ def push_target_reason(target):
     )
 
 
+def edit_reason(branch, path):
+    return (
+        f"保護ブランチ `{branch}` 上でのファイル変更（`{path}`）はフックによりブロックされました。\n"
+        "issue に紐づく作業ブランチへ移動してから編集してください:\n"
+        "  git switch -c <type>/issue<番号>-<summary>   # 例: git switch -c feat/issue12-issue-driven-workflow\n"
+        f"（保護ブランチ: {', '.join(protected_branches())} / 環境変数 CLAUDE_PROTECTED_BRANCHES で変更可）"
+    )
+
+
+def guard_edit(payload, tool_name, protected):
+    """保護ブランチ上での git 管理下ファイルの変更を拒否する。"""
+    path = (payload.get("tool_input") or {}).get(EDIT_TOOLS[tool_name])
+    if not path:
+        return
+
+    cwd = payload.get("cwd") or os.getcwd()
+    target = path if os.path.isabs(path) else os.path.join(cwd, path)
+
+    directory = existing_directory(target)
+    if directory is None or repo_root(directory) is None:
+        # git 管理外（スクラッチパッド等）は対象外
+        return
+
+    branch = current_branch(directory)
+    if branch in protected:
+        deny(edit_reason(branch, path))
+
+
 def main():
     try:
         payload = json.load(sys.stdin)
     except (json.JSONDecodeError, ValueError):
         allow()
 
-    if payload.get("tool_name") != "Bash":
+    tool_name = payload.get("tool_name")
+    if tool_name in EDIT_TOOLS:
+        guard_edit(payload, tool_name, protected_branches())
+        allow()
+
+    if tool_name != "Bash":
         allow()
 
     command = (payload.get("tool_input") or {}).get("command")

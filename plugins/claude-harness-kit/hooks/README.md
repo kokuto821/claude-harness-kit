@@ -6,7 +6,9 @@
 
 | ファイル | 役割 |
 |---------|------|
-| `protected-branch-guard.py` | 保護ブランチ（既定: main / master / develop）上での `git commit` / `git push` を `PreToolUse` でブロックし、作業ブランチを切るよう促す |
+| `protected-branch-guard.py` | 保護ブランチ（既定: main / master / develop）上での `git commit` / `git push`（Bash）と、git 管理下ファイルの変更（Edit / Write / NotebookEdit）を `PreToolUse` でブロックし、作業ブランチを切るよう促す |
+
+git 管理外のパス（スクラッチパッド等）への書き込みはブロックしません。
 
 保護ブランチは環境変数 `CLAUDE_PROTECTED_BRANCHES`（スペース区切り）で変更できます。
 

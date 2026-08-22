@@ -12,6 +12,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.py\"",
+            "timeout": 5
+          }
+        ]
       }
     ]
   }
