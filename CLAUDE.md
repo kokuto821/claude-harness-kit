@@ -32,6 +32,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | rules/ ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/claude-harness-kit/shared-rules/rules-directory/directory-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/claude-harness-kit/shared-rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/claude-harness-kit/shared-rules/user-feedback/feedback-rule.md` |
+| issue 駆動開発（フェーズ分離・issue 化の判断・1 issue = 1 branch = 1 PR） | `plugins/claude-harness-kit/shared-rules/issue-driven-development/issue-driven-rule.md` |
 | コードレビュー共通ルール（目的＝コードの健康状態の改善・承認の閾値・観点） | `plugins/claude-harness-kit/shared-rules/code-review/review-rule.md` |
 | レビュー重大度（Critical/Warning/Suggestion）の共通定義 | `plugins/claude-harness-kit/shared-rules/review-severity/severity-rule.md` |
 | スキル・エージェント内のルール外部化 | `plugins/claude-harness-kit/shared-rules/rule-externalization/externalization-rule.md` |
