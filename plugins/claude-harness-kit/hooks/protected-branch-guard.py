@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
-"""保護ブランチ上での git commit / push をブロックする PreToolUse フック。
+"""保護ブランチ上での git commit / push とファイル変更をブロックする PreToolUse フック。
 
-Claude Code から実行される Bash コマンドを解析し、現在のブランチが保護対象
-（既定: main / master / develop）である場合の commit / push を拒否する。
+現在のブランチが保護対象（既定: main / master / develop）である場合に、以下を拒否する。
+
+- Bash: `git commit` / `git push`（保護ブランチ宛ての push を含む）
+- Edit / Write / NotebookEdit 等の編集系ツール: git 追跡対象になりうるファイルの変更
+
 判定できないケース（JSON 不正・git リポジトリ外・detached HEAD など）は許可する。
+
+対象外（意図的に見ない）:
+
+- git 管理外のパス（スクラッチパッド等）、`.gitignore` 済みのパス、`.git` 配下
+- **Bash 経由のファイル書き込み**（`sed -i` / リダイレクト / `tee` 等）。シェルの網羅は
+  原理的に不完全なため追わない。変更が保護ブランチへ着地することは commit / push の
+  拒否で防ぐ。
 
 保護ブランチは環境変数 CLAUDE_PROTECTED_BRANCHES（スペース区切り）で上書きできる。
 """
@@ -16,6 +26,13 @@ import sys
 
 DEFAULT_PROTECTED_BRANCHES = ("main", "master", "develop")
 BLOCKED_SUBCOMMANDS = ("commit", "push")
+
+# 編集系ツールの判定。Read 等の読み取り系を巻き込まないよう、名前に含まれる語で判定する
+EDIT_TOOL_MARKERS = ("Edit", "Write")
+# 編集先パスを保持する tool_input のキー（先に見つかったものを使う）
+EDIT_TOOL_PATH_KEYS = ("file_path", "notebook_path")
+
+BRANCH_EXAMPLE = "  git switch -c <type>/issue<番号>-<summary>   # 例: git switch -c feat/issue12-issue-driven-workflow"
 
 # 直後の引数を値として取るグローバルオプション
 GIT_GLOBAL_OPTIONS_WITH_VALUE = (
@@ -53,6 +70,50 @@ def deny(reason):
         )
     )
     sys.exit(0)
+
+
+def run_git(args, cwd):
+    """git を実行する。呼び出し元の GIT_* は引き継がない（パスから見た実リポジトリを判定するため）。"""
+    env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+    try:
+        return subprocess.run(
+            ["git", "-C", cwd, *args],
+            capture_output=True,
+            text=True,
+            timeout=3,
+            env=env,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def current_branch(directory):
+    """directory が git ワークツリー内ならブランチ名を返す。管理外・detached HEAD は None。"""
+    result = run_git(["rev-parse", "--show-toplevel", "--abbrev-ref", "HEAD"], directory)
+    if result is None or result.returncode != 0:
+        return None
+    lines = result.stdout.splitlines()
+    if len(lines) < 2:
+        return None
+    branch = lines[1].strip()
+    return branch if branch and branch != "HEAD" else None
+
+
+def is_ignored(path, directory):
+    """path が .gitignore 済みなら True。判定できなければ False（＝ガード対象のまま）。"""
+    result = run_git(["check-ignore", "-q", "--", path], directory)
+    return result is not None and result.returncode == 0
+
+
+def existing_directory(path):
+    """path の親をたどり、実在する最初のディレクトリを返す（未作成の階層に対応）。"""
+    directory = os.path.dirname(path) or os.sep
+    while not os.path.isdir(directory):
+        parent = os.path.dirname(directory)
+        if parent == directory:
+            return None
+        directory = parent
+    return directory
 
 
 def tokenize(command):
@@ -110,23 +171,6 @@ def parse_git_invocation(segment):
     return None
 
 
-def current_branch(repo_dir):
-    try:
-        result = subprocess.run(
-            ["git", "-C", repo_dir, "rev-parse", "--abbrev-ref", "HEAD"],
-            capture_output=True,
-            text=True,
-            timeout=3,
-        )
-    except (OSError, subprocess.SubprocessError):
-        return None
-    if result.returncode != 0:
-        return None
-    branch = result.stdout.strip()
-    # detached HEAD は判定対象外
-    return branch if branch and branch != "HEAD" else None
-
-
 def pushed_protected_branch(args, protected):
     """push の引数に保護ブランチ宛ての refspec が含まれていればその名前を返す。"""
     for arg in args:
@@ -139,12 +183,16 @@ def pushed_protected_branch(args, protected):
     return None
 
 
+def protected_footer():
+    return f"（保護ブランチ: {', '.join(protected_branches())} / 環境変数 CLAUDE_PROTECTED_BRANCHES で変更可）"
+
+
 def branch_reason(branch, subcommand):
     return (
         f"保護ブランチ `{branch}` 上での `git {subcommand}` はフックによりブロックされました。\n"
         "作業ブランチを切ってから実行してください:\n"
-        "  git switch -c <type>/<summary>   # 例: git switch -c feat/add-protected-branch-guard\n"
-        f"（保護ブランチ: {', '.join(protected_branches())} / 環境変数 CLAUDE_PROTECTED_BRANCHES で変更可）"
+        f"{BRANCH_EXAMPLE}\n"
+        f"{protected_footer()}"
     )
 
 
@@ -153,31 +201,58 @@ def push_target_reason(target):
         f"保護ブランチ `{target}` への `git push` はフックによりブロックされました。\n"
         "作業ブランチを push し、Pull Request 経由でマージしてください:\n"
         "  git push -u origin <current-branch>\n"
-        f"（保護ブランチ: {', '.join(protected_branches())} / 環境変数 CLAUDE_PROTECTED_BRANCHES で変更可）"
+        f"{protected_footer()}"
     )
 
 
-def main():
-    try:
-        payload = json.load(sys.stdin)
-    except (json.JSONDecodeError, ValueError):
-        allow()
+def edit_reason(branch, path):
+    return (
+        f"保護ブランチ `{branch}` 上でのファイル変更（`{path}`）はフックによりブロックされました。\n"
+        "issue に紐づく作業ブランチへ移動してから編集してください:\n"
+        f"{BRANCH_EXAMPLE}\n"
+        f"{protected_footer()}"
+    )
 
-    if payload.get("tool_name") != "Bash":
-        allow()
 
-    command = (payload.get("tool_input") or {}).get("command")
-    if not command:
-        allow()
+def is_edit_tool(tool_name):
+    return isinstance(tool_name, str) and any(marker in tool_name for marker in EDIT_TOOL_MARKERS)
 
+
+def edit_target(tool_input):
+    for key in EDIT_TOOL_PATH_KEYS:
+        value = tool_input.get(key)
+        if isinstance(value, str) and value:
+            return value
+    return None
+
+
+def edit_denial_reason(tool_input, cwd, protected):
+    """保護ブランチ上の追跡対象ファイルへの変更なら拒否理由を返す。問題なければ None。"""
+    path = edit_target(tool_input)
+    if path is None:
+        return None
+
+    # シンボリックリンク経由でワークツリー内へ着弾する経路を塞ぐため実体パスで判定する
+    target = os.path.realpath(os.path.join(cwd, path))
+    directory = existing_directory(target)
+    if directory is None:
+        return None
+
+    branch = current_branch(directory)
+    if branch not in protected:
+        return None
+    if is_ignored(target, directory):
+        return None
+    return edit_reason(branch, path)
+
+
+def bash_denial_reason(command, cwd, protected):
+    """保護ブランチ上の git commit / push なら拒否理由を返す。問題なければ None。"""
     try:
         segments = split_segments(tokenize(command))
     except ValueError:
         # 引用符が閉じていない等。解析できない場合は判定しない
-        allow()
-
-    cwd = payload.get("cwd") or os.getcwd()
-    protected = protected_branches()
+        return None
 
     for segment in segments:
         invocation = parse_git_invocation(segment)
@@ -190,13 +265,39 @@ def main():
         repo = os.path.join(cwd, repo_dir) if repo_dir else cwd
         branch = current_branch(repo)
         if branch in protected:
-            deny(branch_reason(branch, subcommand))
+            return branch_reason(branch, subcommand)
 
         if subcommand == "push":
             target = pushed_protected_branch(args, protected)
             if target:
-                deny(push_target_reason(target))
+                return push_target_reason(target)
+    return None
 
+
+def main():
+    try:
+        payload = json.load(sys.stdin)
+    except (json.JSONDecodeError, ValueError):
+        allow()
+
+    tool_input = payload.get("tool_input")
+    if not isinstance(tool_input, dict):
+        allow()
+
+    tool_name = payload.get("tool_name")
+    cwd = payload.get("cwd") or os.getcwd()
+    protected = protected_branches()
+
+    if is_edit_tool(tool_name):
+        reason = edit_denial_reason(tool_input, cwd, protected)
+    elif tool_name == "Bash":
+        command = tool_input.get("command")
+        reason = bash_denial_reason(command, cwd, protected) if isinstance(command, str) and command else None
+    else:
+        reason = None
+
+    if reason:
+        deny(reason)
     allow()
 
 
