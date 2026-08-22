@@ -19,6 +19,7 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 ## ルール
 
 - issue 化の判断・issue の粒度・ブランチ名・`1 issue = 1 branch = 1 PR` の対応・副作用を伴う GitHub 操作の承認は [[issue-driven-rule]]（`shared-rules/issue-driven-development/issue-driven-rule.md`）に従う。本スキルに基準を再掲しない。
+- **ファイルを変更する前に、対象 issue に紐づくブランチ上にいることを `git branch --show-current` で確認する。** 既定ブランチ上、または別 issue のブランチ上だった場合は、手順2に戻ってブランチを切り直してから進む（[[issue-driven-rule]]「必ず issue に紐づくブランチで作業する」）。
 - **本スキルは実装コードを書かない**。産出は手順4の委譲先スキルの責任とする。
 - セルフレビューと指摘の適用の分離は [[review-independence-rule]]（`rules/harness-engineering/review-independence-rule.md`）に従う。レビューは産出者と別のエージェントが行い、適用は産出者に戻す。修正後の再検証も修正した本人に委ねない。
 - コミット単位・コミットメッセージは [[commit-message-simple]]（`skills/commit-message-simple/SKILL.md`）の出力に従う。本スキルで独自に組み立てない。
@@ -36,9 +37,14 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 
 ### 2. BRANCH — 作業ブランチを作成する
 
-- `git status` で未コミット変更がないことを確認する。あれば退避するか今回の作業に含めるかをユーザーに確認する。
+**このフェーズを飛ばして実装に進まない。** issue に紐づくブランチが無い状態でファイルを変更しない（[[issue-driven-rule]]）。
+
+- `git branch --show-current` と `git status` で、現在のブランチと未コミット変更を確認する。
+  - 未コミット変更があれば、退避するか今回の作業に含めるかをユーザーに確認する。
+  - 対象 issue のブランチがすでに存在し、その上にいる場合はこのフェーズを完了として次へ進む。
 - 既定ブランチを最新化する（`git switch <既定ブランチ>` → `git pull`）。
 - ブランチ名を [[issue-driven-rule]] の命名に従って1案提示し、承認を得てから `git switch -c <branch>` を実行する。
+- 切り替え後、`git branch --show-current` で意図したブランチ上にいることを確認してから次へ進む。
 
 ### 3. PLAN — 実装方針を合意する
 
