@@ -4,5 +4,6 @@
 settings.local.json
 settings.development.local.json
 .claude/skills/
+.claude/commands/
 __pycache__/
 *.pyc

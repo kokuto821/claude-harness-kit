@@ -1,0 +1,38 @@
+schema: spec-driven
+
+# Project context (shown to AI when creating artifacts, never copied into artifacts)
+context: |
+  このプロジェクトは claude-harness-kit 自身（Claude Code の steering kit）。
+  規約は CLAUDE.md のルール索引、plugins/claude-harness-kit/rules/、
+  plugins/claude-harness-kit/shared-rules/ を参照すること。ここや生成する
+  アーティファクトに規約本文を転記・再掲しない。ファイルパスで参照する。
+  本ワークフローと既存 skill の役割分担は
+  plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md
+  に定義されている。
+
+# Per-artifact rules (constraints for the AI, never copied into artifacts)
+rules:
+  proposal:
+    - この変更の起点となった GitHub issue 番号を明記する
+      （plugins/claude-harness-kit/shared-rules/issue-driven-development/issue-driven-rule.md）。
+  design:
+    - 設計判断は plugins/claude-harness-kit/rules/design-principles/design-rule.md
+      の観点で代替案と比較する。
+  tasks:
+    - 各タスクについて、実装をどの既存委譲先（tdd / coding / test-coding。
+      github-issue-resolve の IMPLEMENT 表を参照）に委ねるかを明記する。
+      本ワークフロー自身は実装しない。
+
+# Per-operation guidance for apply and archive
+operations:
+  apply:
+    guidance:
+      - 本ワークフローは tasks.md を実行するが、既存の産出 skill
+        （tdd/coding/test-coding）を置き換えない。各タスクはそれらに委譲する
+        （plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md）。
+  archive:
+    guidance:
+      - apply 実行後のレビューは、propose/apply を行った本人とは別のエージェント
+        （coding-review または ai-engineering-review）が行う
+        （plugins/claude-harness-kit/rules/harness-engineering/review-independence-rule.md）。
+        レビュー未実施のまま archive しない。
