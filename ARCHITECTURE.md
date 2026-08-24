@@ -19,6 +19,8 @@ claude-harness-kit/
 │
 ├── .claude-plugin/             ← マーケットプレイスカタログ（marketplace.json）
 │
+├── openspec/                   ← OpenSpec（仕様駆動開発ツール）の設定・確定仕様・変更提案（openspec/README.md）
+│
 └── .claude/                    ← Claude Code 設定（settings.local.json）
     └── rules → plugins/claude-harness-kit/rules  ← コアの symlink（開発時のみ）
 ```
@@ -26,3 +28,5 @@ claude-harness-kit/
 フック（`hooks/`）はプラグインマニフェスト `plugins/claude-harness-kit/.claude-plugin/plugin.json` の `hooks` セクションで配線し、パスは `${CLAUDE_PLUGIN_ROOT}` 起点で書く。
 
 スキル・ルール・エージェント等は `.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグイン（`plugins/claude-harness-kit`）として読み込む。コンテンツを複製する手動の symlink 同期は不要。例外として、コアルール（`rules/`）は開発時のみ `.claude/rules` へのディレクトリ symlink で native 自動ロードする（詳細は structure-rule の「コアルールの symlink 例外」節）。
+
+`openspec/` の位置づけ（plugins/ 配下ではない理由・commit 方針）は structure-rule の「openspec/ の扱い」節を参照。

@@ -6,6 +6,13 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 
 ディレクトリ構成と読み込みの仕組みは `ARCHITECTURE.md` を参照。
 
+## openspec(仕様駆動開発)
+
+このリポジトリは [OpenSpec](https://github.com/Fission-AI/OpenSpec) (`@fission-ai/openspec`)で初期化済み。大規模変更の合意形成に使う（`openspec/config.yaml` の `schema: spec-driven`）。
+
+- ディレクトリ構成・操作手順（explore/propose/apply/archive）は `openspec/README.md` を参照
+- 既存 skill（tdd/coding/coding-review/github-issue-resolve 等）との役割分担・いつ使うかの判断基準は `plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md` を参照
+
 ## ルール
 
 詳細は各ルールファイルを参照。
@@ -41,5 +48,6 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | 推論の足場（分解・自己検証）の要否 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/scaffolding-rule.md` |
 | プロンプト・スキル改善の原則 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/improvement-rule.md` |
 | プロンプト頑健性・安全性 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/robustness-rule.md` |
+| OpenSpec と既存 skill の役割分担（大規模変更の合意形成） | `plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md` |
 | コンテキスト管理（有限な注意予算のキュレーション・長時間軸タスク、索引から各ルールへ） | `plugins/claude-harness-kit/shared-rules/context-engineering/README.md` |
 | UIデザイン（索引から各ルールへ） | `plugins/claude-harness-kit/shared-rules/ui-design/README.md` |
