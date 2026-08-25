@@ -6,13 +6,6 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 
 ディレクトリ構成と読み込みの仕組みは `ARCHITECTURE.md` を参照。
 
-## openspec(仕様駆動開発)
-
-このリポジトリは [OpenSpec](https://github.com/Fission-AI/OpenSpec) (`@fission-ai/openspec`)で初期化済み。大規模変更の合意形成に使う（`openspec/config.yaml` の `schema: spec-driven`）。
-
-- ディレクトリ構成・操作手順（explore/propose/apply/archive）は `openspec/README.md` を参照
-- 既存 skill（tdd/coding/coding-review/github-issue-resolve 等）との役割分担・いつ使うかの判断基準は `plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md` を参照
-
 ## ルール
 
 詳細は各ルールファイルを参照。

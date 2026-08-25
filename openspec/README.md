@@ -15,13 +15,7 @@ OpenSpec（`@fission-ai/openspec`、仕様駆動開発ツール）の設定・�
 
 ## ワークフロー
 
-1. **探索**(任意): 要件が固まっていない場合は `openspec-explore` で壁打ちする
-2. **提案**: `openspec-propose` で `changes/<name>/` に proposal.md・design.md・specs delta・tasks.md 一式を生成する
-3. **提案の見直し**(任意): 起票済みの提案を直すときは手で編集せず `openspec-update-change` に通す
-4. **実装**: `openspec-apply-change` で tasks.md を1つずつ消化する
-5. **反映**: `openspec-archive-change` で `specs/` へマージし `changes/archive/` へ格納する。実装を伴わずスペックだけ取り込む場合は `openspec-sync-specs` を使う
-
-`openspec-*`（スキル）と `/opsx:*`（スラッシュコマンド、例 `/opsx:propose`）は同一の内容を指します。どちらを使ってもかまいません。
+**`plugins/claude-harness-kit/skills/openspec-workflow/SKILL.md` を使って進めてください。** explore/propose/update-change/sync-specs は CLI が生成するスキル（`openspec-explore` 等）をそのまま使いますが、apply/archive は `openspec-apply-change`/`openspec-archive-change` を直接使わず、`openspec-workflow` が委譲・レビューゲートを挟んで進行します（理由は `openspec-rule.md` を参照）。
 
 OpenSpec 自体の事実（コマンド・config.yaml のフィールド等）は
 `plugins/claude-harness-kit/documents/reference/spec-driven-development/openspec-overview.md`、
@@ -30,4 +24,4 @@ OpenSpec 自体の事実（コマンド・config.yaml のフィールド等）�
 
 ## 前提
 
-`.claude/skills/openspec-*` と `.claude/commands/opsx/` は `openspec init` の生成物で `.gitignore` により未追跡です。クローン後は各自 `openspec init --tools claude --profile core` を実行してください。
+この `openspec/` は `plugins/claude-harness-kit/skills/openspec-setup/SKILL.md` で導入したものです（claude-harness-kit 自身のリポジトリも他の作業リポジトリと同じ手順で導入しています）。`.claude/skills/openspec-*` と `.claude/commands/opsx/` は `openspec init` の生成物で `.gitignore` により未追跡なので、クローン後は各自 `openspec-setup` スキルを実行して再生成してください。

@@ -39,9 +39,9 @@
 
 `openspec/`（リポジトリ直下）は、このリポジトリ自身の開発に使うプロジェクトローカルなツール設定。`plugins/claude-harness-kit/` のコンテンツ（マーケットプレイス配布対象）ではない。`openspec` CLI の挙動等の事実は `documents/reference/spec-driven-development/openspec-overview.md` を参照。
 
-- `openspec/` 配下（`config.yaml` / `schemas/` / `specs/` / `changes/`）はこのリポジトリに commit する（確定仕様・変更提案の履歴として残すため）。
-- `.claude/skills/openspec-*` と `.claude/commands/opsx/` は `openspec init` の生成物で git 管理外（`.gitignore`）。クローンした各自が `openspec init` を実行して再生成する。
-- OpenSpec のフェーズと既存 skill（tdd/coding/coding-review/github-issue-resolve 等）の役割分担は `shared-rules/openspec-integration/openspec-rule.md` を参照。
+- `openspec/` 配下（`config.yaml` / `schemas/` / `specs/` / `changes/`）はこのリポジトリに commit する（確定仕様・変更提案の履歴として残すため）。導入は `plugins/claude-harness-kit/skills/openspec-setup/SKILL.md` で行う。
+- `.claude/skills/openspec-*` と `.claude/commands/opsx/` は `openspec init` の生成物で git 管理外（`.gitignore`）。クローンした各自が `openspec-setup` スキルを実行して再生成する。
+- OpenSpec のフェーズと既存 skill（tdd/coding/coding-review/github-issue-resolve 等）の役割分担・apply/archive の進行は `shared-rules/openspec-integration/openspec-rule.md`・`skills/openspec-workflow/SKILL.md` を参照。
 
 ## コアルールの symlink 例外
 
