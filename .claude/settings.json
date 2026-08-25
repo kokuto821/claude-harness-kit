@@ -1,5 +1,11 @@
 {
   "enabledPlugins": {
     "claude-harness-kit@claude-harness-kit": true
+  },
+  "permissions": {
+    "deny": [
+      "Skill(openspec-apply-change *)",
+      "Skill(openspec-archive-change *)"
+    ]
   }
 }
