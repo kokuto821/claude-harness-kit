@@ -41,5 +41,6 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | 推論の足場（分解・自己検証）の要否 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/scaffolding-rule.md` |
 | プロンプト・スキル改善の原則 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/improvement-rule.md` |
 | プロンプト頑健性・安全性 | `plugins/claude-harness-kit/shared-rules/prompt-engineering/robustness-rule.md` |
+| OpenSpec と既存 skill の役割分担（大規模変更の合意形成） | `plugins/claude-harness-kit/shared-rules/openspec-integration/openspec-rule.md` |
 | コンテキスト管理（有限な注意予算のキュレーション・長時間軸タスク、索引から各ルールへ） | `plugins/claude-harness-kit/shared-rules/context-engineering/README.md` |
 | UIデザイン（索引から各ルールへ） | `plugins/claude-harness-kit/shared-rules/ui-design/README.md` |

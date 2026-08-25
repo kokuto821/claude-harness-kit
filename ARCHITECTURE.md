@@ -26,3 +26,5 @@ claude-harness-kit/
 フック（`hooks/`）はプラグインマニフェスト `plugins/claude-harness-kit/.claude-plugin/plugin.json` の `hooks` セクションで配線し、パスは `${CLAUDE_PLUGIN_ROOT}` 起点で書く。
 
 スキル・ルール・エージェント等は `.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグイン（`plugins/claude-harness-kit`）として読み込む。コンテンツを複製する手動の symlink 同期は不要。例外として、コアルール（`rules/`）は開発時のみ `.claude/rules` へのディレクトリ symlink で native 自動ロードする（詳細は structure-rule の「コアルールの symlink 例外」節）。
+
+OpenSpec（仕様駆動開発ツール）は本リポジトリには常設しない。導入先の作業リポジトリでの位置づけは structure-rule の「openspec/ の扱い」節を参照。

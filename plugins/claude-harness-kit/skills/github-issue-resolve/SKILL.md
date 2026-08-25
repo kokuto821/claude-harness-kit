@@ -62,6 +62,7 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 ### 3. PLAN — 実装方針を合意する
 
 - issue の「対応方針」を出発点に、**変更するファイル・追加する成果物・手順1で要約した完了条件との対応**を提示する。
+- 対話だけで合意形成しづらい規模かどうかは [[openspec-rule]]（`shared-rules/openspec-integration/openspec-rule.md`）の判断基準に照らし、該当する場合は OpenSpec の `propose` を使う。
 - 多段の判断を含む場合は Plan mode で計画を提示して承認を得る。
 - **合意を得るまで実装に入らない。** issue のスコープを超える変更が必要だと判明したら、ここで issue 化を検討し提案する（[[issue-driven-rule]] 粒度基準）。
 
