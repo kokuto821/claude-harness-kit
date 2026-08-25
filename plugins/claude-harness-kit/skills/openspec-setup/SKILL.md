@@ -32,8 +32,8 @@ disable-model-invocation: true
 3. **`openspec init`** — `openspec init --tools claude --profile core` を実行する。他ツールを使いたい場合のみ `--tools` を変更する（ユーザーに確認してから）。
 4. **生成物の確認** — `git status`/`git diff` で `.claude/skills/openspec-*` と `.claude/commands/opsx/` が生成されたことを確認する。`.gitignore` に `.claude/skills/`・`.claude/commands/` が無ければ追加を提案する（これらは `openspec init`/`openspec update` のたびに再生成される成果物であり、この kit の管理対象ではない）。
 5. **schema のローカル fork** — `openspec schema fork spec-driven spec-driven`（同名でのローカル上書き）を実行する。`openspec schema which spec-driven` で `Source: project` に切り替わったことを確認する。
-6. **テンプレートへのポインタ埋め込み** — フォークしたテンプレート（`openspec/schemas/spec-driven/templates/{proposal,design,tasks}.md`）に、`<!-- claude-harness-kit: ... -->` 形式の HTML コメントで参照ポインタを埋め込む(ルール本文はコピーしない)。**埋め込む内容は [[openspec-rule]] §導入 の表を唯一の正とし、本手順には再掲しない**（対象 issue 番号の明記が不要な作業ディレクトリでは、`proposal.md` 側のみユーザーに確認のうえ省略してよい）。実例は claude-harness-kit 自身の `openspec/schemas/spec-driven/templates/*.md` を参照。
-7. **`config.yaml` の編集** — `schema`/`context`/`rules`/`operations` を編集する。`context`/`rules` はアーティファクトに一切コピーされない AI 向け制約なので、ここに要点を書いてよい(本文コピーではない)。**書く内容は手順6と同じく [[openspec-rule]] §導入 の表を唯一の正とする。** 実例は claude-harness-kit 自身の `openspec/config.yaml` を参照。
+6. **テンプレートへのポインタ埋め込み** — フォークしたテンプレート（`openspec/schemas/spec-driven/templates/{proposal,design,tasks}.md`）に、`<!-- claude-harness-kit: ... -->` 形式の HTML コメントで参照ポインタを埋め込む(ルール本文はコピーしない)。**埋め込む内容は [[openspec-rule]] §導入 の表を唯一の正とし、本手順には再掲しない**（対象 issue 番号の明記が不要な作業ディレクトリでは、`proposal.md` 側のみユーザーに確認のうえ省略してよい）。
+7. **`config.yaml` の編集** — `schema`/`context`/`rules`/`operations` を編集する。`context`/`rules` はアーティファクトに一切コピーされない AI 向け制約なので、ここに要点を書いてよい(本文コピーではない)。**書く内容は手順6と同じく [[openspec-rule]] §導入 の表を唯一の正とする。**
 8. **CLI 生成スキルの直接自動起動をブロックする** — `.claude/settings.json`（プロジェクト設定・commit 対象）の `permissions.deny` に以下を追加する（既存の設定は保持してマージする）。理由・位置づけは再掲せず [[openspec-rule]] §レビュー独立性 を唯一の正とする。
    ```json
    "permissions": {
