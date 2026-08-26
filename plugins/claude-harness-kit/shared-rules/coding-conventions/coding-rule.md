@@ -154,6 +154,30 @@ const variants = {
 
 ---
 
+## Storybook
+
+- コンポーネントを実装する際は**必ず Storybook（`.stories.tsx`）を実装する**
+- コンポーネントファイルと同一フォルダに配置する（コロケーション）
+
+```typescript
+// AppButton.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { AppButton } from './AppButton';
+
+const meta: Meta<typeof AppButton> = {
+  component: AppButton,
+};
+
+export default meta;
+type Story = StoryObj<typeof AppButton>;
+
+export const Default: Story = {
+  args: { label: 'ボタン' },
+};
+```
+
+---
+
 ## Export パターン
 
 - **Named export を基本**とする（`export const`）
