@@ -14,6 +14,16 @@
 | 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `LAYOUT_HORIZONTAL_PADDING`, `MAX_RETRY_COUNT` |
 
 - 省略しない完全な名前を使用する
+- `coordinate` 等 汎用的すぎる名前 避ける。型あっても意味伝わらない名前は不可。値の意味 伝わる名前にする
+
+```typescript
+// ✅ 良い例
+const touchCoordinate = { x: clientX, y: clientY };
+
+// ❌ 悪い例
+const coordinate = { x: clientX, y: clientY };
+```
+
 - テスト関連（テストファイル・ヘルパーファイル・ヘルパー関数）の命名は `test-rule.md` を参照する
 
 ---
@@ -91,6 +101,7 @@ export const isUser = (value: Person): value is User => {
 ## 定数
 
 - マジックナンバーや固定文字列は **UPPER_SNAKE_CASE** で定数化する
+- **正規表現リテラルも対象**。マジックナンバー同様 定数化する（同一パターンの重複を防ぎ、意図を名前で明示するため）
 - 定数はスコープに応じて配置先を使い分ける
   - グローバルに使用するものは `app/styles/layoutConstants.ts` または `app/css/color.ts`
   - 機能固有のものは `feature/<機能名>/` 配下に定義する
@@ -99,11 +110,14 @@ export const isUser = (value: Person): value is User => {
 // ✅ 良い例
 const MAX_RETRY_COUNT = 3;
 const DEFAULT_PAGE_SIZE = 20;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 fetchItems(DEFAULT_PAGE_SIZE);
+EMAIL_PATTERN.test(email);
 
 // ❌ 悪い例
 fetchItems(20);
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 ```
 
 ---
@@ -235,12 +249,59 @@ export function greet(name: string): string {
 ```
 
 ```typescript
+// ✅ 良い例（型を named type として切り出す）
+type DetermineSwipeDirectionParams = {
+  deltaX: number;
+  deltaY: number;
+  threshold: number;
+  disableUpSwipe: boolean;
+};
+
 export const determineSwipeDirection = ({
   deltaX,
   deltaY,
   threshold,
   disableUpSwipe,
 }: DetermineSwipeDirectionParams): SwipeDirection | null => {...};
+
+// ❌ 悪い例（型をインラインで記述）
+export const determineSwipeDirection = ({
+  deltaX,
+  deltaY,
+  threshold,
+  disableUpSwipe,
+}: {
+  deltaX: number;
+  deltaY: number;
+  threshold: number;
+  disableUpSwipe: boolean;
+}): SwipeDirection | null => {...};
+```
+
+- 複数責務 混在する大きい関数 → 意味まとまりごと 独立関数に分離する（SRP/SoC の具体適用。定義・観点は [[design-rule]] を参照）
+
+```typescript
+// ❌ 悪い例（判定・状態更新・ログ出力が1関数に混在）
+const handleTouchEnd = (params: DetermineSwipeDirectionParams): void => {
+  const swipeDirection = determineSwipeDirection(params);
+  setDirection(swipeDirection);
+  console.log(`👆 スワイプ方向: ${swipeDirection}`);
+};
+
+// ✅ 良い例（責務ごと分離）
+const applySwipeDirection = (swipeDirection: SwipeDirection | null): void => {
+  setDirection(swipeDirection);
+};
+
+const logSwipeDirection = (swipeDirection: SwipeDirection | null): void => {
+  console.log(`👆 スワイプ方向: ${swipeDirection}`);
+};
+
+const handleTouchEnd = (params: DetermineSwipeDirectionParams): void => {
+  const swipeDirection = determineSwipeDirection(params);
+  applySwipeDirection(swipeDirection);
+  logSwipeDirection(swipeDirection);
+};
 ```
 
 ---

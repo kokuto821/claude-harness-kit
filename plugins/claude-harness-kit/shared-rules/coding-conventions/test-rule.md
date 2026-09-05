@@ -36,6 +36,38 @@ describe('determineSwipeDirection', () => {
 
 ---
 
+## 同一構造テストのまとめ方
+
+- 入力のみ異なり構造同一 複数テスト → `test.each` でまとめる
+
+```typescript
+// ✅ 良い例
+describe('determineSwipeDirection', () => {
+  test.each([
+    { deltaX: 20, threshold: 10, expected: 'right' },
+    { deltaX: -20, threshold: 10, expected: 'left' },
+  ])('deltaX=$deltaX の場合、$expected を返す', ({ deltaX, threshold, expected }) => {
+    const params = createSwipeParams({ deltaX, threshold });
+    expect(determineSwipeDirection(params)).toBe(expected);
+  });
+});
+
+// ❌ 悪い例（構造重複）
+describe('determineSwipeDirection', () => {
+  test('deltaXが20の場合、rightを返す', () => {
+    const params = createSwipeParams({ deltaX: 20, threshold: 10 });
+    expect(determineSwipeDirection(params)).toBe('right');
+  });
+
+  test('deltaXが-20の場合、leftを返す', () => {
+    const params = createSwipeParams({ deltaX: -20, threshold: 10 });
+    expect(determineSwipeDirection(params)).toBe('left');
+  });
+});
+```
+
+---
+
 ## ファイル分割
 
 - テストファイルが **500行を超えた場合**、関心ごとに別ファイルへの分割を検討する
@@ -89,4 +121,18 @@ test('deltaXが閾値を超えた場合、右スワイプを返す', () => {
   // Assert
   expect(result).toBe('right');
 });
+```
+
+---
+
+## アサーション
+
+- オブジェクト全体検証 → `toEqual` でなく `toStrictEqual` 使う（余分プロパティ混入も検知）
+
+```typescript
+// ✅ 良い例
+expect(params).toStrictEqual(createSwipeParams({ deltaX: 20, threshold: 10 }));
+
+// ❌ 悪い例（余分プロパティを見逃す）
+expect(params).toEqual(createSwipeParams({ deltaX: 20, threshold: 10 }));
 ```
