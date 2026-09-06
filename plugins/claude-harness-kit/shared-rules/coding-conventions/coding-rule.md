@@ -1,17 +1,8 @@
 # コーディングルール
 
-## 命名規則
+機械的に判定可能なルール（命名規則・`interface`/`any`禁止・export パターン・アロー関数・マジックナンバー定数化）は `coding-lint-rule.md` を参照する。本ファイルには文脈依存でレビューでしか検出できない項目を残す。
 
-| 対象 | 規則 | 例 |
-|---|---|---|
-| コンポーネントファイル | PascalCase | `AppButton.tsx`, `DrawerHeader.tsx` |
-| hooks / utils ファイル | camelCase | `useDisclosure.ts`, `swipeUtils.ts` |
-| 型定義ファイル | camelCase + `Types.ts` サフィックス | `userTypes.ts`, `productTypes.ts` |
-| boolean 変数 | `is` / `has` プリフィックス | `isExpanded`, `isVisible` |
-| state 更新関数 | `set` プリフィックス | `setSelectedItem`, `setLoading` |
-| コールバック関数 | `on` / `handle` プリフィックス | `onClickLoading`, `handleClick` |
-| プロジェクト固有コンポーネント | プロジェクト固有プレフィックス（プロジェクトごとに定める） | `Nei` を採用する場合: `NeiCard`, `NeiButton` |
-| 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `LAYOUT_HORIZONTAL_PADDING`, `MAX_RETRY_COUNT` |
+## 命名規則
 
 - 省略しない完全な名前を使用する
 - `coordinate` 等 汎用的すぎる名前 避ける。型あっても意味伝わらない名前は不可。値の意味 伝わる名前にする
@@ -24,7 +15,7 @@ const touchCoordinate = { x: clientX, y: clientY };
 const coordinate = { x: clientX, y: clientY };
 ```
 
-- テスト関連（テストファイル・ヘルパーファイル・ヘルパー関数）の命名は `test-rule.md` を参照する
+- テスト関連の命名は `test-rule.md`（テストファイル・ヘルパーファイル）／`test-lint-rule.md`（ヘルパー関数）を参照する
 
 ---
 
@@ -55,18 +46,13 @@ app/
 
 ## TypeScript
 
-- `interface` は使わず `export type` を使用する
-- **`any` 型は使用しない**。型が不明な場合は `unknown` を使用し、型ガードで絞り込む
+- 型が不明な場合は `unknown` を使用し、型ガードで絞り込む
 
 ```typescript
-// ✅ 良い例
 const parseResponse = (data: unknown): ResponseType => {
   if (!isResponseType(data)) throw new Error('Invalid response');
   return data;
 };
-
-// ❌ 悪い例
-const parseResponse = (data: any) => { ... };
 ```
 
 - コンポーネントは `FC<Props>` パターンで統一する
@@ -100,7 +86,7 @@ export const isUser = (value: Person): value is User => {
 
 ## 定数
 
-- マジックナンバーや固定文字列は **UPPER_SNAKE_CASE** で定数化する
+- 固定文字列は **UPPER_SNAKE_CASE** で定数化する
 - **正規表現リテラルも対象**。マジックナンバー同様 定数化する（同一パターンの重複を防ぎ、意図を名前で明示するため）
 - 定数はスコープに応じて配置先を使い分ける
   - グローバルに使用するものは `app/styles/layoutConstants.ts` または `app/css/color.ts`
@@ -108,15 +94,11 @@ export const isUser = (value: Person): value is User => {
 
 ```typescript
 // ✅ 良い例
-const MAX_RETRY_COUNT = 3;
-const DEFAULT_PAGE_SIZE = 20;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-fetchItems(DEFAULT_PAGE_SIZE);
 EMAIL_PATTERN.test(email);
 
 // ❌ 悪い例
-fetchItems(20);
 /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 ```
 
@@ -192,11 +174,9 @@ export const Default: Story = {
 
 ---
 
-## Export パターン
+## Path alias
 
-- **Named export を基本**とする（`export const`）
-- `default export` は page コンポーネントのみ
-- Path alias `@/` を使用する
+- `@/` を使用する
 
 ```typescript
 import { AppButton } from '@/app/components/molecules/AppButton';
@@ -234,19 +214,6 @@ useEffect(() => {
 - 設計原則は [[design-rule]]（`rules/design-principles/design-rule.md`）に従う
 - 副作用のない純粋関数を推奨する
 - 引数が多い場合はオブジェクト形式にする
-- 関数は**アロー関数**で定義する
-
-```typescript
-// ✅ 良い例
-export const greet = (name: string): string => {
-  return `Hello, ${name}`;
-};
-
-// ❌ 悪い例
-export function greet(name: string): string {
-  return `Hello, ${name}`;
-}
-```
 
 ```typescript
 // ✅ 良い例（型を named type として切り出す）
@@ -338,3 +305,9 @@ console.log('✅ データを取得しました');
 ## テスト
 
 テストの命名・構造・分割・ヘルパー・AAA パターンは `test-rule.md` に分離した。テストの実装・レビューは `test-rule.md` を参照すること。
+
+---
+
+## 関連ルール
+
+- [[coding-lint-rule]]（`shared-rules/coding-conventions/coding-lint-rule.md`） — 機械的に判定可能なルール（本ファイルからの分離先）

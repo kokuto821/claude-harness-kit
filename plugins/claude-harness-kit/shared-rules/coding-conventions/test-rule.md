@@ -2,37 +2,14 @@
 
 テストの命名・構造・分割・ヘルパー・記述スタイルを定める。`coding-rule.md` から分離した、テスト専用の規約。
 
+機械的に判定可能なルール（ヘルパー関数の命名・describe ネスト制限・`it()`禁止・500行制限・`toStrictEqual`使用）は `test-lint-rule.md` を参照する。本ファイルには文脈依存でレビューでしか検出できない項目を残す。
+
 ## 命名規則
 
 | 対象 | 規則 | 例 |
 |---|---|---|
 | テストファイル | 対象ファイル名 + `.test.ts` | `swipeUtils.test.ts` |
 | テストヘルパーファイル | camelCase + `Helpers.ts` サフィックス | `swipeTestHelpers.ts` |
-| テストヘルパー関数 | `create` / `make` / `build` プリフィックス | `createSwipeParams`, `buildMockMap` |
-
----
-
-## 構造・記述スタイル
-
-- `describe` のネストは **1層まで**とする
-- テストケースは `it()` ではなく **`test()`** で記述する
-
-```typescript
-// ✅ 良い例
-describe('determineSwipeDirection', () => {
-  test('deltaXが閾値を超えた場合、右スワイプを返す', () => { ... });
-  test('disableUpSwipeがtrueの場合、上スワイプを返さない', () => { ... });
-});
-
-// ❌ 悪い例（ネストが深い）
-describe('determineSwipeDirection', () => {
-  describe('右スワイプ', () => {
-    describe('閾値超過時', () => {
-      it('右を返す', () => { ... });
-    });
-  });
-});
-```
 
 ---
 
@@ -70,7 +47,7 @@ describe('determineSwipeDirection', () => {
 
 ## ファイル分割
 
-- テストファイルが **500行を超えた場合**、関心ごとに別ファイルへの分割を検討する
+- ファイル行数の上限は `test-lint-rule.md` を参照する。上限を超えた場合は関心ごとに別ファイルへの分割を検討する
 
 ```
 feature/map/utils/__tests__/
@@ -125,14 +102,6 @@ test('deltaXが閾値を超えた場合、右スワイプを返す', () => {
 
 ---
 
-## アサーション
+## 関連ルール
 
-- オブジェクト全体検証 → `toEqual` でなく `toStrictEqual` 使う（余分プロパティ混入も検知）
-
-```typescript
-// ✅ 良い例
-expect(params).toStrictEqual(createSwipeParams({ deltaX: 20, threshold: 10 }));
-
-// ❌ 悪い例（余分プロパティを見逃す）
-expect(params).toEqual(createSwipeParams({ deltaX: 20, threshold: 10 }));
-```
+- [[test-lint-rule]]（`shared-rules/coding-conventions/test-lint-rule.md`） — 機械的に判定可能なルール（本ファイルからの分離先）
