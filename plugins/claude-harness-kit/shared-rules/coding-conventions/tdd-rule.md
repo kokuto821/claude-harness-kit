@@ -70,7 +70,7 @@ TDD は以下の4つの状態にシステムを導くことを目的とする:
 
 いかなる形式のハードコードされた値も厳禁。
 
-- **マジックナンバー:** ロジック中に数値リテラルを直接書かない。名前付き定数として定義する。命名規則の具体（`UPPER_SNAKE_CASE` 等）は [[coding-rule]]（`shared-rules/coding-conventions/coding-rule.md`）に従う。
+- **マジックナンバー:** ロジック中に数値リテラルを直接書かない。名前付き定数として定義する。命名規則の具体（`UPPER_SNAKE_CASE` 等）は [[coding-lint-rule]]（`shared-rules/coding-conventions/coding-lint-rule.md`）に従う。
 - **設定値:** API キー・URL・ファイルパス等の環境設定は設定ファイル（`.env`, `config.js` 等）や環境変数から読み込む。ソースコード中に存在させない。
 - **ユーザー向け文字列:** UI・ログ・エラーのテキストは定数や localization ファイルで管理し、保守性と国際化に備える。
 
