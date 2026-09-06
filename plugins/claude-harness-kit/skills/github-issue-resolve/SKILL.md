@@ -24,7 +24,7 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 - セルフレビューと指摘の適用の分離は [[review-independence-rule]]（`rules/harness-engineering/review-independence-rule.md`）に従う。レビューは産出者と別のエージェントが行い、適用は産出者に戻す。**修正後の再検証も修正した本人に委ねない。** 手順5・手順9の再検証はこの規範に基づく。
 - コミット単位・コミットメッセージは [[commit-message-simple]]（`skills/commit-message-simple/SKILL.md`）の出力に従う。本スキルで独自に組み立てない。
 - **現フェーズ（SELECT / BRANCH / PLAN / IMPLEMENT / REVIEW / COMMIT / PR / MERGE / CLOSE）を常に明示する。** フェーズを飛ばさない。
-- 手順4・5の委譲先はいずれも in-context 起動する（＝スキル起動。定義は [[selection-rule]] を参照）。domain 判定と具象サブエージェントへの隔離委譲（＝エージェント委譲）は、各入口スキル側の責務とする。
+- 手順4・5の委譲先はいずれも in-context 起動する（スキル起動／エージェント委譲の定義は [[selection-rule]] を参照）。domain 判定と具象サブエージェントへの隔離委譲は、各入口スキル側の責務とする。
 - **フェーズをまたぐ記憶**: **git 管理外の**スクラッチパッドに `issue<番号>-notes.md` を持ち、各フェーズ完了時に数行を追記する（リポジトリ内に置くと保護ブランチ上でフックに拒否され、PR にも混入する）。会話が compaction されても手順9の突き合わせと再開が成立するようにする。記録するのは以下。
   - **現フェーズと次の一手**（1行。再開点の復元に使う）
   - SELECT: 対象 issue 番号と完了条件の要約 ／ BRANCH: ブランチ名
