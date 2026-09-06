@@ -19,7 +19,7 @@ OpenSpec のフェーズ（explore/propose/apply/archive）を統括する。CLI
 
 - OpenSpec フェーズと既存フェーズ・skill の役割分担は [[openspec-rule]]（`shared-rules/openspec-integration/openspec-rule.md`）を唯一の正とする。
 - レビューと産出者の分離は [[review-independence-rule]]（`rules/harness-engineering/review-independence-rule.md`）に従う。apply の産出者と、archive 前のレビューは常に別エージェントにする。
-- 実装の委譲先判定は [[github-issue-resolve]]（`skills/github-issue-resolve/SKILL.md`）手順4の IMPLEMENT 表と同じ基準を使う。委譲先スキルは in-context 起動する（domain 判定と具象サブエージェントへの隔離委譲は各委譲先スキルの責務）。
+- 実装の委譲先判定は [[github-issue-resolve]]（`skills/github-issue-resolve/SKILL.md`）手順4の IMPLEMENT 表と同じ基準を使う。委譲先スキルは in-context 起動する（＝スキル起動。定義は [[selection-rule]] を参照）。domain 判定と具象サブエージェントへの隔離委譲（＝エージェント委譲）は各委譲先スキルの責務。
 - `openspec/` が未導入の場合は [[openspec-setup]]（`skills/openspec-setup/SKILL.md`）に委ねる。本スキルでは導入作業をしない。
 
 ## 手順
