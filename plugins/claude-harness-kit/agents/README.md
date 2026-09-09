@@ -12,8 +12,8 @@
 | `backend-code-reviewer` | バックエンドのコードのレビュー・監査（backend専用規約は未整備のため design-rule・一般イディオムに基づく） | `backend-coder` エージェント |
 | `frontend-test-reviewer` | フロントエンドのテスト規約に照らした既存テストのレビュー・監査 | `frontend-tester` エージェント |
 | `backend-test-reviewer` | バックエンドの既存テストのレビュー・監査（backend専用規約は未整備のため design-rule・一般作法に基づく） | `backend-tester` エージェント |
-| `test-design-reviewer` | テスト技法に照らしたテスト観点・ケース設計の抜け漏れレビュー | `test-coding` スキル |
-| `design-principles-reviewer` | design-rule（DRY/SRP/SoC等）に照らした設計原則のレビュー（コード全般） | 複数（`test-coding` / `coding` 等、design-rule に従うスキル） |
+| `test-design-reviewer` | テスト技法に照らしたテスト観点・ケース設計の抜け漏れレビュー | なし（TDD サイクルからは呼ばれない。単独起動用に残置） |
+| `design-principles-reviewer` | design-rule（DRY/SRP/SoC等）に照らした設計原則のレビュー（コード全般） | なし（単独起動用に残置。`test-coding` からは呼ばれない） |
 | `ui-reviewer` | ui-design ルールに照らした UI 実装のレビュー | `ui-designer` |
 | `prompt-reviewer` | prompt-* ルールに照らしたプロンプトのレビュー | `prompt-engineer` |
 | `context-reviewer` | context-engineering ルールに照らしたコンテキスト管理のレビュー | `context-engineer` |
