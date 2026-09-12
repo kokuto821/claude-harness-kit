@@ -5,7 +5,7 @@ description: >
   と言われたとき、issue 駆動開発の作成フェーズとして、issue 化すべきかを判断したうえで、
   概要 / 背景・目的・再現手順 / 要件 / 対応方針 の定型フォーマットで issue 本文を
   組み立て、内容の承認を得たうえで gh CLI で GitHub issue を作成する。
-  作成済み issue の実装からマージまでを進めるのは github-issue-resolve。
+  作成済み issue の実装から PR 作成・クローズまでを進めるのは github-issue-resolve（マージはユーザーが行う）。
 ---
 
 # github-issue-create
