@@ -37,7 +37,7 @@
 ### 1 issue = 1 branch = 1 PR
 
 - issue 1件にブランチ1本・PR1本を対応させる。1つの PR に複数 issue の変更を混ぜない。
-- ブランチ名は `<種別>/issue<番号>-<英小文字の要約>`（kebab-case）。種別は issue の種別（`feat` / `fix` / `refactor` / `docs`）に揃える。
+- ブランチ名は `<種別>/#<番号>_<英小文字の要約>`。種別は issue の種別（`feat` / `fix` / `refactor` / `docs`）に揃える。
 - PR 本文に `Closes #<番号>` を含め、マージで issue が閉じるようにする。
 
 ### 必ず issue に紐づくブランチで作業する

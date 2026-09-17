@@ -32,7 +32,7 @@ EDIT_TOOL_MARKERS = ("Edit", "Write")
 # 編集先パスを保持する tool_input のキー（先に見つかったものを使う）
 EDIT_TOOL_PATH_KEYS = ("file_path", "notebook_path")
 
-BRANCH_EXAMPLE = "  git switch -c <type>/issue<番号>-<summary>   # 例: git switch -c feat/issue12-issue-driven-workflow"
+BRANCH_EXAMPLE = "  git switch -c <type>/#<番号>_<summary>   # 例: git switch -c feat/#12_issue_driven_workflow"
 
 # 直後の引数を値として取るグローバルオプション
 GIT_GLOBAL_OPTIONS_WITH_VALUE = (
