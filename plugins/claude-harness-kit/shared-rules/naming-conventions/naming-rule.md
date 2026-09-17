@@ -38,7 +38,7 @@
 - マーケットプレイス配布前提なら kebab-case は必須（非準拠は弾かれる）
 
 ```
-✅ commit-message-simple, create-skill, record-knowledge
+✅ commit-message-simple, create-skill, tdd
 ❌ tdd_expert, MySkill, commitMessageSimple
 ```
 

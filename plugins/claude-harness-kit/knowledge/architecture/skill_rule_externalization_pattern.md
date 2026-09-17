@@ -36,7 +36,7 @@
 
 ### 実際に適用したケース
 
-- `record-knowledge`: マークダウンテンプレート → `reference/template.md`
+- `record-knowledge`（削除済み・private-agent-harness へ移動）: マークダウンテンプレート → `reference/template.md`
 - TDDガイドライン: 当初 `tdd-expert` スキルの `reference/` に置いたが、`frontend-tester` エージェントと共有する普遍的ガイドラインだったため `shared-rules/coding-conventions/tdd-rule.md` へ移動し、スキル自体を廃止（複数で共有するものは `rules/` という判断の実例）
 - `frontend-coder`: コーディングルール（重複）→ `shared-rules/coding-conventions/coding-rule.md` 参照のみに削減
 - `frontend-coding`(2026-06-24): 「規約本文を再掲せず」と宣言しつつ要点テーブル・手順で coding-rule の値を再掲していた → 観点名のみの索引に圧縮（commit `0159d66`）
