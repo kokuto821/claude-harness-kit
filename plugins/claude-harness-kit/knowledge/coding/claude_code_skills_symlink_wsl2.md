@@ -56,7 +56,6 @@ done
 ```
 ~/.claude/skills/          ← 実ディレクトリ（Linuxファイルシステム上）
 ├── commit-message-simple → /mnt/c/.../shared_ai_skills/commit-message-simple/
-├── mashimon              → /mnt/c/.../shared_ai_skills/mashimon/
 ├── tdd_expert            → /mnt/c/.../shared_ai_skills/tdd_expert/
 └── ...
 ```
