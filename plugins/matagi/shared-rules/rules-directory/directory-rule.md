@@ -48,11 +48,11 @@ rules/
 
 普遍的な制約は未スコープでよい。一部の対象にしか効かない規約は `paths:` でスコープし、無関係なセッションでのトークン消費を避ける。判断は [[selection-rule]] に従う。
 
-> **本 kit での運用（2層）**: **コア**（`rules/`）は、この kit をカレントディレクトリで開発する際に `.claude/rules` → `plugins/.../rules` のディレクトリ symlink で native 自動ロードされる（毎セッション必読）。**参照層**（`shared-rules/`）は自動ロードせず、CLAUDE.md 索引・skills から `[[link]]` で必要時に参照する。frontmatter の `paths:` は一般挙動の説明で、導入先で native rule 化した際に効く。symlink 運用の詳細は [[structure-rule]]（rules/repository-structure/structure-rule.md）の「コアルールの symlink 例外」節を参照。
+> **本 kit での運用（2層）**: **コア**（`rules/`）は、この kit をカレントディレクトリで開発する際に `.claude/rules` → `plugins/.../rules` のディレクトリ symlink で native 自動ロードされる（毎セッション必読）。**参照層**（`shared-rules/`）は自動ロードせず、AGENTS.md 索引・skills から `[[link]]` で必要時に参照する。frontmatter の `paths:` は一般挙動の説明で、導入先で native rule 化した際に効く。symlink 運用の詳細は [[structure-rule]]（rules/repository-structure/structure-rule.md）の「コアルールの symlink 例外」節を参照。
 
 ## 相互リンク記法（`[[slug]]`）
 
-rules・skills・agents・CLAUDE.md など本 kit の md 資産どうしの相互参照は `[[slug]]` で書く。**この記法の定義はここを唯一の正とし、各 README・テンプレート側で再定義しない。**
+rules・skills・agents・AGENTS.md など本 kit の md 資産どうしの相互参照は `[[slug]]` で書く。**この記法の定義はここを唯一の正とし、各 README・テンプレート側で再定義しない。**
 
 - **slug は参照先ファイル名から拡張子を除いた基本名**（見出しやタイトルではない）。例: `[[naming-rule]]` → `naming-conventions/naming-rule.md`。ファイル名基準なので表記が不変。
 - これは Obsidian 由来の記法で、**Claude Code / ハーネスのネイティブ機能ではない**。自動解決・自動ロード・クリック遷移はされない。Claude が意味として辿り、必要に応じて実ファイルを検索して開く**慣習的な参照**にすぎない。

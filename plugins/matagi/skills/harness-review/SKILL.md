@@ -34,7 +34,7 @@ Critical / Warning / Suggestion で指摘する。**指摘までが責務**で�
 
 ### 1. レビュー範囲を特定する
 
-対象プロジェクトのステアリング資産を洗い出す：ルート/サブディレクトリの CLAUDE.md、
+対象プロジェクトのステアリング資産を洗い出す：ルート/サブディレクトリの CLAUDE.md（または AGENTS.md）、
 `.claude/rules/`（`rules/`）、`.claude/skills/`、`.claude/agents/`、
 `settings.json` の hooks、`.claude/output-styles/`。差分が分かる場合は変更箇所を優先する。
 
