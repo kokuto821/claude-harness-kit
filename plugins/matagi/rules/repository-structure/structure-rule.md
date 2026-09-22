@@ -31,7 +31,7 @@
 
 ## よくある誤り
 
-- ❌ プロジェクトルートに `.md` ファイルを直置きする（CLAUDE.md を除く）
+- ❌ プロジェクトルートに `.md` ファイルを直置きする（AGENTS.md を除く）
 - ❌ `.claude/` 配下にコンテンツの実ファイルを作成する（実ファイルの直置きは不可。コアルールのディレクトリ symlink は「コアルールの symlink 例外」節の条件下でのみ可）
 - ✅ `plugins/matagi/<カテゴリ>/` 配下に置く
 
@@ -50,4 +50,4 @@
 - コア（`rules/`）は、この kit をカレントディレクトリで開発する際に確実に読ませるため、`.claude/rules` → `plugins/matagi/rules` の**ディレクトリ symlink** で native 自動ロード対象にする。
 - 実体は plugins 側のまま（source of truth 単一）。symlink はコンテンツの複製・同期ではなく単一実体への参照。
 - 対象は WSL 内完結の開発時のみ。marketplace 経由の導入先には配られない。
-- 参照層（`shared-rules/`）は symlink せず、CLAUDE.md 索引と `[[link]]` で必要時に参照する（コンテキスト圧迫を避ける）。
+- 参照層（`shared-rules/`）は symlink せず、AGENTS.md 索引と `[[link]]` で必要時に参照する（コンテキスト圧迫を避ける）。

@@ -1,6 +1,6 @@
 # コンテキストは有限資源のルール
 
-コンテキスト（推論時に載るトークンの集合）を、無限に足せる入力ではなく **限界収穫逓減する有限資源** として扱う。スキル・エージェント・CLAUDE.md・単発プロンプトのいずれを設計するときも、この前提から出発する。
+コンテキスト（推論時に載るトークンの集合）を、無限に足せる入力ではなく **限界収穫逓減する有限資源** として扱う。スキル・エージェント・AGENTS.md/CLAUDE.md・単発プロンプトのいずれを設計するときも、この前提から出発する。
 
 出典: `documents/reference/context-engineering/effective-context-engineering-for-ai-agents.md`（以下 blog、「なぜ重要か」「効果的なコンテキストの解剖学」）、`documents/reference/context-engineering/a-survey-of-context-engineering-for-large-language-models.md`（以下 survey、§3.2.1 / §4.3.1）。
 
@@ -25,8 +25,8 @@
 
 ## 適用の指針
 
-- プロンプト／ルール／CLAUDE.md が長くなってきたら、まず「削れるトークン」を疑う。冗長な前置き・重複説明・使われない例を削る。
-- 常時ロードされるもの（CLAUDE.md・未スコープ rule）ほど予算への影響が大きい。手順は skill へ、限定的な文脈は path スコープや `[[link]]` 参照へ寄せる（→ `[[selection-rule]]`）。
+- プロンプト／ルール／AGENTS.md/CLAUDE.md が長くなってきたら、まず「削れるトークン」を疑う。冗長な前置き・重複説明・使われない例を削る。
+- 常時ロードされるもの（AGENTS.md/CLAUDE.md・未スコープ rule）ほど予算への影響が大きい。手順は skill へ、限定的な文脈は path スコープや `[[link]]` 参照へ寄せる（→ `[[selection-rule]]`）。
 - 「最小十分」の判断がつかないときは、削った版と足した版を実際に走らせて挙動差を見る。
 
 ## 関連ルール

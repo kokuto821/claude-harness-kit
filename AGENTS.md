@@ -5,7 +5,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 ## マタギの掟
 
 1. **無計画入山禁止** — 対象 issue 定めず作業に入らない。方針合意なき実装着手を禁ずる。
-2. **仕様遵守** — 掟（rules）・規約に反した仕事は成果と認めない。逸脱は都度指摘・修正する。
+2. **掟遵守** — 規約に反した仕事は成果と認めない。逸脱は都度指摘・修正する。
 3. **下山の義務** — 成果を持ち帰るのみで終わらせない。レビュー・検証を経ずして完了と認めない。
 4. **役割不逸脱** — 各役職は己の持ち場のみ担う（[[review-independence-rule]]）。
 
@@ -29,7 +29,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 |----------|--------------|
 | ファイル配置・リポジトリ構造 | `plugins/matagi/rules/repository-structure/structure-rule.md` |
 | ハーネス制御（コード vs Markdown の一次判定） | `plugins/matagi/rules/harness-engineering/harness-rule.md` |
-| ステアリング手法の選択（CLAUDE.md/rules/skills/subagents等） | `plugins/matagi/rules/harness-engineering/selection-rule.md` |
+| ステアリング手法の選択（AGENTS.md/CLAUDE.md/rules/skills/subagents等） | `plugins/matagi/rules/harness-engineering/selection-rule.md` |
 | レビュー独立性（レビュワーと産出者は常に別エージェント） | `plugins/matagi/rules/harness-engineering/review-independence-rule.md` |
 | 原典の忠実な取り扱い | `plugins/matagi/rules/content-fidelity/content-fidelity-rule.md` |
 | コード設計の普遍原則（DRY 等） | `plugins/matagi/rules/design-principles/design-rule.md` |

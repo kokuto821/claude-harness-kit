@@ -1,6 +1,6 @@
 {
   "name": "matagi",
-  "description": "Claude Codeの作業効率化スキル集（コミット・セッション引き継ぎ・ナレッジ管理・TDD・ペルソナなど）",
+  "description": "日本の伝統的猟師集団「マタギ」をモチーフとした、モデル非依存で決定論的な開発ハーネス。",
   "hooks": {
     "PreToolUse": [
       {

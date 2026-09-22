@@ -2,7 +2,7 @@
 
 ## 原則
 
-**OpenSpec は「大規模変更の合意形成」だけを担う。実装は既存の産出 skill、レビューは既存のレビュー skill にそのまま委ねる。** OpenSpec 自体が実装・レビューを兼ねることはない。OpenSpec は steering 手法（[[selection-rule]] が扱う CLAUDE.md/rules/skills/subagents 等）の一つではなく、外部の CLI ツールである。両者はレイヤーが異なるため、OpenSpec の役割分担は [[selection-rule]] には追記せず本ルールに独立して置く。
+**OpenSpec は「大規模変更の合意形成」だけを担う。実装は既存の産出 skill、レビューは既存のレビュー skill にそのまま委ねる。** OpenSpec 自体が実装・レビューを兼ねることはない。OpenSpec は steering 手法（[[selection-rule]] が扱う AGENTS.md/CLAUDE.md/rules/skills/subagents 等）の一つではなく、外部の CLI ツールである。両者はレイヤーが異なるため、OpenSpec の役割分担は [[selection-rule]] には追記せず本ルールに独立して置く。
 
 ## 判断基準
 

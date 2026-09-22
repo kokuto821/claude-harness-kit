@@ -1,9 +1,9 @@
 ---
 name: harness-review
 description: >
-  「ステアリング手法の使い分けをチェックして」「CLAUDE.md/rules/skills/hooks の手法選択を見て」
+  「ステアリング手法の使い分けをチェックして」「AGENTS.md/CLAUDE.md/rules/skills/hooks の手法選択を見て」
   「この設定が各手法の意図通りか（単一観点で）確認して」と言われたとき、プロジェクトの Claude Code
-  ステアリング構成（CLAUDE.md・rules・skills・subagents・hooks・output styles）を
+  ステアリング構成（AGENTS.md/CLAUDE.md・rules・skills・subagents・hooks・output styles）を
   selection-rule / harness-rule に照らしてレビューし、手法の誤用・逸脱を指摘する
   （改善の適用はしない）。プロンプト品質・コンテキスト設計も含めて多観点でまとめて見たい場合は ai-engineering-review。
 # when_to_use: 実装済みのステアリング構成が各手法の公式の意図通りかを、ステアリング手法の単一観点で準拠チェック（指摘のみ）してほしいとき
@@ -16,7 +16,7 @@ description: >
 ## 概要
 
 ステアリング構成レビューの**入口**タスクスキル。監査は `steering-reviewer` エージェントに
-委譲し、プロジェクトの Claude Code カスタマイズ資産（CLAUDE.md・`rules/`・`skills/`・`agents/`・
+委譲し、プロジェクトの Claude Code カスタマイズ資産（AGENTS.md/CLAUDE.md・`rules/`・`skills/`・`agents/`・
 hooks・output styles）を各手法の公式の意図に照らして、手法の誤用・逸脱を
 Critical / Warning / Suggestion で指摘する。**指摘までが責務**で、改善の適用は行わない。
 
@@ -34,7 +34,7 @@ Critical / Warning / Suggestion で指摘する。**指摘までが責務**で�
 
 ### 1. レビュー範囲を特定する
 
-対象プロジェクトのステアリング資産を洗い出す：ルート/サブディレクトリの CLAUDE.md、
+対象プロジェクトのステアリング資産を洗い出す：ルート/サブディレクトリの AGENTS.md / CLAUDE.md、
 `.claude/rules/`（`rules/`）、`.claude/skills/`、`.claude/agents/`、
 `settings.json` の hooks、`.claude/output-styles/`。差分が分かる場合は変更箇所を優先する。
 

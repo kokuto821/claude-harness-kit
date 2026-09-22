@@ -42,7 +42,7 @@ OpenSpec のフェーズ（explore/propose/apply/archive）を統括する。CLI
    - タスクが曖昧、実装がタスク・spec の範囲を超える、エラーが起きた場合は、その場で範囲を広げず一旦止めてユーザーに確認する（黙って narrow/defer しない）。
    - 全タスク完了、またはブロックされるまで繰り返す。
 
-4. **REVIEW**（新規ゲート。CLI 生成のワークフローには無い工程） — 実装コード中心の変更なら `coding-review`、md 資産（rules/skills/CLAUDE.md 等）中心なら `ai-engineering-review` を in-context 起動する。両方にまたがる変更は両方を起動する。指摘の適用は手順3で委譲した産出者へ戻す。**適用後、修正した産出者自身に確認させず、レビューを再実行して解消を確認する**（[[review-independence-rule]]: 修正後の再検証も修正した本人に委ねない）。指摘が残る場合はこのラウンドを繰り返す(最大2ラウンド。それでも残るものは残課題として報告する)。**このレビューを経ずに手順5（ARCHIVE）へ進まない。**
+4. **REVIEW**（新規ゲート。CLI 生成のワークフローには無い工程） — 実装コード中心の変更なら `coding-review`、md 資産（rules/skills/AGENTS.md/CLAUDE.md 等）中心なら `ai-engineering-review` を in-context 起動する。両方にまたがる変更は両方を起動する。指摘の適用は手順3で委譲した産出者へ戻す。**適用後、修正した産出者自身に確認させず、レビューを再実行して解消を確認する**（[[review-independence-rule]]: 修正後の再検証も修正した本人に委ねない）。指摘が残る場合はこのラウンドを繰り返す(最大2ラウンド。それでも残るものは残課題として報告する)。**このレビューを経ずに手順5（ARCHIVE）へ進まない。**
 
 5. **ARCHIVE** — レビュー完了後、CLI 生成の `openspec-archive-change` スキルを in-context 起動する（この時点ではファイル移動と spec 統合のみのため、CLI 生成のままで問題ない）。
 

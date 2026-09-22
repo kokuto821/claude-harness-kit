@@ -30,13 +30,13 @@
 
 速度のために一部を事前ロードしつつ、残りは自律探索で補う。
 
-- Claude Code は `CLAUDE.md` を素朴に事前投入する一方、`glob` / `grep` で環境を辿りファイルをジャストインタイム取得する（古い索引や複雑な構文木の問題を回避）。
+- Claude Code は `AGENTS.md`/`CLAUDE.md` を素朴に事前投入する一方、`glob` / `grep` で環境を辿りファイルをジャストインタイム取得する（古い索引や複雑な構文木の問題を回避）。
 - 変動の少ない領域（法務・金融など）ほど事前ロード寄りが向く。
 - 判断に迷ったら **「うまくいく最もシンプルなことをせよ（do the simplest thing that works）」**。モデルの能力向上に伴い、人手のキュレーションは減らす方向でよい。
 
 ## 関連ルール
 
-- [[selection-rule]] — CLAUDE.md への事前投入 vs skill/subagent への切り出し（置き場所の選択）
+- [[selection-rule]] — AGENTS.md/CLAUDE.md への事前投入 vs skill/subagent への切り出し（置き場所の選択）
 - [[budget-rule]] — 必要分だけ載せる根拠（有限な注意予算）
 - [[long-horizon-rule]] — 探索で得た決定を残すノート取り／サブエージェント
 - [[assembly-rule]] — 取得した c_know / c_state の組み込み

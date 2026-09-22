@@ -79,7 +79,7 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 | テストコードのみ | [[test-coding]]（`skills/test-coding/SKILL.md`） |
 | 新規 UI コンポーネント | [[create-ui-component]]（`skills/create-ui-component/SKILL.md`） |
 | スキル・サブエージェントの**新規作成** | [[create-skill]]（`skills/create-skill/SKILL.md`） |
-| 上記に該当しない md 資産（ルール・CLAUDE.md・既存スキル/サブエージェントの編集 等） | 委譲先スキルは無い。本スキルで編集する |
+| 上記に該当しない md 資産（ルール・AGENTS.md・既存スキル/サブエージェントの編集 等） | 委譲先スキルは無い。本スキルで編集する |
 
 - 最下段の経路では本スキルが産出者になる。編集が複数ファイル・数十行規模に及ぶときは、区切りでノートへ退避してから続行する。
 - 実装中にスコープ外の課題を見つけたら、その場で実装しない。[[issue-driven-rule]] の粒度基準に従い、検討結果をノートに退避して最終報告に含める。
@@ -91,7 +91,7 @@ issue 駆動開発の**実行フェーズ**を統括する。1件の issue を�
 | 対象 | 委譲先 |
 |------|--------|
 | 実装コード・テストコード | [[coding-review]]（`skills/coding-review/SKILL.md`） |
-| スキル・サブエージェント・ルール・CLAUDE.md 等の md 資産（ステアリング資産） | [[ai-engineering-review]]（`skills/ai-engineering-review/SKILL.md`） |
+| スキル・サブエージェント・ルール・AGENTS.md 等の md 資産（ステアリング資産） | [[ai-engineering-review]]（`skills/ai-engineering-review/SKILL.md`） |
 | UI 実装 | [[ui-review]]（`skills/ui-review/SKILL.md`） |
 
 - 指摘は重大度の高いものから適用する。適用は産出者に戻す。
