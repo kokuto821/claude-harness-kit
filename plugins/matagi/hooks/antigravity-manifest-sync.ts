@@ -18,8 +18,10 @@ type SyncPayload = Record<string, unknown>;
 
 type SyncDeps = {
   existsSync: (path: string) => boolean;
-  spawnSync: (command: string, args?: string[]) => unknown;
+  spawnSync: (command: string, args?: string[], options?: { timeout?: number }) => unknown;
 };
+
+const CHILD_PROCESS_TIMEOUT_MS = 5000;
 
 const isRecord = (value: unknown): value is Record<string, unknown> => {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -50,16 +52,24 @@ export const syncAntigravityManifest = (payload: SyncPayload, deps: SyncDeps): v
     return;
   }
 
-  deps.spawnSync("node", [
-    "--experimental-strip-types",
-    "plugins/matagi/adapters/antigravity/generate-plugin-json.ts",
-    ANTIGRAVITY_DIR_RELATIVE_PATH,
-  ]);
-  deps.spawnSync("node", [
-    "--experimental-strip-types",
-    "plugins/matagi/adapters/antigravity/generate-hooks-json.ts",
-    ANTIGRAVITY_DIR_RELATIVE_PATH,
-  ]);
+  deps.spawnSync(
+    "node",
+    [
+      "--experimental-strip-types",
+      "plugins/matagi/adapters/antigravity/generate-plugin-json.ts",
+      ANTIGRAVITY_DIR_RELATIVE_PATH,
+    ],
+    { timeout: CHILD_PROCESS_TIMEOUT_MS },
+  );
+  deps.spawnSync(
+    "node",
+    [
+      "--experimental-strip-types",
+      "plugins/matagi/adapters/antigravity/generate-hooks-json.ts",
+      ANTIGRAVITY_DIR_RELATIVE_PATH,
+    ],
+    { timeout: CHILD_PROCESS_TIMEOUT_MS },
+  );
 };
 
 const readStdin = (): Promise<string> => {

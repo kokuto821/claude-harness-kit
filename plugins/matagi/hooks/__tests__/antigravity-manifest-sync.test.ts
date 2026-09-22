@@ -15,12 +15,15 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
+import { spawnSync as nodeSpawnSync } from "node:child_process";
 import { join } from "node:path";
 import {
   syncAntigravityManifest,
   TARGET_RELATIVE_PATH,
   ANTIGRAVITY_DIR_RELATIVE_PATH,
 } from "../antigravity-manifest-sync.ts";
+
+const SCRIPT_PATH = join(import.meta.dirname ?? __dirname, "..", "antigravity-manifest-sync.ts");
 
 type SpawnSyncCall = { command: string; args: string[] };
 
@@ -119,6 +122,55 @@ test("対象ファイル（plugin.json）への変更かつ.agents/plugins/matag
 });
 
 test.todo("相対パス表現の揺れ（./plugins/matagi/... 等）を同一パスとして判定する");
-test.todo("tool_input に file_path が無い場合（不正なペイロード）は子プロセスを起動しない");
-test.todo("cwd が payload に無い場合は process.cwd() 相当にフォールバックする");
 test.todo("子プロセスの実行順序（generate-plugin-json.ts が先）を保証する");
+
+test("tool_input に file_path が無い場合（不正なペイロード）は子プロセスを起動しない", () => {
+  // Arrange
+  const cwd = "/repo";
+  const { spawnSync, calls: spawnCalls } = createSpawnSyncMock();
+  const antigravityDir = join(cwd, ANTIGRAVITY_DIR_RELATIVE_PATH);
+  const { existsSync } = createExistsSyncMock(new Set([antigravityDir]));
+  const payload = {
+    tool_name: "Edit",
+    tool_input: {},
+    cwd,
+  };
+
+  // Act
+  syncAntigravityManifest(payload, { existsSync, spawnSync });
+
+  // Assert
+  assert.equal(spawnCalls.length, 0);
+});
+
+test("cwd が payload に無い場合は process.cwd() 相当にフォールバックする", () => {
+  // Arrange
+  const cwd = process.cwd();
+  const { spawnSync, calls: spawnCalls } = createSpawnSyncMock();
+  const antigravityDir = join(cwd, ANTIGRAVITY_DIR_RELATIVE_PATH);
+  const { existsSync } = createExistsSyncMock(new Set([antigravityDir]));
+  const payload = {
+    tool_name: "Edit",
+    tool_input: { file_path: join(cwd, TARGET_RELATIVE_PATH) },
+  };
+
+  // Act
+  syncAntigravityManifest(payload, { existsSync, spawnSync });
+
+  // Assert
+  assert.equal(spawnCalls.length, 2);
+});
+
+test("CLI起動時に不正なJSON入力を渡すとexit code 0で子プロセスを起動しない", () => {
+  // Arrange (入力自体が不正なJSON文字列)
+
+  // Act
+  const result = nodeSpawnSync("node", [SCRIPT_PATH], {
+    input: "{ this is not json",
+    encoding: "utf-8",
+  });
+
+  // Assert
+  assert.equal(result.status, 0);
+  assert.equal((result.stderr || "").trim(), "");
+});
