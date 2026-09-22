@@ -40,25 +40,25 @@ export const tokenize = (command: string): string[] => {
   for (let i = 0; i < command.length; i++) {
     const ch = command[i];
 
+    if (inSingle && isSingleQuoteChar(ch)) {
+      inSingle = false;
+      continue;
+    }
     if (inSingle) {
-      if (isSingleQuoteChar(ch)) {
-        inSingle = false;
-        continue;
-      }
       current += ch;
       continue;
     }
 
+    if (inDouble && isDoubleQuoteChar(ch)) {
+      inDouble = false;
+      continue;
+    }
+    if (inDouble && isEscapeChar(ch) && i + 1 < command.length && isDoubleQuoteEscapable(command[i + 1])) {
+      current += command[i + 1];
+      i++;
+      continue;
+    }
     if (inDouble) {
-      if (isDoubleQuoteChar(ch)) {
-        inDouble = false;
-        continue;
-      }
-      if (isEscapeChar(ch) && i + 1 < command.length && isDoubleQuoteEscapable(command[i + 1])) {
-        current += command[i + 1];
-        i++;
-        continue;
-      }
       current += ch;
       continue;
     }
