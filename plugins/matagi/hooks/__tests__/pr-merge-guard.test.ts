@@ -8,7 +8,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
-import { runHook as runHookBase, parseDenyOutput, type Payload } from "./helpers/test-helpers.ts";
+import { runHook as runHookBase, parseDenyOutput, type Payload } from "./helpers/hookTestHelpers.ts";
 
 const SCRIPT_PATH = join(
   import.meta.dirname ?? __dirname,
@@ -20,12 +20,17 @@ function runHook(payload: Payload) {
   return runHookBase(SCRIPT_PATH, payload);
 }
 
-test("pr-merge-guard: denies `gh pr merge` via Bash", () => {
-  const result = runHook({
+test("Bash経由の`gh pr merge`を拒否する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: { command: "gh pr merge 123" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   const output = parseDenyOutput(result.stdout);
   assert.equal(output.hookEventName, "PreToolUse");
@@ -33,86 +38,125 @@ test("pr-merge-guard: denies `gh pr merge` via Bash", () => {
   assert.match(output.permissionDecisionReason, /gh pr merge/);
 });
 
-test("pr-merge-guard: denies `gh pr merge` with flags between subcommands", () => {
-  const result = runHook({
+test("サブコマンドの間にフラグが挟まる`gh pr merge`を拒否する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: { command: "gh pr merge --squash --auto 123" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   const output = parseDenyOutput(result.stdout);
   assert.equal(output.permissionDecision, "deny");
 });
 
-test("pr-merge-guard: denies `gh pr merge` chained after other commands", () => {
-  const result = runHook({
+test("他コマンドに連結された`gh pr merge`を拒否する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: { command: "echo hi && gh pr merge 123 --merge" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   const output = parseDenyOutput(result.stdout);
   assert.equal(output.permissionDecision, "deny");
 });
 
-test("pr-merge-guard: allows `gh pr view`", () => {
-  const result = runHook({
+test("`gh pr view`は許可する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: { command: "gh pr view 123" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("pr-merge-guard: allows `gh pr list`", () => {
-  const result = runHook({
+test("`gh pr list`は許可する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: { command: "gh pr list" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("pr-merge-guard: allows `gh api .../merge` (not via gh pr merge)", () => {
-  const result = runHook({
+test("`gh pr merge`を経由しない`gh api .../merge`は許可する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Bash",
     tool_input: {
       command: "gh api repos/foo/bar/pulls/123/merge -X PUT",
     },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("pr-merge-guard: allows non-Bash tools regardless of input", () => {
-  const result = runHook({
+test("Bash以外のツールは入力内容によらず許可する", () => {
+  // Arrange
+  const payload: Payload = {
     tool_name: "Edit",
     tool_input: { file_path: "/tmp/whatever.txt" },
-  });
+  };
 
+  // Act
+  const result = runHook(payload);
+
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("pr-merge-guard: fail-open on invalid JSON input", () => {
+test("不正なJSON入力に対してfail-openする", () => {
+  // Arrange (入力自体が不正なJSON文字列)
+
+  // Act
   const result = spawnSync("node", [SCRIPT_PATH], {
     input: "not json at all",
     encoding: "utf-8",
   });
 
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("pr-merge-guard: fail-open when tool_input is missing", () => {
+test("tool_inputが欠落している場合にfail-openする", () => {
+  // Arrange
+  const payload = { tool_name: "Bash" };
+
+  // Act
   const result = spawnSync("node", [SCRIPT_PATH], {
-    input: JSON.stringify({ tool_name: "Bash" }),
+    input: JSON.stringify(payload),
     encoding: "utf-8",
   });
 
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });

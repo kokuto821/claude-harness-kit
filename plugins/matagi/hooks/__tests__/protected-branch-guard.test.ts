@@ -10,7 +10,7 @@ import { spawnSync } from "node:child_process";
 import { writeFileSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runHook as runHookBase, parseDenyOutput, withTempRepo, checkoutNewBranch, type Payload } from "./helpers/test-helpers.ts";
+import { runHook as runHookBase, parseDenyOutput, withTempRepo, checkoutNewBranch, type Payload } from "./helpers/hookTestHelpers.ts";
 
 const SCRIPT_PATH = join(
   import.meta.dirname ?? __dirname,
@@ -22,17 +22,20 @@ function runHook(payload: Payload, envOverrides?: Record<string, string | undefi
   return runHookBase(SCRIPT_PATH, payload, envOverrides);
 }
 
-test("protected-branch-guard: denies `git commit` on protected branch (main) via Bash", () => {
+test("保護ブランチ(main)上でBash経由の`git commit`を拒否する", () => {
   withTempRepo((repo) => {
+    // Arrange
     writeFileSync(join(repo, "file.txt"), "changed\n");
     spawnSync("git", ["add", "."], { cwd: repo });
 
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git commit -m 'oops'" },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.hookEventName, "PreToolUse");
@@ -42,14 +45,18 @@ test("protected-branch-guard: denies `git commit` on protected branch (main) via
   });
 });
 
-test("protected-branch-guard: denies `git push` on protected branch (main) via Bash", () => {
+test("保護ブランチ(main)上でBash経由の`git push`を拒否する", () => {
   withTempRepo((repo) => {
+    // Arrange (追加の準備なし。リポジトリはmainのまま)
+
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git push" },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.permissionDecision, "deny");
@@ -58,16 +65,19 @@ test("protected-branch-guard: denies `git push` on protected branch (main) via B
   });
 });
 
-test("protected-branch-guard: denies `git push origin main` from a non-protected current branch", () => {
+test("保護されていないブランチからでも`git push origin main`を拒否する", () => {
   withTempRepo((repo) => {
+    // Arrange
     checkoutNewBranch(repo, "feat/#1_something");
 
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git push origin main" },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.permissionDecision, "deny");
@@ -75,16 +85,19 @@ test("protected-branch-guard: denies `git push origin main` from a non-protected
   });
 });
 
-test("protected-branch-guard: denies Edit-like tool changing a file on protected branch", () => {
+test("保護ブランチ上でEdit系ツールによるファイル変更を拒否する", () => {
   withTempRepo((repo) => {
+    // Arrange
     const target = join(repo, "README.md");
 
+    // Act
     const result = runHook({
       tool_name: "Edit",
       tool_input: { file_path: target },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.permissionDecision, "deny");
@@ -93,49 +106,59 @@ test("protected-branch-guard: denies Edit-like tool changing a file on protected
   });
 });
 
-test("protected-branch-guard: denies Write tool using notebook_path on protected branch", () => {
+test("保護ブランチ上でnotebook_pathを使うWriteツールを拒否する", () => {
   withTempRepo((repo) => {
+    // Arrange
     const target = join(repo, "notebook.ipynb");
 
+    // Act
     const result = runHook({
       tool_name: "NotebookEdit",
       tool_input: { notebook_path: target },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.permissionDecision, "deny");
   });
 });
 
-test("protected-branch-guard: allows editing a .gitignore'd file on protected branch", () => {
+test("保護ブランチ上でも.gitignoreされたファイルの編集は許可する", () => {
   withTempRepo((repo) => {
+    // Arrange
     writeFileSync(join(repo, ".gitignore"), "ignored.txt\n");
     spawnSync("git", ["add", ".gitignore"], { cwd: repo });
     spawnSync("git", ["commit", "-q", "-m", "add gitignore"], { cwd: repo });
     writeFileSync(join(repo, "ignored.txt"), "scratch\n");
 
+    // Act
     const result = runHook({
       tool_name: "Edit",
       tool_input: { file_path: join(repo, "ignored.txt") },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     assert.equal(result.stdout.trim(), "");
   });
 });
 
-test("protected-branch-guard: allows commands outside a git-managed directory", () => {
+test("gitで管理されていないディレクトリ外のコマンドは許可する", () => {
   const dir = mkdtempSync(join(tmpdir(), "no-git-"));
   try {
+    // Arrange (dirはgit未初期化のまま)
+
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git commit -m 'x'" },
       cwd: dir,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     assert.equal(result.stdout.trim(), "");
   } finally {
@@ -143,44 +166,52 @@ test("protected-branch-guard: allows commands outside a git-managed directory", 
   }
 });
 
-test("protected-branch-guard: allows detached HEAD state", () => {
+test("detached HEAD状態は許可する", () => {
   withTempRepo((repo) => {
+    // Arrange
     const head = spawnSync("git", ["rev-parse", "HEAD"], {
       cwd: repo,
       encoding: "utf-8",
     }).stdout.trim();
     spawnSync("git", ["checkout", "-q", head], { cwd: repo });
 
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git commit -m 'x'" },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     assert.equal(result.stdout.trim(), "");
   });
 });
 
-test("protected-branch-guard: allows git commit/push on a non-protected branch", () => {
+test("保護されていないブランチでのgit commit/pushは許可する", () => {
   withTempRepo((repo) => {
+    // Arrange
     checkoutNewBranch(repo, "feat/#2_work");
 
+    // Act
     const result = runHook({
       tool_name: "Bash",
       tool_input: { command: "git commit -m 'ok'" },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     assert.equal(result.stdout.trim(), "");
   });
 });
 
-test("protected-branch-guard: respects CLAUDE_PROTECTED_BRANCHES override", () => {
+test("CLAUDE_PROTECTED_BRANCHESによる上書きを尊重する", () => {
   withTempRepo((repo) => {
+    // Arrange
     checkoutNewBranch(repo, "release");
 
+    // Act
     const result = runHook(
       {
         tool_name: "Bash",
@@ -190,6 +221,7 @@ test("protected-branch-guard: respects CLAUDE_PROTECTED_BRANCHES override", () =
       { CLAUDE_PROTECTED_BRANCHES: "release staging" },
     );
 
+    // Assert
     assert.equal(result.status, 0);
     const output = parseDenyOutput(result.stdout);
     assert.equal(output.permissionDecision, "deny");
@@ -197,24 +229,32 @@ test("protected-branch-guard: respects CLAUDE_PROTECTED_BRANCHES override", () =
   });
 });
 
-test("protected-branch-guard: fail-open on invalid JSON input", () => {
+test("不正なJSON入力に対してfail-openする", () => {
+  // Arrange (入力自体が不正なJSON文字列)
+
+  // Act
   const result = spawnSync("node", [SCRIPT_PATH], {
     input: "{ this is not json",
     encoding: "utf-8",
   });
 
+  // Assert
   assert.equal(result.status, 0);
   assert.equal(result.stdout.trim(), "");
 });
 
-test("protected-branch-guard: fail-open on unrelated tool", () => {
+test("対象外のツールに対してfail-openする", () => {
   withTempRepo((repo) => {
+    // Arrange (対象外ツールReadを指定)
+
+    // Act
     const result = runHook({
       tool_name: "Read",
       tool_input: { file_path: join(repo, "README.md") },
       cwd: repo,
     });
 
+    // Assert
     assert.equal(result.status, 0);
     assert.equal(result.stdout.trim(), "");
   });
