@@ -29,7 +29,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 |----------|--------------|
 | ファイル配置・リポジトリ構造 | `plugins/matagi/rules/repository-structure/structure-rule.md` |
 | ハーネス制御（コード vs Markdown の一次判定） | `plugins/matagi/rules/harness-engineering/harness-rule.md` |
-| ステアリング手法の選択（CLAUDE.md/rules/skills/subagents等） | `plugins/matagi/rules/harness-engineering/selection-rule.md` |
+| ステアリング手法の選択（AGENTS.md/CLAUDE.md/rules/skills/subagents等） | `plugins/matagi/rules/harness-engineering/selection-rule.md` |
 | レビュー独立性（レビュワーと産出者は常に別エージェント） | `plugins/matagi/rules/harness-engineering/review-independence-rule.md` |
 | 原典の忠実な取り扱い | `plugins/matagi/rules/content-fidelity/content-fidelity-rule.md` |
 | コード設計の普遍原則（DRY 等） | `plugins/matagi/rules/design-principles/design-rule.md` |
