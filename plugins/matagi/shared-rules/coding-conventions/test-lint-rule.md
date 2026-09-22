@@ -4,20 +4,22 @@
 
 ## ヘルパー関数の命名
 
-- テストヘルパー関数は `create` / `make` / `build` プリフィックス → `@typescript-eslint/naming-convention`（`prefix: ['create', 'make', 'build']`）
+- テストヘルパー関数は `create` / `make` / `build` プリフィックス → `@typescript-eslint/naming-convention`（`prefix: ['create', 'make', 'build']`）／ Biome: `style.useNamingConvention`（inspired）
 
 ## 構造・記述スタイル
 
-- `describe` のネストは **1層まで** → `eslint-plugin-jest` の `jest/max-nested-describe`（`max: 1`）
-- テストケースは `it()` ではなく **`test()`** で記述する → `eslint-plugin-jest` の `jest/consistent-test-it`（`fn: 'test'`）
+- `describe` のネストは **1層まで** → `eslint-plugin-jest` の `jest/max-nested-describe`（`max: 1`）／ Biome: `complexity.noExcessiveNestedTestSuites`（inspired。閾値変更オプション自体が存在せず既定の5層固定のため、ESLint 版の `max: 1` と同等の厳格さでは検出できない）
+- テストケースは `it()` ではなく **`test()`** で記述する → `eslint-plugin-jest` の `jest/consistent-test-it`（`fn: 'test'`）／ Biome: 対応ルールなし※
 
 ## ファイル分割
 
-- テストファイルが **500行を超えた場合** → `max-lines`
+- テストファイルが **500行を超えた場合** → `max-lines` ／ Biome: 対応ルールなし※
 
 ## アサーション
 
-- オブジェクト全体検証は `toEqual` でなく `toStrictEqual` を使う → `eslint-plugin-jest` の `jest/prefer-strict-equal`
+- オブジェクト全体検証は `toEqual` でなく `toStrictEqual` を使う → `eslint-plugin-jest` の `jest/prefer-strict-equal` ／ Biome: 対応ルールなし※
+
+※ Biome公式の ESLint/eslint-plugin-jest 対応表（`https://biomejs.dev/linter/rules-sources/`）に記載が無く、相当するルールが存在しない。
 
 テストファイル・ヘルパーファイルの命名規則は標準 ESLint ルールでの機械化が難しいため `test-rule.md` に残す。
 

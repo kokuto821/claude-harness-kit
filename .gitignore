@@ -7,3 +7,4 @@ settings.development.local.json
 .claude/commands/
 __pycache__/
 *.pyc
+node_modules/

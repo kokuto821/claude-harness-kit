@@ -4,35 +4,39 @@
 
 ## 命名規則
 
-| 対象 | 規則 | 対応する ESLint ルール |
-|---|---|---|
-| コンポーネントファイル | PascalCase | `unicorn/filename-case`（`case: 'pascalCase'`） |
-| hooks / utils ファイル | camelCase | `unicorn/filename-case`（`case: 'camelCase'`） |
-| 型定義ファイル | camelCase + `Types.ts` サフィックス | `unicorn/filename-case` + カスタムパターン |
-| boolean 変数 | `is` / `has` プリフィックス | `@typescript-eslint/naming-convention`（`selector: 'variable'`, `types: ['boolean']`, `prefix: ['is', 'has']`） |
-| state 更新関数 | `set` プリフィックス | `@typescript-eslint/naming-convention`（`prefix: ['set']`） |
-| コールバック関数 | `on` / `handle` プリフィックス | `@typescript-eslint/naming-convention`（`prefix: ['on', 'handle']`） |
-| プロジェクト固有コンポーネント | プロジェクト固有プレフィックス | `unicorn/filename-case` + プロジェクト固有パターン |
-| 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `@typescript-eslint/naming-convention`（`selector: 'variable'`, `modifiers: ['const']`, `format: ['UPPER_CASE']`） |
+| 対象 | 規則 | 対応する ESLint ルール | 対応する Biome ルール |
+|---|---|---|---|
+| コンポーネントファイル | PascalCase | `unicorn/filename-case`（`case: 'pascalCase'`） | `style.useFilenamingConvention`（inspired） |
+| hooks / utils ファイル | camelCase | `unicorn/filename-case`（`case: 'camelCase'`） | `style.useFilenamingConvention`（inspired） |
+| 型定義ファイル | camelCase + `Types.ts` サフィックス | `unicorn/filename-case` + カスタムパターン | `style.useFilenamingConvention`（inspired。カスタムパターンは非対応） |
+| boolean 変数 | `is` / `has` プリフィックス | `@typescript-eslint/naming-convention`（`selector: 'variable'`, `types: ['boolean']`, `prefix: ['is', 'has']`） | `style.useNamingConvention`（inspired） |
+| state 更新関数 | `set` プリフィックス | `@typescript-eslint/naming-convention`（`prefix: ['set']`） | `style.useNamingConvention`（inspired） |
+| コールバック関数 | `on` / `handle` プリフィックス | `@typescript-eslint/naming-convention`（`prefix: ['on', 'handle']`） | `style.useNamingConvention`（inspired） |
+| プロジェクト固有コンポーネント | プロジェクト固有プレフィックス | `unicorn/filename-case` + プロジェクト固有パターン | `style.useFilenamingConvention`（inspired。プロジェクト固有パターンは非対応） |
+| 定数（オブジェクト/レイアウト） | UPPER_SNAKE_CASE | `@typescript-eslint/naming-convention`（`selector: 'variable'`, `modifiers: ['const']`, `format: ['UPPER_CASE']`） | `style.useNamingConvention`（inspired） |
+
+Biome の `useNamingConvention`／`useFilenamingConvention` はいずれも ESLint 版基準の "inspired"（着想元）実装であり、任意プリフィックス・カスタムパターンの表現力は ESLint 版に劣る。細かい要件は Biome 側オプションで表現しきれない場合がある。
 
 ## TypeScript
 
-- `interface` は使わず `export type` を使用する → `@typescript-eslint/consistent-type-definitions`（`type`）
-- **`any` 型は使用しない** → `@typescript-eslint/no-explicit-any`
+- `interface` は使わず `export type` を使用する → `@typescript-eslint/consistent-type-definitions`（`type`）／Biome: 対応ルールなし※
+- **`any` 型は使用しない** → `@typescript-eslint/no-explicit-any` ／ Biome: `suspicious.noExplicitAny`
 
 ## 定数
 
-- マジックナンバーは定数化する → `no-magic-numbers` / `@typescript-eslint/no-magic-numbers`
+- マジックナンバーは定数化する → `no-magic-numbers` / `@typescript-eslint/no-magic-numbers` ／ Biome: 対応ルールなし※
 
 固定文字列・正規表現リテラルの定数化は標準 ESLint ルールでの機械化が難しいため `coding-rule.md` に残す。
 
+※ Biome公式の ESLint 対応表（`https://biomejs.dev/linter/rules-sources/`）に記載が無く、相当するルールが存在しない。
+
 ## Export パターン
 
-- **Named export を基本**とする（`export const`）、`default export` は page コンポーネントのみ → `import/no-default-export`（page ファイルのみ `overrides` で除外）
+- **Named export を基本**とする（`export const`）、`default export` は page コンポーネントのみ → `import/no-default-export`（page ファイルのみ `overrides` で除外）／ Biome: `style.noDefaultExport`（`overrides` 相当は Biome の `overrides` 設定で表現）
 
 ## 関数設計
 
-- 関数は**アロー関数**で定義する → `func-style`（`expression`）
+- 関数は**アロー関数**で定義する → `func-style`（`expression`）／ Biome: `complexity.useArrowFunction`（`prefer-arrow-callback` 相当、inspired）
 
 ## 背景
 
