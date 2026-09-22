@@ -8,12 +8,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.ts\"",
+            "command": "node --experimental-strip-types \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.ts\"",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pr-merge-guard.ts\"",
+            "command": "node --experimental-strip-types \"${CLAUDE_PLUGIN_ROOT}/hooks/pr-merge-guard.ts\"",
             "timeout": 5
           }
         ]

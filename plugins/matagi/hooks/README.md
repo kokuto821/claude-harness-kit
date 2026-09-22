@@ -4,13 +4,13 @@
 
 フック = Claude判断に頼らず、ツール実行強制制御する仕組み。配線は `.claude-plugin/plugin.json` の `hooks` セクション。パスは `${CLAUDE_PLUGIN_ROOT}` 起点。
 
-実行ランタイム: Node v22.6+（TypeScript直接実行、strip-types機能によりビルド不要）。テスト: `node --test plugins/matagi/hooks/*.test.ts`。
+実行ランタイム: Node v22.6+（`--experimental-strip-types` フラグでTypeScript直接実行、ビルド不要）。フラグなしでの直接実行はNode 23.6+/24系で安定するため、`plugin.json`のフック起動コマンドでは明示的に`node --experimental-strip-types`を指定している。テスト: `node --test plugins/matagi/hooks/__tests__/*.test.ts`。
 
 | ファイル | 役割 |
 |---------|------|
 | `protected-branch-guard.ts` | 保護ブランチ上 `git commit` / `git push`（Bash）と、編集系ツール（Edit / Write / NotebookEdit 等）ファイル変更を `PreToolUse` でブロック、作業ブランチ切るよう促す |
 | `pr-merge-guard.ts` | `gh pr merge`（Bash）をブランチ・状態問わず常に `PreToolUse` でブロック、PRマージはユーザーがブラウザ上で行うよう促す |
-| `test-helpers.ts` | 両テストファイル共通ヘルパー（runHook / Payload型 / 拒否出力パース / 一時gitリポジトリ管理） |
+| `__tests__/` | テスト一式。`helpers/test-helpers.ts` に両テストファイル共通ヘルパー（runHook / Payload型 / 拒否出力パース / 一時gitリポジトリ管理） |
 
 **ブロックしないもの**（意図的範囲外）:
 

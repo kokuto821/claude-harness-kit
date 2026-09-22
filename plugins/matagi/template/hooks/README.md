@@ -28,4 +28,4 @@ Claude の判断に頼らず、**強制的な制約**を設けたいときに使
 - プラグインとして配布するフック: `plugins/matagi/.claude-plugin/plugin.json` の `hooks` セクション。スクリプト本体は `plugins/matagi/hooks/` に置き、パスは `${CLAUDE_PLUGIN_ROOT}` 起点で書く。
 - そのプロジェクト限定のフック: `.claude/settings.json` の `hooks` セクション。
 
-実装例: `../../hooks/protected-branch-guard.py`（保護ブランチ上の `git commit` / `git push` を `PreToolUse` でブロックする）。
+実装例: `../../hooks/protected-branch-guard.ts`（保護ブランチ上の `git commit` / `git push` を `PreToolUse` でブロックする）。
