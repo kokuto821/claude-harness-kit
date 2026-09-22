@@ -5,6 +5,8 @@ settings.local.json
 settings.development.local.json
 .claude/skills/
 .claude/commands/
+.agents/plugins/matagi/plugin.json
+.agents/plugins/matagi/hooks.json
 __pycache__/
 *.pyc
 node_modules/
