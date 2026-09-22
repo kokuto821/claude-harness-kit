@@ -4,4 +4,6 @@
 
 ツールや手法の比較、外部記事のまとめ、検証結果などを保管します。
 
-現在このディレクトリにコンテンツはありません（汎用性の低い個人メモは private-agent-harness リポジトリへ移送済み）。
+| ファイル | 内容 |
+|---------|------|
+| `multi-agent-support.md` | Codex CLI / Google Antigravity / OpenCode の拡張・プラグイン仕様調査と、claude-harness-kit を複製せず対応させる方針（issue #55） |
