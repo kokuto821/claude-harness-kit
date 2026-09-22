@@ -1,6 +1,15 @@
 # matagi
 
-Claude Code スキル・ナレッジの共有リポジトリ。
+Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統的猟師集団「マタギ」をモチーフとした、モデル非依存で決定論的な開発ハーネス。
+
+## マタギの掟
+
+1. **無計画入山禁止** — 対象 issue 定めず作業に入らない。方針合意なき実装着手を禁ずる。
+2. **仕様遵守** — 掟（rules）・規約に反した仕事は成果と認めない。逸脱は都度指摘・修正する。
+3. **下山の義務** — 成果を持ち帰るのみで終わらせない。レビュー・検証を経ずして完了と認めない。
+4. **役割不逸脱** — 各役職は己の持ち場のみ担う（[[review-independence-rule]]）。
+
+役職・用語の定義（シカリ/セコ/ブッパ/オキテ、山詞）は `plugins/matagi/shared-rules/matagi-lore/glossary-rule.md` を参照。
 
 ## ディレクトリ構造
 
@@ -44,3 +53,4 @@ Claude Code スキル・ナレッジの共有リポジトリ。
 | OpenSpec と既存 skill の役割分担（大規模変更の合意形成） | `plugins/matagi/shared-rules/openspec-integration/openspec-rule.md` |
 | コンテキスト管理（有限な注意予算のキュレーション・長時間軸タスク、索引から各ルールへ） | `plugins/matagi/shared-rules/context-engineering/README.md` |
 | UIデザイン（索引から各ルールへ） | `plugins/matagi/shared-rules/ui-design/README.md` |
+| マタギ用語集・役職規約（シカリ/セコ/ブッパ/オキテ、山詞） | `plugins/matagi/shared-rules/matagi-lore/glossary-rule.md` |

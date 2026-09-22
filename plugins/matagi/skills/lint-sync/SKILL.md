@@ -9,6 +9,8 @@ description: >
 
 # lint-sync
 
+役職: **ブッパ**（実装者）。掟の差分を linter 設定へ正確に撃ち込む。
+
 ## 概要
 
 `coding-lint-rule.md`/`test-lint-rule.md` の linter 対応ルールを、対象プロダクトの ESLint/Stylelint 設定ファイルへ反映する。

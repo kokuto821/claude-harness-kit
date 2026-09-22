@@ -11,6 +11,8 @@ description: >
 
 # context-engineering-review
 
+役職: **オキテ**（検証者）。コンテキスト設計の逸脱見逃さぬ。
+
 ## 概要
 
 スキル（SKILL.md）・サブエージェント定義・CLAUDE.md・プロンプトを、コンテキスト管理の観点で

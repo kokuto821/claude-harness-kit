@@ -9,6 +9,8 @@ description: >
 
 # create-ui-component
 
+役職: **ブッパ**（実装者）。ui-design ルール通り正確に UI を撃ち抜く。
+
 ## 概要
 
 `shared-rules/ui-design/` のルールに沿って、新規 UI コンポーネントを生成するタスクスキル。アーキテクチャ分類（button / edit / view）を決め、該当コンポーネントルールと共通スタイリングルールを適用する。
