@@ -14,7 +14,12 @@
             "strictCase": false
           }
         },
-        "useNamingConvention": "warn",
+        "useNamingConvention": {
+          "level": "warn",
+          "options": {
+            "strictCase": false
+          }
+        },
         "noDefaultExport": "warn"
       },
       "suspicious": {
@@ -39,5 +44,17 @@
       "quoteStyle": "double",
       "semicolons": "always"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["__tests__/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    }
+  ]
 }
