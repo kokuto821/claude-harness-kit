@@ -9,7 +9,7 @@
 | 役職 | 読み | 役割 | 対応スキル（外部名） |
 |------|------|------|----------------------|
 | シカリ | Shikari | 全体指揮・オーケストレーター。issue/spec を受け各役職へ差配 | `github-issue-resolve` / `openspec-workflow` / `tdd` |
-| セコ | Seko | 獲物（コンテキスト・情報）を追い立てる探索者 | `hikitsugi` |
+| セコ | Seko | 獲物（コンテキスト・情報）を追い立て、シカリ・ブッパを支える探索者兼サポーター | `hikitsugi` |
 | ブッパ | Buppa | 仕様通り正確に撃ち抜く実装者。狙いを外さない | `coding` / `test-coding` / `create-ui-component` / `lint-sync` |
 | オキテ | Okite | 掟（規約・テスト）逸脱を許さぬ検証者。産出者と別人格で裁く | `coding-review` / `ui-review` / `ai-engineering-review` / `harness-review` / `prompt-review` / `context-engineering-review` |
 
