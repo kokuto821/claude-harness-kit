@@ -1,4 +1,4 @@
-// Run: node --test plugins/matagi/hooks/*.test.ts
+// Run: node --test plugins/matagi/hooks/__tests__/*.test.ts
 //
 // TDD Red フェーズ: protected-branch-guard.ts (未実装) に対する失敗するテスト。
 // Python 実装（protected-branch-guard.py）の挙動を正として、TypeScript 版が
@@ -10,10 +10,11 @@ import { spawnSync } from "node:child_process";
 import { writeFileSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { runHook as runHookBase, parseDenyOutput, withTempRepo, checkoutNewBranch, type Payload } from "./test-helpers.ts";
+import { runHook as runHookBase, parseDenyOutput, withTempRepo, checkoutNewBranch, type Payload } from "./helpers/test-helpers.ts";
 
 const SCRIPT_PATH = join(
   import.meta.dirname ?? __dirname,
+  "..",
   "protected-branch-guard.ts",
 );
 

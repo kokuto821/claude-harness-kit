@@ -1,4 +1,4 @@
-// Run: node --test plugins/matagi/hooks/*.test.ts
+// Run: node --test plugins/matagi/hooks/__tests__/*.test.ts
 //
 // TDD Red フェーズ: pr-merge-guard.ts (未実装) に対する失敗するテスト。
 // Python 実装（pr-merge-guard.py）の挙動を正として、TypeScript 版が
@@ -8,10 +8,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
-import { runHook as runHookBase, parseDenyOutput, type Payload } from "./test-helpers.ts";
+import { runHook as runHookBase, parseDenyOutput, type Payload } from "./helpers/test-helpers.ts";
 
 const SCRIPT_PATH = join(
   import.meta.dirname ?? __dirname,
+  "..",
   "pr-merge-guard.ts",
 );
 
