@@ -8,12 +8,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.py\"",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.ts\"",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/pr-merge-guard.py\"",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pr-merge-guard.ts\"",
             "timeout": 5
           }
         ]

@@ -1,20 +1,23 @@
 # hooks
 
-このプラグインが提供する Claude Code フックのスクリプトを置く場所です。
+このプラグイン提供 Claude Code フックスクリプト置き場。
 
-フックは Claude の判断に頼らず、ツール実行を強制的に制御する仕組みです。配線は `.claude-plugin/plugin.json` の `hooks` セクションで行い、パスは `${CLAUDE_PLUGIN_ROOT}` 起点で書きます。
+フック = Claude判断に頼らず、ツール実行強制制御する仕組み。配線は `.claude-plugin/plugin.json` の `hooks` セクション。パスは `${CLAUDE_PLUGIN_ROOT}` 起点。
+
+実行ランタイム: Node v22.6+（TypeScript直接実行、strip-types機能によりビルド不要）。テスト: `node --test plugins/matagi/hooks/*.test.ts`。
 
 | ファイル | 役割 |
 |---------|------|
-| `protected-branch-guard.py` | 保護ブランチ上での `git commit` / `git push`（Bash）と、編集系ツール（Edit / Write / NotebookEdit 等）によるファイル変更を `PreToolUse` でブロックし、作業ブランチを切るよう促す |
-| `pr-merge-guard.py` | `gh pr merge`（Bash）をブランチ・状態を問わず常に `PreToolUse` でブロックし、PR のマージをユーザーがブラウザ上で行うよう促す |
+| `protected-branch-guard.ts` | 保護ブランチ上 `git commit` / `git push`（Bash）と、編集系ツール（Edit / Write / NotebookEdit 等）ファイル変更を `PreToolUse` でブロック、作業ブランチ切るよう促す |
+| `pr-merge-guard.ts` | `gh pr merge`（Bash）をブランチ・状態問わず常に `PreToolUse` でブロック、PRマージはユーザーがブラウザ上で行うよう促す |
+| `test-helpers.ts` | 両テストファイル共通ヘルパー（runHook / Payload型 / 拒否出力パース / 一時gitリポジトリ管理） |
 
-**ブロックしないもの**（意図的な範囲外）:
+**ブロックしないもの**（意図的範囲外）:
 
-- git 管理外のパス（スクラッチパッド等）、`.gitignore` 済みのパス、`.git` 配下
-- **Bash 経由のファイル書き込み**（`sed -i` / リダイレクト / `tee` 等）。シェルの網羅は原理的に不完全なため追いません。変更が保護ブランチへ着地することは commit / push の拒否で防ぎます
-- `gh api repos/.../pulls/<番号>/merge` 等、`gh pr merge` を経由しない PR マージの API 直叩き
+- git管理外パス（スクラッチパッド等）、`.gitignore`済みパス、`.git`配下
+- **Bash経由ファイル書き込み**（`sed -i` / リダイレクト / `tee`等）。シェル網羅は原理的に不完全なため追わない。変更が保護ブランチへ着地することはcommit/push拒否で防ぐ
+- `gh api repos/.../pulls/<番号>/merge`等、`gh pr merge`経由しないPRマージAPI直叩き
 
-保護ブランチの既定値はスクリプト冒頭の `DEFAULT_PROTECTED_BRANCHES` を参照してください。環境変数 `CLAUDE_PROTECTED_BRANCHES`（スペース区切り）で変更できます。
+保護ブランチ既定値はスクリプト冒頭`DEFAULT_PROTECTED_BRANCHES`参照。環境変数`CLAUDE_PROTECTED_BRANCHES`（スペース区切り）で変更可。
 
-新しいフックを書くときのひな形と考え方は `../template/hooks/README.md` を参照してください。
+新規フック作成時のひな形・考え方は`../template/hooks/README.md`参照。
