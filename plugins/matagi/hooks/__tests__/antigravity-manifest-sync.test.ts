@@ -121,9 +121,6 @@ test("対象ファイル（plugin.json）への変更かつ.agents/plugins/matag
   );
 });
 
-test.todo("相対パス表現の揺れ（./plugins/matagi/... 等）を同一パスとして判定する");
-test.todo("子プロセスの実行順序（generate-plugin-json.ts が先）を保証する");
-
 test("tool_input に file_path が無い場合（不正なペイロード）は子プロセスを起動しない", () => {
   // Arrange
   const cwd = "/repo";
