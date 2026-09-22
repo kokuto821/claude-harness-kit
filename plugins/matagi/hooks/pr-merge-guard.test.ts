@@ -8,28 +8,15 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
+import { runHook as runHookBase, parseDenyOutput, type Payload } from "./test-helpers.ts";
 
 const SCRIPT_PATH = join(
   import.meta.dirname ?? __dirname,
   "pr-merge-guard.ts",
 );
 
-type Payload = {
-  tool_name?: string;
-  tool_input?: Record<string, unknown>;
-  cwd?: string;
-};
-
 function runHook(payload: Payload) {
-  return spawnSync("node", [SCRIPT_PATH], {
-    input: JSON.stringify(payload),
-    encoding: "utf-8",
-  });
-}
-
-function parseDenyOutput(stdout: string) {
-  const parsed = JSON.parse(stdout);
-  return parsed.hookSpecificOutput;
+  return runHookBase(SCRIPT_PATH, payload);
 }
 
 test("pr-merge-guard: denies `gh pr merge` via Bash", () => {

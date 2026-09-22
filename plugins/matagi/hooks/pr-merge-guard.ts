@@ -14,6 +14,10 @@
 
 const SEGMENT_SEPARATORS = new Set(["&&", "||", ";", "|", "&", "(", ")", "\n"]);
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 function allow(): never {
   process.exit(0);
 }
@@ -87,6 +91,15 @@ function tokenize(command: string): string[] {
       current += command[i + 1];
       hasToken = true;
       i++;
+      continue;
+    }
+
+    if (ch === "#") {
+      flush();
+      while (i < command.length && command[i] !== "\n") {
+        i++;
+      }
+      i--;
       continue;
     }
 
@@ -187,10 +200,14 @@ function readStdin(): Promise<string> {
 async function main() {
   const input = await readStdin();
 
-  let payload: any;
+  let payload: unknown;
   try {
     payload = JSON.parse(input);
   } catch {
+    allow();
+  }
+
+  if (!isRecord(payload)) {
     allow();
   }
 
@@ -199,7 +216,7 @@ async function main() {
   }
 
   const toolInput = payload.tool_input;
-  if (typeof toolInput !== "object" || toolInput === null || Array.isArray(toolInput)) {
+  if (!isRecord(toolInput)) {
     allow();
   }
 

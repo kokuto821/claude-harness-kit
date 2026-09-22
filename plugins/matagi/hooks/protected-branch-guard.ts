@@ -172,6 +172,15 @@ function tokenize(command: string): string[] {
       continue;
     }
 
+    if (ch === "#") {
+      flush();
+      while (i < command.length && command[i] !== "\n") {
+        i++;
+      }
+      i--;
+      continue;
+    }
+
     if (/\s/.test(ch)) {
       flush();
       continue;
@@ -310,6 +319,10 @@ function editReason(branch: string, path: string): string {
   );
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 function isEditTool(toolName: unknown): boolean {
   return typeof toolName === "string" && EDIT_TOOL_MARKERS.some((marker) => toolName.includes(marker));
 }
@@ -412,20 +425,24 @@ function readStdin(): Promise<string> {
 async function main() {
   const input = await readStdin();
 
-  let payload: any;
+  let payload: unknown;
   try {
     payload = JSON.parse(input);
   } catch {
     allow();
   }
 
+  if (!isRecord(payload)) {
+    allow();
+  }
+
   const toolInput = payload.tool_input;
-  if (typeof toolInput !== "object" || toolInput === null || Array.isArray(toolInput)) {
+  if (!isRecord(toolInput)) {
     allow();
   }
 
   const toolName = payload.tool_name;
-  const cwd: string = payload.cwd || process.cwd();
+  const cwd: string = typeof payload.cwd === "string" && payload.cwd ? payload.cwd : process.cwd();
   const protected_ = protectedBranches();
 
   let reason: string | null;
