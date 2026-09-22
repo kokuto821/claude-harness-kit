@@ -11,6 +11,8 @@ description: >
 
 # openspec-workflow
 
+役職: **シカリ**（統括）。spec 合意形成から適用まで指揮。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 OpenSpec のフェーズ（explore/propose/apply/archive）を統括する。CLI が生成する `openspec-apply-change`/`openspec-archive-change` スキルは、この kit の既存ルール（実装は産出 skill へ委譲する・レビューと産出者は別エージェント）を知らないため、apply/archive では**それらを起動せず**、本スキルが `openspec` CLI を直接叩いて進行・委譲・レビューゲートを担う。explore/propose はコードを書かないため、CLI 生成のスキルをそのまま使う。

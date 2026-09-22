@@ -12,6 +12,8 @@ description: >
 
 # github-issue-resolve
 
+役職: **シカリ**（統括）。issue 一件、入山から下山まで指揮。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 issue 駆動開発の**実行フェーズ**を統括する。1件の issue を、ブランチ作成から PR 作成・issue クローズまで閉じる。PR のマージはユーザーが行う。実装・レビューの中身は既存の入口スキルへ委譲し、本スキル自身はフェーズの進行と GitHub 操作のみを担う。

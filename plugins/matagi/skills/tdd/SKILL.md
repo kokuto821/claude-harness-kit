@@ -8,6 +8,8 @@ description: >
 
 # tdd
 
+役職: **シカリ**（統括）。Red-Green-Refactor サイクル指揮。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 `tdd-rule` を唯一の根拠に、TDD サイクルの各フェーズを適切な産出者・レビュアーへ委譲する。

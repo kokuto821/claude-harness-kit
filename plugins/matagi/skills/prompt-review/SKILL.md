@@ -10,6 +10,8 @@ description: >
 
 # prompt-review
 
+役職: **オキテ**（検証者）。プロンプト逸脱見逃さぬ。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 プロンプト・スキル（SKILL.md）・サブエージェント定義のレビューの**入口・承認ゲート**となる

@@ -11,6 +11,8 @@ description: >
 
 # coding
 
+役職: **ブッパ**（実装者）。仕様通り正確に撃ち抜く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 対象コードを分析して domain を判定した上で、対応する専門サブエージェントへ実装を委譲する

@@ -11,6 +11,8 @@ description: >
 
 # harness-review
 
+役職: **オキテ**（検証者）。手法選択の逸脱見逃さぬ。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+
 ## 概要
 
 ステアリング構成レビューの**入口**タスクスキル。監査は `steering-reviewer` エージェントに
