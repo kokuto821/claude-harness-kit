@@ -2,13 +2,13 @@
  * Claude Code 向け plugin.json の `hooks` フィールドを Google Antigravity 向け hooks.json に変換するスクリプト。
  *
  * command 文字列（既存 hooks/*.ts への参照）はそのまま維持し、hooks/*.ts 本体には手を加えない。
- * 実行方法: node --experimental-strip-types generate-hooks-json.ts [出力先パス]
+ * hooks.json は Antigravity 仕様上プラグインルート直下に置く必要があるため、
+ * 出力先ディレクトリ（= プラグインルート）を CLI 引数で必須指定する。
+ * 実行方法: node --experimental-strip-types generate-hooks-json.ts <出力先ディレクトリ（プラグインルート）>
  */
 
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import { readClaudePluginJson, writeManifest } from "./shared.ts";
-
-const DEFAULT_OUTPUT_PATH = join(import.meta.dirname, "dist/hooks.json");
 
 type ClaudeHookCommand = {
   type: string;
@@ -36,12 +36,17 @@ type AntigravityHooksManifest = {
   hooks: AntigravityHookEntry[];
 };
 
-const toAntigravityHooks = (source: ClaudePluginManifest): AntigravityHooksManifest => {
+const toAntigravityHooks = (
+  source: ClaudePluginManifest,
+  pluginRoot: string,
+): AntigravityHooksManifest => {
   const entries: AntigravityHookEntry[] = [];
   for (const [event, matchers] of Object.entries(source.hooks ?? {})) {
     for (const { matcher, hooks } of matchers) {
       for (const hook of hooks) {
-        entries.push({ event, matcher, command: hook.command });
+        // agy は ${...} 変数展開をサポートしないため絶対パスに置換する
+        const command = hook.command.replaceAll("${CLAUDE_PLUGIN_ROOT}", pluginRoot);
+        entries.push({ event, matcher, command });
       }
     }
   }
@@ -49,10 +54,20 @@ const toAntigravityHooks = (source: ClaudePluginManifest): AntigravityHooksManif
 };
 
 const main = () => {
-  const outputPath = process.argv[2] || DEFAULT_OUTPUT_PATH;
+  const outputDir = process.argv[2];
+  if (!outputDir) {
+    console.error("出力先ディレクトリ（プラグインルート）を指定してください");
+    console.error(
+      "実行方法: node --experimental-strip-types generate-hooks-json.ts <出力先ディレクトリ（プラグインルート）>",
+    );
+    process.exit(1);
+  }
+
+  const pluginRoot = resolve(outputDir);
+  const outputPath = join(pluginRoot, "hooks.json");
 
   const source = readClaudePluginJson<ClaudePluginManifest>();
-  const manifest = toAntigravityHooks(source);
+  const manifest = toAntigravityHooks(source, pluginRoot);
 
   writeManifest(outputPath, manifest, "Antigravity hooks.json");
 };
