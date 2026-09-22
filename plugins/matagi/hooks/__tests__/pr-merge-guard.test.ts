@@ -16,9 +16,9 @@ const SCRIPT_PATH = join(
   "pr-merge-guard.ts",
 );
 
-function runHook(payload: Payload) {
+const runHook = (payload: Payload) => {
   return runHookBase(SCRIPT_PATH, payload);
-}
+};
 
 test("Bash経由の`gh pr merge`を拒否する", () => {
   // Arrange

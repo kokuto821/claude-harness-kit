@@ -14,15 +14,15 @@
 
 import { tokenize, splitSegments, stripPrefix } from "./command-parser.ts";
 
-function isRecord(value: unknown): value is Record<string, unknown> {
+const isRecord = (value: unknown): value is Record<string, unknown> => {
   return typeof value === "object" && value !== null && !Array.isArray(value);
-}
+};
 
-function allow(): never {
+const allow = (): never => {
   process.exit(0);
-}
+};
 
-function deny(reason: string): never {
+const deny = (reason: string): never => {
   process.stdout.write(
     JSON.stringify({
       hookSpecificOutput: {
@@ -33,17 +33,17 @@ function deny(reason: string): never {
     }) + "\n",
   );
   process.exit(0);
-}
+};
 
-function isGhPrMerge(segment: string[]): boolean {
+const isGhPrMerge = (segment: string[]): boolean => {
   const tokens = stripPrefix(segment);
   return tokens.length >= 2 && tokens[0] === "gh" && tokens[1] === "pr" && tokens.slice(2).includes("merge");
-}
+};
 
 const DENY_REASON =
   "`gh pr merge` はフックによりブロックされました。\n" + "PR のマージはユーザーがブラウザ上で行ってください。";
 
-function bashDenialReason(command: string): string | null {
+const bashDenialReason = (command: string): string | null => {
   let segments: string[][];
   try {
     segments = splitSegments(tokenize(command));
@@ -57,9 +57,9 @@ function bashDenialReason(command: string): string | null {
     }
   }
   return null;
-}
+};
 
-function readStdin(): Promise<string> {
+const readStdin = (): Promise<string> => {
   return new Promise((resolve) => {
     let data = "";
     process.stdin.setEncoding("utf-8");
@@ -68,9 +68,9 @@ function readStdin(): Promise<string> {
     });
     process.stdin.on("end", () => resolve(data));
   });
-}
+};
 
-async function main() {
+const main = async () => {
   const input = await readStdin();
 
   let payload: unknown;
@@ -104,6 +104,6 @@ async function main() {
   }
 
   allow();
-}
+};
 
 main();

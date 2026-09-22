@@ -6,7 +6,7 @@
 export const SEGMENT_SEPARATORS = new Set(["&&", "||", ";", "|", "&", "(", ")", "\n"]);
 
 /** コマンド文字列をトークン列に分解する。引用符の中身は 1 トークンにまとまる。 */
-export function tokenize(command: string): string[] {
+export const tokenize = (command: string): string[] => {
   const tokens: string[] = [];
   let current = "";
   let inSingle = false;
@@ -100,10 +100,10 @@ export function tokenize(command: string): string[] {
   }
 
   return tokens;
-}
+};
 
 /** `&&` や `;` などの区切りでトークン列をコマンド単位に分ける。 */
-export function splitSegments(tokens: string[]): string[][] {
+export const splitSegments = (tokens: string[]): string[][] => {
   const segments: string[][] = [[]];
   for (const token of tokens) {
     if (SEGMENT_SEPARATORS.has(token)) {
@@ -113,10 +113,10 @@ export function splitSegments(tokens: string[]): string[][] {
     }
   }
   return segments.filter((segment) => segment.length > 0);
-}
+};
 
 /** 先頭の環境変数代入と sudo を読み飛ばす。 */
-export function stripPrefix(segment: string[]): string[] {
+export const stripPrefix = (segment: string[]): string[] => {
   let index = 0;
   const isIdentifier = (s: string) => /^[A-Za-z_][A-Za-z0-9_]*$/.test(s);
   while (index < segment.length) {
@@ -130,4 +130,4 @@ export function stripPrefix(segment: string[]): string[] {
     }
   }
   return segment.slice(index);
-}
+};

@@ -38,16 +38,16 @@ const BRANCH_EXAMPLE =
 // 直後の引数を値として取るグローバルオプション
 const GIT_GLOBAL_OPTIONS_WITH_VALUE = new Set(["-C", "-c", "--git-dir", "--work-tree", "--namespace", "--exec-path"]);
 
-function protectedBranches(): string[] {
+const protectedBranches = (): string[] => {
   const raw = process.env.CLAUDE_PROTECTED_BRANCHES || "";
   return raw.trim() ? raw.split(/\s+/).filter(Boolean) : DEFAULT_PROTECTED_BRANCHES;
-}
+};
 
-function allow(): never {
+const allow = (): never => {
   process.exit(0);
-}
+};
 
-function deny(reason: string): never {
+const deny = (reason: string): never => {
   process.stdout.write(
     JSON.stringify({
       hookSpecificOutput: {
@@ -58,10 +58,10 @@ function deny(reason: string): never {
     }) + "\n",
   );
   process.exit(0);
-}
+};
 
 /** git を実行する。呼び出し元の GIT_* は引き継がない（パスから見た実リポジトリを判定するため）。 */
-function runGit(args: string[], cwd: string) {
+const runGit = (args: string[], cwd: string) => {
   const env: Record<string, string> = {};
   for (const [key, value] of Object.entries(process.env)) {
     if (!key.startsWith("GIT_") && value !== undefined) {
@@ -77,10 +77,10 @@ function runGit(args: string[], cwd: string) {
   } catch {
     return null;
   }
-}
+};
 
 /** directory が git ワークツリー内ならブランチ名を返す。管理外・detached HEAD は null。 */
-function currentBranch(directory: string): string | null {
+const currentBranch = (directory: string): string | null => {
   const result = runGit(["rev-parse", "--show-toplevel", "--abbrev-ref", "HEAD"], directory);
   if (result === null || result.status !== 0) {
     return null;
@@ -91,16 +91,16 @@ function currentBranch(directory: string): string | null {
   }
   const branch = lines[1].trim();
   return branch && branch !== "HEAD" ? branch : null;
-}
+};
 
 /** path が .gitignore 済みなら true。判定できなければ false（＝ガード対象のまま）。 */
-function isIgnored(path: string, directory: string): boolean {
+const isIgnored = (path: string, directory: string): boolean => {
   const result = runGit(["check-ignore", "-q", "--", path], directory);
   return result !== null && result.status === 0;
-}
+};
 
 /** path の親をたどり、実在する最初のディレクトリを返す（未作成の階層に対応）。 */
-function existingDirectory(path: string): string | null {
+const existingDirectory = (path: string): string | null => {
   let directory = dirname(path) || sep;
   while (!existsSync(directory) || !statSync(directory).isDirectory()) {
     const parent = dirname(directory);
@@ -110,12 +110,12 @@ function existingDirectory(path: string): string | null {
     directory = parent;
   }
   return directory;
-}
+};
 
 type GitInvocation = { subcommand: string; args: string[]; repoDir: string | null };
 
 /** git 呼び出しなら { サブコマンド, 残りの引数, -C の値 } を返す。そうでなければ null。 */
-function parseGitInvocation(segment: string[]): GitInvocation | null {
+const parseGitInvocation = (segment: string[]): GitInvocation | null => {
   const tokens = stripPrefix(segment);
   if (tokens.length === 0) {
     return null;
@@ -144,10 +144,10 @@ function parseGitInvocation(segment: string[]): GitInvocation | null {
     }
   }
   return null;
-}
+};
 
 /** push の引数に保護ブランチ宛ての refspec が含まれていればその名前を返す。 */
-function pushedProtectedBranch(args: string[], protected_: string[]): string | null {
+const pushedProtectedBranch = (args: string[], protected_: string[]): string | null => {
   for (const arg of args) {
     if (arg.startsWith("-")) {
       continue;
@@ -159,48 +159,48 @@ function pushedProtectedBranch(args: string[], protected_: string[]): string | n
     }
   }
   return null;
-}
+};
 
-function protectedFooter(): string {
+const protectedFooter = (): string => {
   return `（保護ブランチ: ${protectedBranches().join(", ")} / 環境変数 CLAUDE_PROTECTED_BRANCHES で変更可）`;
-}
+};
 
-function branchReason(branch: string, subcommand: string): string {
+const branchReason = (branch: string, subcommand: string): string => {
   return (
     `保護ブランチ \`${branch}\` 上での \`git ${subcommand}\` はフックによりブロックされました。\n` +
     "作業ブランチを切ってから実行してください:\n" +
     `${BRANCH_EXAMPLE}\n` +
     `${protectedFooter()}`
   );
-}
+};
 
-function pushTargetReason(target: string): string {
+const pushTargetReason = (target: string): string => {
   return (
     `保護ブランチ \`${target}\` への \`git push\` はフックによりブロックされました。\n` +
     "作業ブランチを push し、Pull Request 経由でマージしてください:\n" +
     "  git push -u origin <current-branch>\n" +
     `${protectedFooter()}`
   );
-}
+};
 
-function editReason(branch: string, path: string): string {
+const editReason = (branch: string, path: string): string => {
   return (
     `保護ブランチ \`${branch}\` 上でのファイル変更（\`${path}\`）はフックによりブロックされました。\n` +
     "issue に紐づく作業ブランチへ移動してから編集してください:\n" +
     `${BRANCH_EXAMPLE}\n` +
     `${protectedFooter()}`
   );
-}
+};
 
-function isRecord(value: unknown): value is Record<string, unknown> {
+const isRecord = (value: unknown): value is Record<string, unknown> => {
   return typeof value === "object" && value !== null && !Array.isArray(value);
-}
+};
 
-function isEditTool(toolName: unknown): boolean {
+const isEditTool = (toolName: unknown): boolean => {
   return typeof toolName === "string" && EDIT_TOOL_MARKERS.some((marker) => toolName.includes(marker));
-}
+};
 
-function editTarget(toolInput: Record<string, unknown>): string | null {
+const editTarget = (toolInput: Record<string, unknown>): string | null => {
   for (const key of EDIT_TOOL_PATH_KEYS) {
     const value = toolInput[key];
     if (typeof value === "string" && value) {
@@ -208,10 +208,10 @@ function editTarget(toolInput: Record<string, unknown>): string | null {
     }
   }
   return null;
-}
+};
 
 /** 保護ブランチ上の追跡対象ファイルへの変更なら拒否理由を返す。問題なければ null。 */
-function editDenialReason(toolInput: Record<string, unknown>, cwd: string, protected_: string[]): string | null {
+const editDenialReason = (toolInput: Record<string, unknown>, cwd: string, protected_: string[]): string | null => {
   const path = editTarget(toolInput);
   if (path === null) {
     return null;
@@ -234,10 +234,10 @@ function editDenialReason(toolInput: Record<string, unknown>, cwd: string, prote
     return null;
   }
   return editReason(branch, path);
-}
+};
 
 /** os.path.realpath 相当（存在しないパスでもエラーにせず可能な限り解決する）。 */
-function realpathNonStrict(path: string): string {
+const realpathNonStrict = (path: string): string => {
   try {
     return realpathSync(path);
   } catch {
@@ -248,10 +248,10 @@ function realpathNonStrict(path: string): string {
     const skip = dir === "/" ? dir.length : dir.length + 1;
     return join(realpathNonStrict(dir), path.slice(skip) || "");
   }
-}
+};
 
 /** 保護ブランチ上の git commit / push なら拒否理由を返す。問題なければ null。 */
-function bashDenialReason(command: string, cwd: string, protected_: string[]): string | null {
+const bashDenialReason = (command: string, cwd: string, protected_: string[]): string | null => {
   let segments: string[][];
   try {
     segments = splitSegments(tokenize(command));
@@ -283,9 +283,9 @@ function bashDenialReason(command: string, cwd: string, protected_: string[]): s
     }
   }
   return null;
-}
+};
 
-function readStdin(): Promise<string> {
+const readStdin = (): Promise<string> => {
   return new Promise((resolve) => {
     let data = "";
     process.stdin.setEncoding("utf-8");
@@ -294,9 +294,9 @@ function readStdin(): Promise<string> {
     });
     process.stdin.on("end", () => resolve(data));
   });
-}
+};
 
-async function main() {
+const main = async () => {
   const input = await readStdin();
 
   let payload: unknown;
@@ -333,6 +333,6 @@ async function main() {
     deny(reason);
   }
   allow();
-}
+};
 
 main();

@@ -20,11 +20,11 @@ export type Payload = {
  * （開発者のシェルに設定が残っているとテストの独立性が壊れるため）。
  * 上書きが必要なテストは envOverrides で個別に指定する。
  */
-export function runHook(
+export const runHook = (
   scriptPath: string,
   payload: Payload,
   envOverrides: Record<string, string | undefined> = {},
-) {
+) => {
   const env: Record<string, string | undefined> = { ...process.env, CLAUDE_PROTECTED_BRANCHES: undefined };
   for (const [key, value] of Object.entries(envOverrides)) {
     env[key] = value;
@@ -35,14 +35,14 @@ export function runHook(
     encoding: "utf-8",
     env,
   });
-}
+};
 
-export function parseDenyOutput(stdout: string) {
+export const parseDenyOutput = (stdout: string) => {
   const parsed = JSON.parse(stdout);
   return parsed.hookSpecificOutput;
-}
+};
 
-function initGitRepo(): string {
+const initGitRepo = (): string => {
   const dir = mkdtempSync(join(tmpdir(), "hook-test-repo-"));
   spawnSync("git", ["init", "-q", "-b", "main"], { cwd: dir });
   spawnSync("git", ["config", "user.email", "test@example.com"], { cwd: dir });
@@ -51,18 +51,18 @@ function initGitRepo(): string {
   spawnSync("git", ["add", "."], { cwd: dir });
   spawnSync("git", ["commit", "-q", "-m", "init"], { cwd: dir });
   return dir;
-}
+};
 
 /** 一時 git リポジトリを作成し、fn に渡す。fn の完了後（例外時も含め）に必ず削除する。 */
-export function withTempRepo<T>(fn: (repoDir: string) => T): T {
+export const withTempRepo = <T>(fn: (repoDir: string) => T): T => {
   const repo = initGitRepo();
   try {
     return fn(repo);
   } finally {
     rmSync(repo, { recursive: true, force: true });
   }
-}
+};
 
-export function checkoutNewBranch(dir: string, branch: string) {
+export const checkoutNewBranch = (dir: string, branch: string) => {
   spawnSync("git", ["switch", "-c", branch], { cwd: dir });
-}
+};

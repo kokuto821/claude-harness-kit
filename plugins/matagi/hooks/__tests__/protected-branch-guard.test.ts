@@ -18,9 +18,9 @@ const SCRIPT_PATH = join(
   "protected-branch-guard.ts",
 );
 
-function runHook(payload: Payload, envOverrides?: Record<string, string | undefined>) {
+const runHook = (payload: Payload, envOverrides?: Record<string, string | undefined>) => {
   return runHookBase(SCRIPT_PATH, payload, envOverrides);
-}
+};
 
 test("保護ブランチ(main)上でBash経由の`git commit`を拒否する", () => {
   withTempRepo((repo) => {
