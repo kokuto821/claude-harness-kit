@@ -1,0 +1,18 @@
+{
+  "name": "matagi",
+  "description": "Claude Codeの作業効率化スキル集（コミット・セッション引き継ぎ・ナレッジ管理・TDD・ペルソナなど）",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/protected-branch-guard.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

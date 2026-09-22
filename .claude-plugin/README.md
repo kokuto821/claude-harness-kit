@@ -2,4 +2,4 @@
 
 マーケットプレイスのカタログを置く場所です。
 
-`marketplace.json` で、このリポジトリが提供するプラグイン（`plugins/claude-harness-kit`）を定義しています。
+`marketplace.json` で、このリポジトリが提供するプラグイン（`plugins/matagi`）を定義しています。

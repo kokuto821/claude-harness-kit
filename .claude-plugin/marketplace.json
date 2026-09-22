@@ -1,10 +1,10 @@
 {
-  "name": "claude-harness-kit",
+  "name": "matagi",
   "owner": { "name": "kokuto821" },
   "plugins": [
     {
-      "name": "claude-harness-kit",
-      "source": "./plugins/claude-harness-kit",
+      "name": "matagi",
+      "source": "./plugins/matagi",
       "description": "個人用Claude Codeスキル集（コミット・セッション管理・知識管理・TDDなど）"
     }
   ]
