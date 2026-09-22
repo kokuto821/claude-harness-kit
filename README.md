@@ -1,12 +1,12 @@
-# claude-harness-kit
+# matagi
 
 Claude Code のスキル・ルール・ナレッジを共有するリポジトリです。
 
-すべてのコンテンツは `plugins/claude-harness-kit/` 配下にまとまっており、`.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグインとして読み込まれます。
+すべてのコンテンツは `plugins/matagi/` 配下にまとまっており、`.claude-plugin/marketplace.json` 経由でマーケットプレイスプラグインとして読み込まれます。
 
 ## 主なディレクトリ
 
-- `plugins/claude-harness-kit/` … スキル・ルール・ドキュメント・ナレッジ・エージェント・テンプレートの本体（source of truth）
+- `plugins/matagi/` … スキル・ルール・ドキュメント・ナレッジ・エージェント・テンプレートの本体（source of truth）
 - `.claude-plugin/` … マーケットプレイスカタログ
 - `.claude/` … このリポジトリ用の Claude Code ローカル設定
 

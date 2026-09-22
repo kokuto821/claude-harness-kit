@@ -1,6 +1,6 @@
 {
   "enabledPlugins": {
-    "claude-harness-kit@claude-harness-kit": true
+    "matagi@matagi": true
   },
   "permissions": {
     "deny": [
