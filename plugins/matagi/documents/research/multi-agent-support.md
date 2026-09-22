@@ -49,7 +49,7 @@ issue #55。matagi を Claude Code 以外のエージェント（Codex CLI・Goo
 ## 未確定事項（issue #55 時点で残るもの）
 
 - Codex CLI の hooks 相当の有無・仕様
-- ~~Antigravity の SKILL.md frontmatter フィールドの完全互換性~~ → issue #59 でも未検証のまま残存（実機未導入のため）。詳細は [[antigravity-adapter]]（`documents/reference/multi-agent-support/antigravity-adapter.md`）参照
+- Antigravity の SKILL.md frontmatter フィールドの完全互換性 → issue #59 マージ後、実機（`agy`）でスキル一覧に認識されることを確認した。ただし個々のスキルが description ベースで正しく自動発火するかまでは未検証。`rules/`・`agents/*.md`・`hooks.json` の実機読み込みも未検証のまま残存。詳細は [[antigravity-adapter]]（`documents/reference/multi-agent-support/antigravity-adapter.md`）参照
 - OpenCode の commands/ 自動トリガー機構の有無
 - 3エージェントとも、`plugins/matagi/` を「複製せず参照」する具体的な配線（シンボリックリンク可否・パス指定の可否）の実機検証 → **Antigravity のみ判明**: ワークスペース `.agents/plugins/<name>/` 配置または `agy plugins install` によるステージングで、各作業リポジトリでの個別配線は不要（[[antigravity-adapter]] 参照）。Codex CLI・OpenCode は未検証のまま残存
 
