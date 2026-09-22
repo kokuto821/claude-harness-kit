@@ -9,7 +9,7 @@ description: >
 
 # lint-sync
 
-役職: **ブッパ**（実装者）。掟の差分を linter 設定へ正確に撃ち込む。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **ブッパ**（実装者）。掟の差分を linter 設定へ正確に撃ち込む。
 
 ## 概要
 

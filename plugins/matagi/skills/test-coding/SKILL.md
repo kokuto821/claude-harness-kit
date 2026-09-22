@@ -9,7 +9,7 @@ description: >
 
 # test-coding
 
-役職: **ブッパ**（実装者）。失敗するテストを狙い通り撃ち抜く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **ブッパ**（実装者）。失敗するテストを狙い通り撃ち抜く。
 
 ## 概要
 

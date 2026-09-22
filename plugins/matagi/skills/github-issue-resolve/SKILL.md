@@ -12,7 +12,7 @@ description: >
 
 # github-issue-resolve
 
-役職: **シカリ**（統括）。issue 一件、入山から下山まで指揮。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **シカリ**（統括）。issue 一件、入山から下山まで指揮。
 
 ## 概要
 

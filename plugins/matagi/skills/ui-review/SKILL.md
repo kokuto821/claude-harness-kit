@@ -10,7 +10,7 @@ description: >
 
 # ui-review
 
-役職: **オキテ**（検証者）。ui-design ルール逸脱見逃さぬ。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **オキテ**（検証者）。ui-design ルール逸脱見逃さぬ。
 
 ## 概要
 

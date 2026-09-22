@@ -9,7 +9,7 @@ description: >
 
 # create-ui-component
 
-役職: **ブッパ**（実装者）。ui-design ルール通り正確に UI を撃ち抜く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **ブッパ**（実装者）。ui-design ルール通り正確に UI を撃ち抜く。
 
 ## 概要
 

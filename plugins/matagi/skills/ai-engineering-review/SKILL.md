@@ -11,7 +11,7 @@ description: >
 
 # ai-engineering-review
 
-役職: **オキテ**（検証者）。ステアリング資産を多観点で裁く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **オキテ**（検証者）。ステアリング資産を多観点で裁く。
 
 ## 概要
 

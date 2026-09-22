@@ -11,7 +11,7 @@ description: >
 
 # openspec-workflow
 
-役職: **シカリ**（統括）。spec 合意形成から適用まで指揮。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **シカリ**（統括）。spec 合意形成から適用まで指揮。
 
 ## 概要
 

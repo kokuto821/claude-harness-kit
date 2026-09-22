@@ -11,7 +11,7 @@ description: >
 
 # coding
 
-役職: **ブッパ**（実装者）。仕様通り正確に撃ち抜く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **ブッパ**（実装者）。仕様通り正確に撃ち抜く。
 
 ## 概要
 

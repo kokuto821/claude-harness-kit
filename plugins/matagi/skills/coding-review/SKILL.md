@@ -12,7 +12,7 @@ description: >
 
 # coding-review
 
-役職: **オキテ**（検証者）。掟逸脱見逃さぬ。産出者と別人格で裁く。役職定義→`plugins/matagi/shared-rules/matagi-lore/glossary-rule.md`。
+役職: **オキテ**（検証者）。掟逸脱見逃さぬ。産出者と別人格で裁く。
 
 ## 概要
 
