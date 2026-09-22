@@ -18,6 +18,18 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node --experimental-strip-types \"${CLAUDE_PLUGIN_ROOT}/hooks/antigravity-manifest-sync.ts\"",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }

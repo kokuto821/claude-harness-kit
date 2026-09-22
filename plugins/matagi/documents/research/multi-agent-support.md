@@ -32,6 +32,7 @@ issue #55。matagi を Claude Code 以外のエージェント（Codex CLI・Goo
 - SKILL.md フォーマットの互換性（frontmatter フィールド名の差異有無）は未検証。
 - hooks スクリプト本体（`.py` 等）は流用し、`hooks.json` からの参照だけ配線し直せる可能性が高い。
 - `plugin.json` は Claude Code の `plugin.json`/`marketplace.json` と役割が近く、変換スクリプトで自動生成しやすい。
+- issue #59 で実装済み: `rules/`・`agents/*.md` は Antigravity 側もプラグイン直下ディレクトリとして持つ仕様のため、**変換せずディレクトリ構造のまま配置する方針**とした（frontmatter の完全互換性は未検証のまま残るため、実配置後の実機確認が要る）。詳細は [[antigravity-adapter]]（`documents/reference/multi-agent-support/antigravity-adapter.md`）参照。
 
 ### OpenCode
 
@@ -48,11 +49,11 @@ issue #55。matagi を Claude Code 以外のエージェント（Codex CLI・Goo
 ## 未確定事項（issue #55 時点で残るもの）
 
 - Codex CLI の hooks 相当の有無・仕様
-- Antigravity の SKILL.md frontmatter フィールドの完全互換性
+- Antigravity の SKILL.md frontmatter フィールドの完全互換性 → issue #59 マージ後、実機（`agy`）でスキル一覧に認識されることを確認した。ただし個々のスキルが description ベースで正しく自動発火するかまでは未検証。`rules/`・`agents/*.md`・`hooks.json` の実機読み込みも未検証のまま残存。詳細は [[antigravity-adapter]]（`documents/reference/multi-agent-support/antigravity-adapter.md`）参照
 - OpenCode の commands/ 自動トリガー機構の有無
-- 3エージェントとも、`plugins/matagi/` を「複製せず参照」する具体的な配線（シンボリックリンク可否・パス指定の可否）の実機検証
+- 3エージェントとも、`plugins/matagi/` を「複製せず参照」する具体的な配線（シンボリックリンク可否・パス指定の可否）の実機検証 → **Antigravity のみ判明**: ワークスペース `.agents/plugins/<name>/` 配置または `agy plugins install` によるステージングで、各作業リポジトリでの個別配線は不要（[[antigravity-adapter]] 参照）。Codex CLI・OpenCode は未検証のまま残存
 
-いずれも各エージェント向け実装 issue の中で、対象エージェントに絞って検証する。
+いずれも各エージェント向け実装 issue の中で、対象エージェントに絞って検証する。issue #59 では Antigravity 向けの `plugin.json`/`hooks.json` 変換スクリプトを実装した（`plugins/matagi/adapters/antigravity/`）。
 
 ## 関連
 

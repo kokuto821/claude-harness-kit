@@ -15,10 +15,12 @@
 | スキル | `plugins/matagi/skills/<skill-name>/SKILL.md` |
 | コアルール（必読・毎セッション自動ロード） | `plugins/matagi/rules/<topic>/<category-rule>.md` |
 | 参照ルール（任意タイミングで参照） | `plugins/matagi/shared-rules/<topic>/<category-rule>.md` |
-| 調査・参考ドキュメント | `plugins/matagi/documents/research/<file>.md` |
+| 調査・経緯ドキュメント（判断に至った過程・未確定事項） | `plugins/matagi/documents/research/<file>.md` |
+| 参照ドキュメント（確定した事実・外部仕様のまとめ） | `plugins/matagi/documents/reference/<topic>/<file>.md` |
 | 経験・知見メモ | `plugins/matagi/knowledge/<category>/<file>.md` |
 | サブエージェント | `plugins/matagi/agents/<name>.md` |
 | フックスクリプト | `plugins/matagi/hooks/<name>.<ext>`（配線は `.claude-plugin/plugin.json` の `hooks`） |
+| 他エージェント向け変換スクリプト（アダプタ） | `plugins/matagi/adapters/<agent-name>/<file>`（source of truth を複製せず変換する層。判断基準は各アダプタの背景 issue・reference ドキュメントを参照） |
 | テンプレート | `plugins/matagi/template/<category>/` |
 
 プロジェクトルート直下や `.claude/` 配下にコンテンツの実ファイルを直接作成しない。`.claude/` は `settings.local.json` 等のローカル設定と、コアルールの symlink（`.claude/rules` → `plugins/.../rules`、実体は plugins 側）のみを置く。
