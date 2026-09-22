@@ -114,6 +114,9 @@ const existingDirectory = (path: string): string | null => {
 
 type GitInvocation = { subcommand: string; args: string[]; repoDir: string | null };
 
+// "-Cxxx" のように -C と値が連結された形式（厳密な "-C" 単体は除く）
+const isAttachedCOption = (token: string): boolean => token.startsWith("-C") && token !== "-C";
+
 /** git 呼び出しなら { サブコマンド, 残りの引数, -C の値 } を返す。そうでなければ null。 */
 const parseGitInvocation = (segment: string[]): GitInvocation | null => {
   const tokens = stripPrefix(segment);
@@ -129,19 +132,27 @@ const parseGitInvocation = (segment: string[]): GitInvocation | null => {
   let index = 1;
   while (index < tokens.length) {
     const token = tokens[index];
+
     if (GIT_GLOBAL_OPTIONS_WITH_VALUE.has(token)) {
       if (token === "-C" && index + 1 < tokens.length) {
         repoDir = tokens[index + 1];
       }
       index += 2;
-    } else if (token.startsWith("-")) {
-      if (token.startsWith("-C")) {
-        repoDir = token.slice(2);
-      }
-      index += 1;
-    } else {
-      return { subcommand: token, args: tokens.slice(index + 1), repoDir };
+      continue;
     }
+
+    if (isAttachedCOption(token)) {
+      repoDir = token.slice(2);
+      index += 1;
+      continue;
+    }
+
+    if (token.startsWith("-")) {
+      index += 1;
+      continue;
+    }
+
+    return { subcommand: token, args: tokens.slice(index + 1), repoDir };
   }
   return null;
 };
@@ -285,6 +296,26 @@ const bashDenialReason = (command: string, cwd: string, protected_: string[]): s
   return null;
 };
 
+/** ツール種別に応じた拒否理由の解決を振り分ける。問題なければ null。 */
+const resolveDenialReason = (
+  toolName: unknown,
+  toolInput: Record<string, unknown>,
+  cwd: string,
+  protected_: string[],
+): string | null => {
+  if (isEditTool(toolName)) {
+    return editDenialReason(toolInput, cwd, protected_);
+  }
+  if (toolName !== "Bash") {
+    return null;
+  }
+  const command = toolInput.command;
+  if (typeof command !== "string" || !command) {
+    return null;
+  }
+  return bashDenialReason(command, cwd, protected_);
+};
+
 const readStdin = (): Promise<string> => {
   return new Promise((resolve) => {
     let data = "";
@@ -319,15 +350,7 @@ const main = async () => {
   const cwd: string = typeof payload.cwd === "string" && payload.cwd ? payload.cwd : process.cwd();
   const protected_ = protectedBranches();
 
-  let reason: string | null;
-  if (isEditTool(toolName)) {
-    reason = editDenialReason(toolInput, cwd, protected_);
-  } else if (toolName === "Bash") {
-    const command = toolInput.command;
-    reason = typeof command === "string" && command ? bashDenialReason(command, cwd, protected_) : null;
-  } else {
-    reason = null;
-  }
+  const reason = resolveDenialReason(toolName, toolInput, cwd, protected_);
 
   if (reason) {
     deny(reason);
