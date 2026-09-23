@@ -6,6 +6,11 @@
       "name": "matagi",
       "source": "./plugins/matagi",
       "description": "個人用Claude Codeスキル集（コミット・セッション管理・知識管理・TDDなど）"
+    },
+    {
+      "name": "matagi-kaji",
+      "source": "./plugins/matagi-kaji",
+      "description": "matagi 自体（スキル・エージェント・ルール等のステアリング資産）を設計・レビューするためのハーネス作成系プラグイン"
     }
   ]
 }

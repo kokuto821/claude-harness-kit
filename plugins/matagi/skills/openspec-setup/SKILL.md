@@ -17,7 +17,7 @@ disable-model-invocation: true
 
 ## ルール
 
-- ポインタは参照のみで、ルール本文はコピーしない（[[externalization-rule]]、`shared-rules/rule-externalization/externalization-rule.md`）。
+- ポインタは参照のみで、ルール本文はコピーしない（[[externalization-rule]]、`matagi-kaji/shared-rules/rule-externalization/externalization-rule.md`）。
 - 本スキルは導入（セットアップ）のみを担う。導入後のワークフロー進行は [[openspec-workflow]]（`skills/openspec-workflow/SKILL.md`）に委ねる。
 - OpenSpec フェーズと既存 skill の役割分担・埋め込むポインタの内容は [[openspec-rule]]（`shared-rules/openspec-integration/openspec-rule.md`）を唯一の正とする。
 - OpenSpec 自体の事実（コマンド・config.yaml のフィールド等）は [[openspec-overview]]（`documents/reference/spec-driven-development/openspec-overview.md`）を参照する。

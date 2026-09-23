@@ -1,11 +1,11 @@
 # matagi
 
-すべてのコンテンツの source of truth となるプラグイン本体です。
+issue駆動開発・TDD・コーディング等の駆動開発系コンテンツの source of truth となるプラグイン本体です。ハーネス作成系（プロンプト・コンテキスト設計・ステアリング構成のレビュー）は `matagi-kaji` プラグインが担います。
 
 ## ディレクトリ
 
 - `skills/` … Claude Code のスキル（`SKILL.md`）
-- `rules/` … Claude が常に従うルール
+- `shared-rules/` … Claude が従うルール（参照層。`[[link]]` で必要時に参照）
 - `documents/` … 人間がインプットする仕様・調査ドキュメント
 - `knowledge/` … 開発で得た経験・知見メモ（AI が記録）
 - `agents/` … サブエージェント定義

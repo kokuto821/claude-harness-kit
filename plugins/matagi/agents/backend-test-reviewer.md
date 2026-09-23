@@ -9,7 +9,7 @@ description: 既存のバックエンドテストをレビュー・監査する�
 
 ## 根拠とするルール
 
-- **設計原則**: `plugins/matagi/rules/design-principles/design-rule.md`
+- **設計原則**: `plugins/matagi/shared-rules/design-principles/design-rule.md`
 - backend 専用のテスト規約（`test-rule.md` のバックエンド版）はまだ整備されていない。整備されるまでは、対象言語のテストフレームワークにおける一般的な作法（AAA・命名・分割・ヘルパー切り出し）を基準にレビューする。
 
 ## 呼ばれたときの手順

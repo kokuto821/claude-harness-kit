@@ -10,7 +10,7 @@ description: バックエンドのテストを実装する産出エージェン�
 
 ## 根拠とするルール
 
-- **設計原則**: `plugins/matagi/rules/design-principles/design-rule.md`
+- **設計原則**: `plugins/matagi/shared-rules/design-principles/design-rule.md`
 - backend 専用のテスト規約（`test-rule.md` のバックエンド版）はまだ整備されていない。整備されるまでは、対象言語のテストフレームワークにおける一般的な作法（AAA・命名・分割）に従う。
 
 ## 呼ばれたときの手順

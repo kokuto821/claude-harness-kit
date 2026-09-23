@@ -25,7 +25,7 @@ TDD の **List（テストリスト洗い出し）と Red（失敗するテス�
 - TDD List/Red フェーズの考え方・コーディング標準は [[tdd-rule]] (`shared-rules/coding-conventions/tdd-rule.md`) に従う。本スキルは List フェーズと Red フェーズを担い、失敗するテストコードの実装まで行う。プロダクションコードの実装は行わない。
 - テスト項目の抜け漏れがないことを重視する。`test.todo` が使える言語ではこれを用い、未実装のテスト項目を可視化する。
 - domain の判定基準・対応サブエージェント・専用サブエージェントが無い場合の委譲方針は [[domain-classification-rule]] (`shared-rules/coding-conventions/domain-classification-rule.md`) を唯一の正とする。本スキルには再掲しない。
-- テストコードの実装は [[design-rule]] (`rules/design-principles/design-rule.md`) の設計原則（DRY/SRP/SoC等）に従う。
+- テストコードの実装は [[design-rule]] (`shared-rules/design-principles/design-rule.md`) の設計原則（DRY/SRP/SoC等）に従う。
 - 対象物はテストコード。テスト仕様書（ドキュメント）の作成は行わない。
 - 本スキルは List/Red フェーズの産出に専念し、レビューは行わない。TDD サイクル中のレビューは tdd スキルの Refactor フェーズ（`coding-review` 経由のコーディング規約・テスト規約レビュー）に一本化する（[[tdd-rule]] Phase 3、issue #39）。`test-design-reviewer`（テスト観点・ケースの抜け漏れ）・`design-principles-reviewer`（設計原則）は本スキルからの委譲を廃止する。両者はエージェントとして独立起動可能なまま残すが、TDD サイクルからは呼ばれない。
 

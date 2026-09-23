@@ -12,7 +12,7 @@ description: コードの設計原則（DRY/SRP/SoC/疎結合・高凝集/情報
 
 ## 根拠とするルール
 
-- **設計原則**: `plugins/matagi/rules/design-principles/design-rule.md`（DRY・SRP・SoC・疎結合/高凝集・情報隠蔽/カプセル化・KISS・YAGNI・ETC）
+- **設計原則**: `plugins/matagi/shared-rules/design-principles/design-rule.md`（DRY・SRP・SoC・疎結合/高凝集・情報隠蔽/カプセル化・KISS・YAGNI・ETC）
 
 ## 呼ばれたときの手順
 

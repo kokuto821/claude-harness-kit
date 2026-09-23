@@ -28,7 +28,7 @@ issue 化すべきかどうかの判断（issue の粒度）自体は [[issue-dr
 
 | 埋め込み先 | 内容 |
 |---|---|
-| `config.yaml` の `context` | この作業ディレクトリの規約は matagi のルール（`plugins/matagi/rules/`・`shared-rules/`）を参照し、矛盾しないこと |
+| `config.yaml` の `context` | この作業ディレクトリの規約は matagi のルール（`plugins/matagi/shared-rules/`）を参照し、矛盾しないこと |
 | `config.yaml` の `rules.proposal` | 対象 issue 番号を明記すること（[[issue-driven-rule]]） |
 | `config.yaml` の `rules.design` | [[design-rule]] の観点で代替案と比較すること |
 | `config.yaml` の `rules.tasks` | 各タスクの実装委譲先（tdd/coding/test-coding）を明記すること |
@@ -60,7 +60,7 @@ issue 化すべきかどうかの判断（issue の粒度）自体は [[issue-dr
 観点が異なるため二重管理ではない。
 
 - `openspec/specs/`: **これから作る／変えていく機能の仕様**（何を作るか。observable behavior の契約）
-- `plugins/matagi/rules/` ・ `shared-rules/`: **Claude がどう振る舞うか**（steering。この kit 自身の規約）
+- `plugins/matagi/shared-rules/`: **Claude がどう振る舞うか**（steering。この kit 自身の規約）
 
 既存コードの後追いスペック化はしない。これから変更する部分だけを段階的に `openspec/specs/` に落とす方針を取る。
 
@@ -82,10 +82,7 @@ OpenSpec の事実（`openspec init` の実際の挙動、コマンド一覧、c
 ## 関連ルール
 
 - [[issue-driven-rule]]（`shared-rules/issue-driven-development/issue-driven-rule.md`） — issue 化の判断・粒度・ブランチ運用
-- [[review-independence-rule]]（`shared-rules/harness-engineering/review-independence-rule.md`） — レビュワーと産出者を別エージェントにする原則
-- [[design-rule]]（`rules/design-principles/design-rule.md`） — design.md で比較する設計原則
-- [[externalization-rule]]（`shared-rules/rule-externalization/externalization-rule.md`） — ルール本文を再掲せず参照する原則
-- [[selection-rule]]（`shared-rules/harness-engineering/selection-rule.md`） — steering 手法の選択基準（OpenSpec はこの対象外）
+- [[design-rule]]（`shared-rules/design-principles/design-rule.md`） — design.md で比較する設計原則
 - [[openspec-setup]]（`skills/openspec-setup/SKILL.md`） — 作業ディレクトリへの導入
 - [[openspec-workflow]]（`skills/openspec-workflow/SKILL.md`） — フェーズ進行・実装委譲・レビューゲート
 - [[github-issue-resolve]]（`skills/github-issue-resolve/SKILL.md`） — apply の実装委譲基準（IMPLEMENT 表）
