@@ -18,7 +18,7 @@ description: >
 
 | 用途 | パス |
 |------|------|
-| 命名規則 | `matagi/shared-rules/naming-conventions/naming-rule.md` |
+| 命名規則 | `shared-rules/naming-conventions/naming-rule.md` |
 | 配置ルール | `matagi/shared-rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `shared-rules/template/template-rule.md` |
 | ルール外部化原則 | `shared-rules/rule-externalization/externalization-rule.md` |
@@ -42,7 +42,7 @@ description: >
 
 ### 2. 名前を命名規則に照らして確定する
 
-`matagi/shared-rules/naming-conventions/naming-rule.md` のルールに従う。
+`shared-rules/naming-conventions/naming-rule.md` のルールに従う。
 
 | 種別 | 形 | 例 |
 |------|----|----|

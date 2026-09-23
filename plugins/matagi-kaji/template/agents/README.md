@@ -15,5 +15,5 @@
 
 `AGENT.md` をコピーして `plugins/matagi/agents/<name>.md` に配置する。
 
-> 命名規則・フロントマターの詳細は `matagi/shared-rules/naming-conventions/naming-rule.md` と
+> 命名規則・フロントマターの詳細は `shared-rules/naming-conventions/naming-rule.md` と
 > `shared-rules/template/template-rule.md` を参照。

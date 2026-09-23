@@ -16,4 +16,4 @@ matagi 本体の開発でのみ使うスキル群（プロンプト・コンテ�
 
 ## 依存関係
 
-一部の `shared-rules/` は `matagi` プラグイン側のルール（`matagi/shared-rules/repository-structure/`、`matagi/shared-rules/matagi-lore/`、`matagi/shared-rules/rules-directory/`、`matagi/shared-rules/review-severity/`、`matagi/shared-rules/code-review/`、`matagi/shared-rules/naming-conventions/` 等）を `[[link]]` で参照する。両プラグインを併用する前提で運用する。
+一部の `shared-rules/` は `matagi` プラグイン側のルール（`matagi/shared-rules/repository-structure/`、`matagi/shared-rules/matagi-lore/`、`matagi/shared-rules/rules-directory/`、`matagi/shared-rules/review-severity/`、`matagi/shared-rules/code-review/` 等）を `[[link]]` で参照する。両プラグインを併用する前提で運用する。

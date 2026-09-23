@@ -17,5 +17,5 @@
 2. 必要なサブディレクトリ（`agents/`, `reference/`, `script/`）だけ持ち込む
 3. 不要なサブディレクトリは作成しない
 
-> 命名規則・フロントマターの詳細は `matagi/shared-rules/naming-conventions/naming-rule.md` と
+> 命名規則・フロントマターの詳細は `shared-rules/naming-conventions/naming-rule.md` と
 > `shared-rules/template/template-rule.md` を参照。
