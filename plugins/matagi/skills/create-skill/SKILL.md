@@ -22,7 +22,7 @@ description: >
 | 配置ルール | `rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `shared-rules/template/template-rule.md` |
 | ルール外部化原則 | `shared-rules/rule-externalization/externalization-rule.md` |
-| ハーネス制御の媒体選択 | `rules/harness-engineering/harness-rule.md` |
+| ハーネス制御の媒体選択 | `shared-rules/harness-engineering/harness-rule.md` |
 | プロンプト構成要素 | `shared-rules/prompt-engineering/composition-rule.md` |
 | 推論の足場の要否 | `shared-rules/prompt-engineering/scaffolding-rule.md` |
 | プロンプト頑健性・安全性 | `shared-rules/prompt-engineering/robustness-rule.md` |
@@ -72,7 +72,7 @@ description: >
 
 切り出す場合は先に `rules/<topic>/` にルールファイルを作成し、スキル・エージェントからはパスで参照する。
 
-また、`rules/harness-engineering/harness-rule.md` に従い、スキルに付随する自動化・制御処理の媒体を判断する。
+また、`shared-rules/harness-engineering/harness-rule.md` に従い、スキルに付随する自動化・制御処理の媒体を判断する。
 
 - **コード（`.sh` / `.ts` / `.js`）**: 「破られたら困る」制御（パーミッション、フック実行ロジック、リトライ）
 - **Markdown（`.md`）**: モデルへのソフトな指針（方針、規約、トーン）

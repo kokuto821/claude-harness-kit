@@ -41,4 +41,4 @@ issue #63。プロンプト駆動の気まぐれな実装・モデル依存の�
 
 - [[externalization-rule]]（`shared-rules/rule-externalization/externalization-rule.md`） — 単一情報源の原則
 - [[naming-rule]]（`shared-rules/naming-conventions/naming-rule.md`） — スキル・エージェントの命名規則
-- [[review-independence-rule]]（`rules/harness-engineering/review-independence-rule.md`） — オキテ（検証者）とブッパ（産出者）の役割分離
+- [[review-independence-rule]]（`shared-rules/harness-engineering/review-independence-rule.md`） — オキテ（検証者）とブッパ（産出者）の役割分離

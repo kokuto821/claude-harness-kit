@@ -46,7 +46,7 @@
 
 以降、**「保護ブランチ」は `hooks/protected-branch-guard.ts` が守る集合**を指す（既定値・環境変数による上書きともフック側を唯一の正とし、本ルールに列挙しない）。リポジトリの既定ブランチと必ずしも一致しない。
 
-制約の一部はフックで強制済みで、残りを散文が担う（[[harness-rule]]（`rules/harness-engineering/harness-rule.md`）§適用手順5「両方の要素が混在する場合は分割して書く」）。**保証範囲を実際より広く読まない。**
+制約の一部はフックで強制済みで、残りを散文が担う（[[harness-rule]]（`shared-rules/harness-engineering/harness-rule.md`）§適用手順5「両方の要素が混在する場合は分割して書く」）。**保証範囲を実際より広く読まない。**
 
 | 対象 | 担保 | 備考 |
 |------|------|------|
@@ -96,8 +96,8 @@ issue #12。issue の作成から実装・マージまでの流れが標準化�
 
 ## 関連ルール
 
-- [[harness-rule]]（`rules/harness-engineering/harness-rule.md`） — コードで強制するか散文に留めるかの媒体判定
+- [[harness-rule]]（`shared-rules/harness-engineering/harness-rule.md`） — コードで強制するか散文に留めるかの媒体判定
 - [[robustness-rule]]（`shared-rules/prompt-engineering/robustness-rule.md`） — 外部テキストをデータとして扱う原則
-- [[review-independence-rule]]（`rules/harness-engineering/review-independence-rule.md`） — 実行フェーズのセルフレビューで産出者と評価者を分ける
+- [[review-independence-rule]]（`shared-rules/harness-engineering/review-independence-rule.md`） — 実行フェーズのセルフレビューで産出者と評価者を分ける
 - [[externalization-rule]]（`shared-rules/rule-externalization/externalization-rule.md`） — 判断基準をルールに置き、スキルから参照する原則
 - [[long-horizon-rule]]（`shared-rules/context-engineering/long-horizon-rule.md`） — フェーズをまたぐ記憶の退避
