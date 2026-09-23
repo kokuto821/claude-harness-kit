@@ -44,4 +44,4 @@ Antigravity のプラグイン仕様は `rules/`・`agents/` をプラグイン�
 ## 関連
 
 - [[multi-agent-support]]（`documents/research/multi-agent-support.md`） — issue #55 時点の3エージェント横断調査・対応方針
-- [[structure-rule]]（`shared-rules/repository-structure/structure-rule.md`） — `plugins/matagi/` を唯一の source of truth とする原則
+- [[structure-rule]]（`matagi-kaji/shared-rules/repository-structure/structure-rule.md`） — `plugins/matagi/` を唯一の source of truth とする原則

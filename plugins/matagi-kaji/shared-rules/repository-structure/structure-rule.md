@@ -41,5 +41,5 @@
 `openspec/`（リポジトリ直下に置かれる想定のディレクトリ）は OpenSpec（仕様駆動開発ツール）の実体で、**このリポジトリ自身には常設しない**。実際に OpenSpec を使うのは matagi をマーケットプレイスプラグインとして導入した作業リポジトリ側であり、`openspec/config.yaml` やフォークしたスキーマは作業リポジトリごとのローカルファイルのため、この kit のコンテンツ（`plugins/matagi/`、マーケットプレイス配布対象）としては持てない。
 
 - 作業リポジトリへの導入・置き場所（`config.yaml` / `schemas/` / `specs/` / `changes/` を commit する等）は `plugins/matagi/skills/openspec-setup/SKILL.md` が担う。
-- OpenSpec のフェーズと既存 skill（tdd/coding/coding-review/github-issue-resolve 等）の役割分担・apply/archive の進行は `shared-rules/openspec-integration/openspec-rule.md`・`skills/openspec-workflow/SKILL.md` を参照。
-- `openspec` CLI の挙動等の事実は `documents/reference/spec-driven-development/openspec-overview.md` を参照。
+- OpenSpec のフェーズと既存 skill（tdd/coding/coding-review/github-issue-resolve 等）の役割分担・apply/archive の進行は `matagi/shared-rules/openspec-integration/openspec-rule.md`・`matagi/skills/openspec-workflow/SKILL.md` を参照。
+- `openspec` CLI の挙動等の事実は `matagi/documents/reference/spec-driven-development/openspec-overview.md` を参照。

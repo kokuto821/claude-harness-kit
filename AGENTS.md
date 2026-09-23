@@ -29,10 +29,7 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 
 | トピック | ルールファイル |
 |----------|--------------|
-| ファイル配置・リポジトリ構造 | `plugins/matagi/shared-rules/repository-structure/structure-rule.md` |
-| 原典の忠実な取り扱い | `plugins/matagi/shared-rules/content-fidelity/content-fidelity-rule.md` |
 | コード設計の普遍原則（DRY 等） | `plugins/matagi/shared-rules/design-principles/design-rule.md` |
-| rules ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/matagi/shared-rules/rules-directory/directory-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/matagi/shared-rules/user-feedback/feedback-rule.md` |
 | issue 駆動開発（フェーズ分離・issue 化の判断・issue 紐づきブランチ必須） | `plugins/matagi/shared-rules/issue-driven-development/issue-driven-rule.md` |
 | コードレビュー共通ルール（目的＝コードの健康状態の改善・承認の閾値・観点） | `plugins/matagi/shared-rules/code-review/review-rule.md` |
@@ -46,6 +43,9 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 
 | トピック | ルールファイル |
 |----------|--------------|
+| ファイル配置・リポジトリ構造 | `plugins/matagi-kaji/shared-rules/repository-structure/structure-rule.md` |
+| 原典の忠実な取り扱い | `plugins/matagi-kaji/shared-rules/content-fidelity/content-fidelity-rule.md` |
+| shared-rules ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/matagi-kaji/shared-rules/rules-directory/directory-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/matagi-kaji/shared-rules/naming-conventions/naming-rule.md` |
 | ハーネス制御（コード vs Markdown の一次判定） | `plugins/matagi-kaji/shared-rules/harness-engineering/harness-rule.md` |
 | ステアリング手法の選択（AGENTS.md/CLAUDE.md/rules/skills/subagents等） | `plugins/matagi-kaji/shared-rules/harness-engineering/selection-rule.md` |

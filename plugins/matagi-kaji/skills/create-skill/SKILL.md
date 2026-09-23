@@ -19,7 +19,7 @@ description: >
 | 用途 | パス |
 |------|------|
 | 命名規則 | `shared-rules/naming-conventions/naming-rule.md` |
-| 配置ルール | `matagi/shared-rules/repository-structure/structure-rule.md` |
+| 配置ルール | `shared-rules/repository-structure/structure-rule.md` |
 | テンプレートルール | `shared-rules/template/template-rule.md` |
 | ルール外部化原則 | `shared-rules/rule-externalization/externalization-rule.md` |
 | ハーネス制御の媒体選択 | `shared-rules/harness-engineering/harness-rule.md` |
@@ -56,7 +56,7 @@ description: >
 
 ### 3. 配置先を決定する
 
-`matagi/shared-rules/repository-structure/structure-rule.md` に従う。
+`shared-rules/repository-structure/structure-rule.md` に従う。
 
 | 種別 | 配置先 |
 |------|--------|
