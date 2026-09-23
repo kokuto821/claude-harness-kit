@@ -39,5 +39,5 @@ frontend/backend 以外の領域（言語の違いなど）は、エントリス
 ## 関連ルール
 
 - [[selection-rule]]（`matagi-kaji/shared-rules/harness-engineering/selection-rule.md`） — 隔離（subagent）と可視性優先（skill）の使い分け基準
-- [[design-rule]]（`rules/design-principles/design-rule.md`） — フォールバック時に依拠する設計原則
+- [[design-rule]]（`shared-rules/design-principles/design-rule.md`） — フォールバック時に依拠する設計原則
 - [[review-independence-rule]]（`matagi-kaji/shared-rules/harness-engineering/review-independence-rule.md`） — レビュー用途での委譲時の産出者分離

@@ -76,7 +76,7 @@ TDD は以下の4つの状態にシステムを導くことを目的とする:
 
 ### その他の主要標準
 
-- **設計原則:** [[design-rule]]（`rules/design-principles/design-rule.md`）に従う。
+- **設計原則:** [[design-rule]]（`shared-rules/design-principles/design-rule.md`）に従う。
 - **明確で意図的な命名:** 変数・関数名はその目的と意図を明確に伝える。
 - **ガード節 / 早期リターン:** 深いネストを避けるため早期リターンを優先する。
 - **セキュリティ第一:** ユーザー入力は常に信頼しない。XSS や SQL Injection を防ぐため入力をサニタイズし出力をエンコードする。

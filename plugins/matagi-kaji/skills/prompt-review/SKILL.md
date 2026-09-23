@@ -15,7 +15,7 @@ description: >
 ## 概要
 
 プロンプト・スキル（SKILL.md）・サブエージェント定義のレビューの**入口・承認ゲート**となる
-タスクスキル。`rules/prompt-*` に照らした監査は `prompt-reviewer` エージェントに委譲し、指摘を
+タスクスキル。`shared-rules/prompt-engineering/*` に照らした監査は `prompt-reviewer` エージェントに委譲し、指摘を
 Critical / Warning / Suggestion で提示する。修正は勝手に適用せず、**人の承認を得てから**
 `prompt-engineer`（修正適用専用）に適用を委譲する。レビュワーと産出者は別エージェントに分ける（[[review-independence-rule]]）。指摘だけで終える依頼にも対応する。
 
@@ -33,7 +33,7 @@ Critical / Warning / Suggestion で提示する。修正は勝手に適用せず
 - **多数のファイルを横断する／本格的な監査**: `prompt-reviewer` エージェントに
   委譲する。重い prompt-* ルールを隔離コンテキストで読み、所見を構造化して返す役割。
 - **単一プロンプト・少量の差分**: このスキル内で直接レビューしてよい。その場合も基準は
-  `rules/prompt-*`（[[composition-rule]] / [[scaffolding-rule]] / [[robustness-rule]] /
+  `shared-rules/prompt-engineering/*`（[[composition-rule]] / [[scaffolding-rule]] / [[robustness-rule]] /
   [[improvement-rule]]）に置く。
 
 エージェントには「レビュー対象ファイル／差分」と「指摘のみ・修正は適用しない」旨を渡す。

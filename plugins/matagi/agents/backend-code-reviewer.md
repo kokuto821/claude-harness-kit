@@ -10,7 +10,7 @@ description: バックエンドのコーディング規約に照らしてコー�
 
 ## 根拠とするルール
 
-- **設計原則**: `plugins/matagi/rules/design-principles/design-rule.md`
+- **設計原則**: `plugins/matagi/shared-rules/design-principles/design-rule.md`
 - backend 専用のコーディング規約（`coding-rule.md` のバックエンド版）はまだ整備されていない。整備されるまでは、対象言語・フレームワークの一般的なイディオム／慣用的なベストプラクティスを基準にレビューする。
 
 ## 呼ばれたときの手順

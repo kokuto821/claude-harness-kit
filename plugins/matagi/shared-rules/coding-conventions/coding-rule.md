@@ -211,7 +211,7 @@ useEffect(() => {
 
 ## 関数設計
 
-- 設計原則は [[design-rule]]（`rules/design-principles/design-rule.md`）に従う
+- 設計原則は [[design-rule]]（`shared-rules/design-principles/design-rule.md`）に従う
 - 副作用のない純粋関数を推奨する
 - 引数が多い場合はオブジェクト形式にする
 

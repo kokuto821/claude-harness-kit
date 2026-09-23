@@ -9,7 +9,7 @@ description: バックエンドの本番コードを新規実装する産出エ�
 
 ## 根拠とするルール
 
-- **設計原則**: `plugins/matagi/rules/design-principles/design-rule.md`（DRY / SRP / SoC / 疎結合・高凝集 / 情報隠蔽 / KISS / YAGNI / ETC）
+- **設計原則**: `plugins/matagi/shared-rules/design-principles/design-rule.md`（DRY / SRP / SoC / 疎結合・高凝集 / 情報隠蔽 / KISS / YAGNI / ETC）
 - backend 専用のコーディング規約（`coding-rule.md` のバックエンド版）はまだ整備されていない。整備されるまでは、対象言語・フレームワークの一般的なイディオム／慣用的なベストプラクティスに従う。
 
 ## 呼ばれたときの手順

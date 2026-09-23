@@ -21,25 +21,18 @@ Claude Code スキル・ナレッジの共有リポジトリ。日本の伝統�
 
 詳細は各ルールファイルを参照。
 
-パスは `plugins/matagi/` または `plugins/matagi-kaji/` を起点とする（テーブル中に明記）。
+パスは `plugins/matagi/` または `plugins/matagi-kaji/` を起点とする（テーブル中に明記）。すべて参照層（`shared-rules/`）に置き、AGENTS.md 索引・`[[link]]` で必要時に参照する。
 
-### コアルール（必読・`.claude/rules` で自動ロード）
-
-タスク領域を問わず毎セッション効く。開発時は symlink 経由で自動ロードされる（下表は一覧、内容は自動注入）。
-
-| トピック | ルールファイル |
-|----------|--------------|
-| ファイル配置・リポジトリ構造 | `plugins/matagi/rules/repository-structure/structure-rule.md` |
-| 原典の忠実な取り扱い | `plugins/matagi/rules/content-fidelity/content-fidelity-rule.md` |
-| コード設計の普遍原則（DRY 等） | `plugins/matagi/rules/design-principles/design-rule.md` |
-
-### 参照ルール索引（必要時に参照）
+### 参照ルール索引
 
 #### matagi（駆動開発系）
 
 | トピック | ルールファイル |
 |----------|--------------|
-| rules/ ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/matagi/shared-rules/rules-directory/directory-rule.md` |
+| ファイル配置・リポジトリ構造 | `plugins/matagi/shared-rules/repository-structure/structure-rule.md` |
+| 原典の忠実な取り扱い | `plugins/matagi/shared-rules/content-fidelity/content-fidelity-rule.md` |
+| コード設計の普遍原則（DRY 等） | `plugins/matagi/shared-rules/design-principles/design-rule.md` |
+| rules ディレクトリ規約（配置・命名・相互リンク記法 `[[slug]]`） | `plugins/matagi/shared-rules/rules-directory/directory-rule.md` |
 | 命名規則（スキル・エージェント） | `plugins/matagi/shared-rules/naming-conventions/naming-rule.md` |
 | ユーザーフィードバックのルール化 | `plugins/matagi/shared-rules/user-feedback/feedback-rule.md` |
 | issue 駆動開発（フェーズ分離・issue 化の判断・issue 紐づきブランチ必須） | `plugins/matagi/shared-rules/issue-driven-development/issue-driven-rule.md` |

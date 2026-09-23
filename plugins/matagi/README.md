@@ -5,7 +5,7 @@ issue駆動開発・TDD・コーディング等の駆動開発系コンテンツ
 ## ディレクトリ
 
 - `skills/` … Claude Code のスキル（`SKILL.md`）
-- `rules/` … Claude が常に従うルール
+- `shared-rules/` … Claude が従うルール（参照層。`[[link]]` で必要時に参照）
 - `documents/` … 人間がインプットする仕様・調査ドキュメント
 - `knowledge/` … 開発で得た経験・知見メモ（AI が記録）
 - `agents/` … サブエージェント定義

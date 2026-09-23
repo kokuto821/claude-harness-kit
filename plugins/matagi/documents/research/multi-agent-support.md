@@ -57,5 +57,5 @@ issue #55。matagi を Claude Code 以外のエージェント（Codex CLI・Goo
 
 ## 関連
 
-- [[structure-rule]]（`rules/repository-structure/structure-rule.md`） — `plugins/matagi/` を唯一の source of truth とする原則（本調査の変換先アダプタもこの原則を維持する前提）
+- [[structure-rule]]（`shared-rules/repository-structure/structure-rule.md`） — `plugins/matagi/` を唯一の source of truth とする原則（本調査の変換先アダプタもこの原則を維持する前提）
 - [[harness-rule]]（`matagi-kaji/shared-rules/harness-engineering/harness-rule.md`） — hooks 相当（コード強制層）の要否判定

@@ -2,7 +2,7 @@
 
 ## 目的
 
-ルールは2ディレクトリで扱う。**`rules/`（コア）** はタスク領域を問わず毎セッション効く不変のガイドライン。**`shared-rules/`（参照層）** は任意タイミングで参照する共通ルール。コアは `.claude/rules` へのディレクトリ symlink で毎セッション自動ロードされ、参照層は `[[link]]`・索引で必要時に参照される（コンテキスト圧迫を避ける）。どちらもサブディレクトリ＋`<短縮トピック>-rule.md` の構造は共通。
+ルールは `shared-rules/`（参照層）1ディレクトリで扱う。任意タイミングで参照する共通ルールを置き、AGENTS.md 索引・`[[link]]` で必要時に参照される（コンテキスト圧迫を避ける）。
 
 | ここに置くもの | ここに置かないもの |
 |---------------|-----------------|
@@ -12,11 +12,11 @@
 
 ## ディレクトリ構造
 
-**全ルールはサブディレクトリに入れる。`rules/` 直下にルールファイルを直置きしない。**
+**全ルールはサブディレクトリに入れる。`shared-rules/` 直下にルールファイルを直置きしない。**
 
 ```
-rules/
-├── README.md                        ← rules/ の説明のみ。直下に置く唯一の例外
+shared-rules/
+├── README.md                        ← shared-rules/ の説明のみ。直下に置く唯一の例外
 ├── <topic>/
 │   └── <short-name>-rule.md
 └── ...
@@ -48,7 +48,7 @@ rules/
 
 普遍的な制約は未スコープでよい。一部の対象にしか効かない規約は `paths:` でスコープし、無関係なセッションでのトークン消費を避ける。判断は [[selection-rule]] に従う。
 
-> **本 kit での運用（2層）**: **コア**（`rules/`）は、この kit をカレントディレクトリで開発する際に `.claude/rules` → `plugins/.../rules` のディレクトリ symlink で native 自動ロードされる（毎セッション必読）。**参照層**（`shared-rules/`）は自動ロードせず、AGENTS.md 索引・skills から `[[link]]` で必要時に参照する。frontmatter の `paths:` は一般挙動の説明で、導入先で native rule 化した際に効く。symlink 運用の詳細は [[structure-rule]]（rules/repository-structure/structure-rule.md）の「コアルールの symlink 例外」節を参照。
+> **本 kit での運用**: `shared-rules/` は自動ロードせず、AGENTS.md 索引・skills から `[[link]]` で必要時に参照する。frontmatter の `paths:` は一般挙動の説明で、導入先で native rule 化した際に効く。
 
 ## 相互リンク記法（`[[slug]]`）
 
@@ -58,7 +58,7 @@ rules・skills・agents・AGENTS.md など本 kit の md 資産どうしの相�
 - これは Obsidian 由来の記法で、**Claude Code / ハーネスのネイティブ機能ではない**。自動解決・自動ロード・クリック遷移はされない。Claude が意味として辿り、必要に応じて実ファイルを検索して開く**慣習的な参照**にすぎない。
 - 別ディレクトリのファイルや、確実に辿らせたい参照は `[[severity-rule]]（shared-rules/review-severity/severity-rule.md）` のように**実パスを併記**する。機械的に解決可能なのは併記した実パスの方で、`[[slug]]` は人間・モデル向けの意味ラベル。
 - **プラグインを跨ぐ参照**（`matagi` ⇄ `matagi-kaji`）は、実パスの先頭に参照先のプラグイン名を付ける。例: `matagi` 側から `matagi-kaji` 側のルールを指す場合は `[[harness-rule]]（matagi-kaji/shared-rules/harness-engineering/harness-rule.md）`。自プラグイン内の参照はこれまでどおりプラグインルート相対のパス（`shared-rules/...`）でよい。
-- 参照層（`shared-rules/`）が `[[link]]` 参照で運用される背景、およびコア（`rules/`）が symlink で自動ロードされる例外は、上記「本 kit での運用（2層）」を参照。
+- `shared-rules/` が `[[link]]` 参照で運用される背景は、上記「本 kit での運用」を参照。
 
 ## 新規作成 vs 既存更新
 
