@@ -2,13 +2,13 @@
 
 ## source of truth
 
-すべてのコンテンツは `plugins/matagi/` 配下が唯一の source of truth。
+すべてのコンテンツは `plugins/matagi/` と `plugins/matagi-kaji/` 配下が唯一の source of truth（2プラグイン構成。駆動開発系は `plugins/matagi/`、ハーネス作成系は `plugins/matagi-kaji/`）。
 
-このディレクトリは `.claude-plugin/marketplace.json` を通じてマーケットプレイスプラグイン（`plugins/matagi`）として読み込まれる。コンテンツを複製する手動の symlink / junction 同期は行わない（コアルールの単一実体参照は例外。「コアルールの symlink 例外」節を参照）。
+これらのディレクトリは `.claude-plugin/marketplace.json` を通じてマーケットプレイスプラグイン（`matagi` / `matagi-kaji`）として読み込まれる。コンテンツを複製する手動の symlink / junction 同期は行わない（コアルールの単一実体参照は例外。「コアルールの symlink 例外」節を参照）。プラグイン間で共通に必要なルールも複製せず、一方に実体を置き他方からは `[[link]]`＋プラグイン名を含む実パスで跨いで参照する（[[directory-rule]] §相互リンク記法）。
 
 ## ファイルの配置先
 
-**新しいファイルは必ず `plugins/matagi/<カテゴリ>/` 配下に置く。**
+**新しいファイルは必ず `plugins/matagi/<カテゴリ>/` または `plugins/matagi-kaji/<カテゴリ>/` 配下に置く。**判断基準は「対象読者・利用場面が matagi 自体（プロンプト・スキル・エージェント・ルール等のステアリング資産）の設計・レビューに閉じるか」。閉じるなら `matagi-kaji`（例: prompt-review・harness-review・create-skill の対象領域）、それ以外（issue 駆動・TDD・コーディング・テスト等、外部プロジェクトのコードや開発フローを対象にする資産）は `matagi`。迷ったら既存の類似資産がどちらのプラグインにあるかを参照する。
 
 | 種類 | 正しい配置先 |
 |------|------------|

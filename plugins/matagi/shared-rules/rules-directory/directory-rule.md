@@ -57,6 +57,7 @@ rules・skills・agents・AGENTS.md など本 kit の md 資産どうしの相�
 - **slug は参照先ファイル名から拡張子を除いた基本名**（見出しやタイトルではない）。例: `[[naming-rule]]` → `naming-conventions/naming-rule.md`。ファイル名基準なので表記が不変。
 - これは Obsidian 由来の記法で、**Claude Code / ハーネスのネイティブ機能ではない**。自動解決・自動ロード・クリック遷移はされない。Claude が意味として辿り、必要に応じて実ファイルを検索して開く**慣習的な参照**にすぎない。
 - 別ディレクトリのファイルや、確実に辿らせたい参照は `[[severity-rule]]（shared-rules/review-severity/severity-rule.md）` のように**実パスを併記**する。機械的に解決可能なのは併記した実パスの方で、`[[slug]]` は人間・モデル向けの意味ラベル。
+- **プラグインを跨ぐ参照**（`matagi` ⇄ `matagi-kaji`）は、実パスの先頭に参照先のプラグイン名を付ける。例: `matagi` 側から `matagi-kaji` 側のルールを指す場合は `[[harness-rule]]（matagi-kaji/shared-rules/harness-engineering/harness-rule.md）`。自プラグイン内の参照はこれまでどおりプラグインルート相対のパス（`shared-rules/...`）でよい。
 - 参照層（`shared-rules/`）が `[[link]]` 参照で運用される背景、およびコア（`rules/`）が symlink で自動ロードされる例外は、上記「本 kit での運用（2層）」を参照。
 
 ## 新規作成 vs 既存更新

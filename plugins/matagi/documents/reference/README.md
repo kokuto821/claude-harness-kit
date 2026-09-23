@@ -8,6 +8,5 @@
 
 - `code-review/` — コードレビューの基準・観点・進め方に関する資料集
 - `design/` — コード設計の原則・法則・比喩の用語集
-- `context-engineering/` — コンテキストエンジニアリング（有限な注意予算の設計・管理）に関する資料集
-- `harness-engineering/` — ハーネスエンジニアリングの概念・実践・ステアリング手法に関する資料集
-- `prompt-engineering/` — プロンプトエンジニアリング論文の要約集
+
+ハーネス作成系の資料（`context-engineering/` `harness-engineering/` `prompt-engineering/`）は `matagi-kaji` プラグインの `documents/reference/` に分割済み。
