@@ -39,7 +39,5 @@ DRY・SRP・疎結合/高凝集の定義が `coding-conventions/tdd-rule.md`・`
 ## 関連ルール・資料
 
 - [[design-principles-glossary]]（`documents/reference/design/design-principles-glossary.md`） — 各原則の定義の唯一の正／周辺の設計法則・比喩の用語集
-- [[externalization-rule]]（`matagi-kaji/shared-rules/rule-externalization/externalization-rule.md`） — ドキュメント/資産の単一情報源（本ルールのドキュメント版に相当する DRY）
 - [[tdd-rule]]（`shared-rules/coding-conventions/tdd-rule.md`） — Red-Green-Refactor サイクル（Refactor で本原則を適用）
 - [[coding-rule]]（`shared-rules/coding-conventions/coding-rule.md`） — 実装全般の規約（関数設計で本原則を適用）
-- [[long-horizon-rule]]（`matagi-kaji/shared-rules/context-engineering/long-horizon-rule.md`） — マルチエージェントにおける関心の分離の応用

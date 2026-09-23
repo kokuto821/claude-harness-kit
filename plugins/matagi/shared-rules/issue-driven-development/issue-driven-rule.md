@@ -93,11 +93,3 @@ issue #12。issue の作成から実装・マージまでの流れが標準化�
 |---------|-------|
 | 作成フェーズ | [[github-issue-create]]（`skills/github-issue-create/SKILL.md`） |
 | 実行フェーズ | [[github-issue-resolve]]（`skills/github-issue-resolve/SKILL.md`） |
-
-## 関連ルール
-
-- [[harness-rule]]（`matagi-kaji/shared-rules/harness-engineering/harness-rule.md`） — コードで強制するか散文に留めるかの媒体判定
-- [[robustness-rule]]（`matagi-kaji/shared-rules/prompt-engineering/robustness-rule.md`） — 外部テキストをデータとして扱う原則
-- [[review-independence-rule]]（`matagi-kaji/shared-rules/harness-engineering/review-independence-rule.md`） — 実行フェーズのセルフレビューで産出者と評価者を分ける
-- [[externalization-rule]]（`matagi-kaji/shared-rules/rule-externalization/externalization-rule.md`） — 判断基準をルールに置き、スキルから参照する原則
-- [[long-horizon-rule]]（`matagi-kaji/shared-rules/context-engineering/long-horizon-rule.md`） — フェーズをまたぐ記憶の退避

@@ -82,10 +82,7 @@ OpenSpec の事実（`openspec init` の実際の挙動、コマンド一覧、c
 ## 関連ルール
 
 - [[issue-driven-rule]]（`shared-rules/issue-driven-development/issue-driven-rule.md`） — issue 化の判断・粒度・ブランチ運用
-- [[review-independence-rule]]（`matagi-kaji/shared-rules/harness-engineering/review-independence-rule.md`） — レビュワーと産出者を別エージェントにする原則
 - [[design-rule]]（`shared-rules/design-principles/design-rule.md`） — design.md で比較する設計原則
-- [[externalization-rule]]（`matagi-kaji/shared-rules/rule-externalization/externalization-rule.md`） — ルール本文を再掲せず参照する原則
-- [[selection-rule]]（`matagi-kaji/shared-rules/harness-engineering/selection-rule.md`） — steering 手法の選択基準（OpenSpec はこの対象外）
 - [[openspec-setup]]（`skills/openspec-setup/SKILL.md`） — 作業ディレクトリへの導入
 - [[openspec-workflow]]（`skills/openspec-workflow/SKILL.md`） — フェーズ進行・実装委譲・レビューゲート
 - [[github-issue-resolve]]（`skills/github-issue-resolve/SKILL.md`） — apply の実装委譲基準（IMPLEMENT 表）
